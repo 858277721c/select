@@ -17,8 +17,8 @@ import java.util.WeakHashMap;
 public abstract class SDSelectView extends LinearLayout implements ISDSelectView
 {
     private Map<View, SDSelectViewConfig> mMapViewConfig = new WeakHashMap<>();
-    private OnSelectStateChangeCallback mOnSelectStateChangeCallback;
-    private OnSelectPercentChangeCallback mOnSelectPercentChangeCallback;
+    private OnSelectedStateChangeCallback mOnSelectedStateChangeCallback;
+    private OnSelectedPercentChangeCallback mOnSelectedPercentChangeCallback;
 
     public SDSelectView(Context context)
     {
@@ -49,16 +49,16 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     /**
      * 设置状态回调
      *
-     * @param onSelectStateChangeCallback
+     * @param onSelectedStateChangeCallback
      */
-    public void setOnSelectStateChangeCallback(OnSelectStateChangeCallback onSelectStateChangeCallback)
+    public void setOnSelectedStateChangeCallback(OnSelectedStateChangeCallback onSelectedStateChangeCallback)
     {
-        this.mOnSelectStateChangeCallback = onSelectStateChangeCallback;
+        this.mOnSelectedStateChangeCallback = onSelectedStateChangeCallback;
     }
 
-    public void setOnSelectPercentChangeCallback(OnSelectPercentChangeCallback onSelectPercentChangeCallback)
+    public void setOnSelectedPercentChangeCallback(OnSelectedPercentChangeCallback onSelectedPercentChangeCallback)
     {
-        mOnSelectPercentChangeCallback = onSelectPercentChangeCallback;
+        mOnSelectedPercentChangeCallback = onSelectedPercentChangeCallback;
     }
 
     public SDSelectViewConfig getViewConfig(View view)
@@ -229,7 +229,7 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     }
 
     @Override
-    public void setSelected(boolean selected)
+    public final void setSelected(boolean selected)
     {
         super.setSelected(selected);
 
@@ -237,42 +237,34 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     }
 
     @Override
-    public void setSelectedPercent(boolean selected, float percent, Direction direction)
+    public final void setSelectedPercent(boolean selected, float percent, Direction direction)
     {
-        if (mOnSelectPercentChangeCallback != null)
+        onSelectedPercentChanged(selected, percent, direction);
+        if (mOnSelectedPercentChangeCallback != null)
         {
-            mOnSelectPercentChangeCallback.onSelectPercentChanged(selected, percent, direction, this);
+            mOnSelectedPercentChangeCallback.onSelectedPercentChanged(selected, percent, direction, this);
         }
     }
 
     @Override
-    public void updateViewState(boolean notifyCallback)
+    public final void updateViewState(boolean notifyCallback)
     {
-        if (isSelected())
-        {
-            onSelected();
-        } else
-        {
-            onNormal();
-        }
+        final boolean isSelected = isSelected();
 
+        onSelectedStateChanged(isSelected);
         if (notifyCallback)
         {
-            if (mOnSelectStateChangeCallback != null)
+            if (mOnSelectedStateChangeCallback != null)
             {
-                mOnSelectStateChangeCallback.onSelectStateChanged(isSelected(), this);
+                mOnSelectedStateChangeCallback.onSelectedStateChanged(isSelected, this);
             }
         }
     }
 
-    /**
-     * 正常状态回调
-     */
-    public abstract void onNormal();
+    protected abstract void onSelectedStateChanged(boolean selected);
 
-    /**
-     * 选中状态回调
-     */
-    public abstract void onSelected();
+    protected void onSelectedPercentChanged(boolean selected, float percent, Direction direction)
+    {
 
+    }
 }

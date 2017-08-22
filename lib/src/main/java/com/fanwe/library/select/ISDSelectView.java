@@ -38,14 +38,14 @@ public interface ISDSelectView
      */
     void updateViewState(boolean notifyCallback);
 
-    interface OnSelectStateChangeCallback
+    interface OnSelectedStateChangeCallback
     {
-        void onSelectStateChanged(boolean selected, View view);
+        void onSelectedStateChanged(boolean selected, View view);
     }
 
-    interface OnSelectPercentChangeCallback
+    interface OnSelectedPercentChangeCallback
     {
-        void onSelectPercentChanged(boolean selected, float percent, Direction direction, View view);
+        void onSelectedPercentChanged(boolean selected, float percent, Direction direction, View view);
     }
 
     enum Direction
