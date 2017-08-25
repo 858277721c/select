@@ -11,17 +11,22 @@ import java.util.WeakHashMap;
 
 public abstract class SDSelectViewAuto extends SDSelectView
 {
-    private Map<View, Integer> mMapViews = new WeakHashMap<>();
+    public SDSelectViewAuto(Context context)
+    {
+        super(context);
+    }
 
     public SDSelectViewAuto(Context context, AttributeSet attrs)
     {
         super(context, attrs);
     }
 
-    public SDSelectViewAuto(Context context)
+    public SDSelectViewAuto(Context context, AttributeSet attrs, int defStyleAttr)
     {
-        super(context);
+        super(context, attrs, defStyleAttr);
     }
+
+    private Map<View, Integer> mMapViews = new WeakHashMap<>();
 
     @Override
     public void setContentView(int resId)
