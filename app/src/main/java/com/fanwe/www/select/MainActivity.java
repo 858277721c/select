@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity
                 .setTextColorNormal(Color.parseColor("#616161")) //未选中字体颜色
                 .setTextColorSelected(Color.parseColor("#f57c00")) //选中字体颜色
                 .setTextSizeNormal(30) //未选中字体大小
-                .setTextSizeSelected(60); //选中字体大小
+                .setTextSizeSelected(60) //选中字体大小
+                .setAlphaNormal(0.5f) //未选中透明度
+                .setAlphaSelected(1.0f); //选中透明度
 
         view_tab.getViewConfig(view_tab.view_underline)
                 .setBackgroundColorNormal(Color.parseColor("#616161")) //未选中背景颜色
