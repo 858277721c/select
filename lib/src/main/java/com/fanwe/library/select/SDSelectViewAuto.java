@@ -23,6 +23,27 @@ public abstract class SDSelectViewAuto extends SDSelectView
         super(context);
     }
 
+    @Override
+    public void setContentView(int resId)
+    {
+        mMapViews.clear();
+        super.setContentView(resId);
+    }
+
+    @Override
+    public void setContentView(View view)
+    {
+        mMapViews.clear();
+        super.setContentView(view);
+    }
+
+    @Override
+    public void setContentView(View view, android.view.ViewGroup.LayoutParams params)
+    {
+        mMapViews.clear();
+        super.setContentView(view, params);
+    }
+
     protected void addAutoView(View... views)
     {
         if (views == null)
@@ -48,79 +69,37 @@ public abstract class SDSelectViewAuto extends SDSelectView
     }
 
     @Override
-    public void setContentView(int resId)
+    protected void onSelectedChanged(boolean selected)
     {
-        mMapViews.clear();
-        super.setContentView(resId);
-    }
-
-    @Override
-    public void setContentView(View view)
-    {
-        mMapViews.clear();
-        super.setContentView(view);
-    }
-
-    @Override
-    public void setContentView(View view, android.view.ViewGroup.LayoutParams params)
-    {
-        mMapViews.clear();
-        super.setContentView(view, params);
-    }
-
-    @Override
-    public void onNormal()
-    {
-        if (!mMapViews.isEmpty())
+        if (mMapViews.isEmpty())
         {
-            for (Map.Entry<View, Integer> item : mMapViews.entrySet())
-            {
-                normalAutoView(item.getKey());
-            }
+            return;
+        }
+
+        for (Map.Entry<View, Integer> item : mMapViews.entrySet())
+        {
+            autoViewState(selected, item.getKey());
         }
     }
 
-    @Override
-    public void onSelected()
+    protected void autoViewState(boolean selected, View view)
     {
-        if (!mMapViews.isEmpty())
+        if (view == null)
         {
-            for (Map.Entry<View, Integer> item : mMapViews.entrySet())
-            {
-                selectAutoView(item.getKey());
-            }
+            return;
         }
-    }
+        updateView_background(selected, view);
+        updateView_alpha(selected, view);
 
-    protected void normalAutoView(View view)
-    {
-        normalView_background(view);
-        normalView_alpha(view);
         if (view instanceof TextView)
         {
             TextView tv = (TextView) view;
-            normalTextView_textColor(tv);
-            normalTextView_textSize(tv);
+            updateTextView_textColor(selected, tv);
+            updateTextView_textSize(selected, tv);
         } else if (view instanceof ImageView)
         {
             ImageView iv = (ImageView) view;
-            normalImageView_image(iv);
-        }
-    }
-
-    protected void selectAutoView(View view)
-    {
-        selectView_background(view);
-        selectView_alpha(view);
-        if (view instanceof TextView)
-        {
-            TextView tv = (TextView) view;
-            selectTextView_textColor(tv);
-            selectTextView_textSize(tv);
-        } else if (view instanceof ImageView)
-        {
-            ImageView iv = (ImageView) view;
-            selectImageView_image(iv);
+            updateImageView_imageResource(selected, iv);
         }
     }
 }

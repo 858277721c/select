@@ -17,8 +17,7 @@ import java.util.WeakHashMap;
 public abstract class SDSelectView extends LinearLayout implements ISDSelectView
 {
     private Map<View, SDSelectViewConfig> mMapViewConfig = new WeakHashMap<>();
-    private OnSelectedStateChangeCallback mOnSelectedStateChangeCallback;
-    private OnSelectedPercentChangeCallback mOnSelectedPercentChangeCallback;
+    private OnSelectedChangeCallback mOnSelectedChangeCallback;
 
     public SDSelectView(Context context)
     {
@@ -29,6 +28,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     public SDSelectView(Context context, AttributeSet attrs)
     {
         super(context, attrs);
+        baseInit();
+    }
+
+    public SDSelectView(Context context, AttributeSet attrs, int defStyleAttr)
+    {
+        super(context, attrs, defStyleAttr);
         baseInit();
     }
 
@@ -44,151 +49,6 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     protected void onBaseInit()
     {
 
-    }
-
-    /**
-     * 设置状态回调
-     *
-     * @param onSelectedStateChangeCallback
-     */
-    public void setOnSelectedStateChangeCallback(OnSelectedStateChangeCallback onSelectedStateChangeCallback)
-    {
-        this.mOnSelectedStateChangeCallback = onSelectedStateChangeCallback;
-    }
-
-    public void setOnSelectedPercentChangeCallback(OnSelectedPercentChangeCallback onSelectedPercentChangeCallback)
-    {
-        mOnSelectedPercentChangeCallback = onSelectedPercentChangeCallback;
-    }
-
-    public SDSelectViewConfig getViewConfig(View view)
-    {
-        if (view == null)
-        {
-            return null;
-        }
-        SDSelectViewConfig config = mMapViewConfig.get(view);
-        if (config == null)
-        {
-            config = new SDSelectViewConfig(getContext());
-            mMapViewConfig.put(view, config);
-        }
-        return config;
-    }
-
-    // util method
-    protected SDSelectView normalImageView_image(ImageView view)
-    {
-        int resId = getViewConfig(view).getImageNormalResId();
-        if (resId != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setImageResource(resId);
-        }
-        return this;
-    }
-
-    protected SDSelectView selectImageView_image(ImageView view)
-    {
-        int resId = getViewConfig(view).getImageSelectedResId();
-        if (resId != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setImageResource(resId);
-        }
-        return this;
-    }
-
-    protected SDSelectView normalTextView_textColor(TextView view)
-    {
-        int color = getViewConfig(view).getTextColorNormal();
-        if (color != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setTextColor(color);
-        }
-        return this;
-    }
-
-    protected SDSelectView selectTextView_textColor(TextView view)
-    {
-        int color = getViewConfig(view).getTextColorSelected();
-        if (color != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setTextColor(color);
-        }
-        return this;
-    }
-
-    protected SDSelectView normalTextView_textSize(TextView view)
-    {
-        int size = getViewConfig(view).getTextSizeNormal();
-        if (size != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
-        }
-        return this;
-    }
-
-    protected SDSelectView selectTextView_textSize(TextView view)
-    {
-        int size = getViewConfig(view).getTextSizeSelected();
-        if (size != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, size);
-        }
-        return this;
-    }
-
-    protected SDSelectView normalView_alpha(View view)
-    {
-        float alpha = getViewConfig(view).getAlphaNormal();
-        if (alpha != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setAlpha(alpha);
-        }
-        return this;
-    }
-
-    protected SDSelectView selectView_alpha(View view)
-    {
-        float alpha = getViewConfig(view).getAlphaSelected();
-        if (alpha != SDSelectViewConfig.EMPTY_VALUE)
-        {
-            view.setAlpha(alpha);
-        }
-        return this;
-    }
-
-    protected SDSelectView normalView_background(View view)
-    {
-        Drawable drawable = getViewConfig(view).getBackgroundNormal();
-        if (drawable != null)
-        {
-            setBackgroundDrawable(view, drawable);
-        }
-        return this;
-    }
-
-    protected SDSelectView selectView_background(View view)
-    {
-        Drawable drawable = getViewConfig(view).getBackgroundSelected();
-        if (drawable != null)
-        {
-            setBackgroundDrawable(view, drawable);
-        }
-        return this;
-    }
-
-    private static void setBackgroundDrawable(View view, Drawable drawable)
-    {
-        if (view == null)
-        {
-            return;
-        }
-        int paddingLeft = view.getPaddingLeft();
-        int paddingTop = view.getPaddingTop();
-        int paddingRight = view.getPaddingRight();
-        int paddingBottom = view.getPaddingBottom();
-        view.setBackgroundDrawable(drawable);
-        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
     }
 
     /**
@@ -229,6 +89,135 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     }
 
     @Override
+    public void setOnSelectedChangeCallback(OnSelectedChangeCallback onSelectedChangeCallback)
+    {
+        this.mOnSelectedChangeCallback = onSelectedChangeCallback;
+    }
+
+    /**
+     * 返回View对应的Config
+     *
+     * @param view
+     * @return
+     */
+    public SDSelectViewConfig getViewConfig(View view)
+    {
+        if (view == null)
+        {
+            return null;
+        }
+        SDSelectViewConfig config = mMapViewConfig.get(view);
+        if (config == null)
+        {
+            config = new SDSelectViewConfig(getContext());
+            mMapViewConfig.put(view, config);
+        }
+        return config;
+    }
+
+    // util method
+
+    protected void updateImageView_imageResource(boolean selected, ImageView view)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getViewConfig(view).getImageSelectedResId();
+        } else
+        {
+            value = getViewConfig(view).getImageNormalResId();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setImageResource(value);
+        }
+    }
+
+    protected void updateTextView_textColor(boolean selected, TextView view)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getViewConfig(view).getTextColorSelected();
+        } else
+        {
+            value = getViewConfig(view).getTextColorNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setTextColor(value);
+        }
+    }
+
+    protected void updateTextView_textSize(boolean selected, TextView view)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getViewConfig(view).getTextSizeSelected();
+        } else
+        {
+            value = getViewConfig(view).getTextSizeNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, value);
+        }
+    }
+
+    protected void updateView_alpha(boolean selected, View view)
+    {
+        float value = 0;
+        if (selected)
+        {
+            value = getViewConfig(view).getAlphaSelected();
+        } else
+        {
+            value = getViewConfig(view).getAlphaNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setAlpha(value);
+        }
+    }
+
+    protected SDSelectView updateView_background(boolean selected, View view)
+    {
+        Drawable value = null;
+        if (selected)
+        {
+            value = getViewConfig(view).getBackgroundSelected();
+        } else
+        {
+            value = getViewConfig(view).getBackgroundNormal();
+        }
+
+        if (value != null)
+        {
+            setBackgroundDrawable(view, value);
+        }
+        return this;
+    }
+
+    private static void setBackgroundDrawable(View view, Drawable drawable)
+    {
+        if (view == null)
+        {
+            return;
+        }
+        int paddingLeft = view.getPaddingLeft();
+        int paddingTop = view.getPaddingTop();
+        int paddingRight = view.getPaddingRight();
+        int paddingBottom = view.getPaddingBottom();
+        view.setBackgroundDrawable(drawable);
+        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+    }
+
+    @Override
     public final void setSelected(boolean selected)
     {
         super.setSelected(selected);
@@ -237,34 +226,19 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
     }
 
     @Override
-    public final void setSelectedPercent(boolean selected, float percent, Direction direction)
-    {
-        onSelectedPercentChanged(selected, percent, direction);
-        if (mOnSelectedPercentChangeCallback != null)
-        {
-            mOnSelectedPercentChangeCallback.onSelectedPercentChanged(selected, percent, direction, this);
-        }
-    }
-
-    @Override
     public final void updateViewState(boolean notifyCallback)
     {
         final boolean isSelected = isSelected();
 
-        onSelectedStateChanged(isSelected);
+        onSelectedChanged(isSelected);
         if (notifyCallback)
         {
-            if (mOnSelectedStateChangeCallback != null)
+            if (mOnSelectedChangeCallback != null)
             {
-                mOnSelectedStateChangeCallback.onSelectedStateChanged(isSelected, this);
+                mOnSelectedChangeCallback.onSelectedChanged(isSelected, this);
             }
         }
     }
 
-    protected abstract void onSelectedStateChanged(boolean selected);
-
-    protected void onSelectedPercentChanged(boolean selected, float percent, Direction direction)
-    {
-
-    }
+    protected abstract void onSelectedChanged(boolean selected);
 }

@@ -23,13 +23,11 @@ public interface ISDSelectView
     void setSelected(boolean selected);
 
     /**
-     * 设置是否选中
+     * 设置选中变化回调
      *
-     * @param selected  true-选中，false-未选中
-     * @param percent   选中或者未选中的百分比
-     * @param direction 选中或者未选中的方向
+     * @param onSelectedChangeCallback
      */
-    void setSelectedPercent(boolean selected, float percent, Direction direction);
+    void setOnSelectedChangeCallback(OnSelectedChangeCallback onSelectedChangeCallback);
 
     /**
      * 根据view的状态刷新view
@@ -38,21 +36,8 @@ public interface ISDSelectView
      */
     void updateViewState(boolean notifyCallback);
 
-    interface OnSelectedStateChangeCallback
+    interface OnSelectedChangeCallback
     {
-        void onSelectedStateChanged(boolean selected, View view);
-    }
-
-    interface OnSelectedPercentChangeCallback
-    {
-        void onSelectedPercentChanged(boolean selected, float percent, Direction direction, View view);
-    }
-
-    enum Direction
-    {
-        LeftToRight,
-        RightToLeft,
-        TopToBottom,
-        BottomToTop,
+        void onSelectedChanged(boolean selected, View view);
     }
 }
