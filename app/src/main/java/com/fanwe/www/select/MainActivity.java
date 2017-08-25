@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
                 .setVisibilityNormal(View.INVISIBLE) //正常可见状态
                 .setVisibilitySelected(View.VISIBLE); //选中可见状态
 
-        view_tab.setSelected(false); //设置初始化状态为未选中
+        view_tab.setSelected(false); //设置为未选中
     }
 
     public void onClickBtnChangeState(View view)
