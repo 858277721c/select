@@ -1,4 +1,4 @@
-package com.fanwe.library.select;
+package com.fanwe.library.select.view;
 
 import android.view.View;
 
