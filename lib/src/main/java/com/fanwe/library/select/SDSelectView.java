@@ -117,6 +117,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
 
     //----------update method start----------
 
+    /**
+     * 根据选中状态更新ImageView的图片
+     *
+     * @param selected
+     * @param view
+     */
     protected void updateImageView_imageResource(boolean selected, ImageView view)
     {
         int value = 0;
@@ -134,6 +140,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
+    /**
+     * 根据选中状态更新TextView的字体颜色
+     *
+     * @param selected
+     * @param view
+     */
     protected void updateTextView_textColor(boolean selected, TextView view)
     {
         int value = 0;
@@ -151,6 +163,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
+    /**
+     * 根据选中状态更新TextView的字体大小
+     *
+     * @param selected
+     * @param view
+     */
     protected void updateTextView_textSize(boolean selected, TextView view)
     {
         int value = 0;
@@ -168,6 +186,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
+    /**
+     * 根据选中状态更新View的透明度
+     *
+     * @param selected
+     * @param view
+     */
     protected void updateView_alpha(boolean selected, View view)
     {
         float value = 0;
@@ -185,6 +209,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
+    /**
+     * 根据选中状态更新View的背景
+     *
+     * @param selected
+     * @param view
+     */
     protected void updateView_background(boolean selected, View view)
     {
         Drawable value = null;
@@ -202,6 +232,12 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
+    /**
+     * 根据选中状态更新View的大小
+     *
+     * @param selected
+     * @param view
+     */
     protected void updateView_size(boolean selected, View view)
     {
         ViewGroup.LayoutParams params = view.getLayoutParams();
@@ -294,5 +330,10 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
-    protected abstract void onSelectedChanged(boolean selected);
+    /**
+     * 选中状态变化回调
+     *
+     * @param selected
+     */
+    public abstract void onSelectedChanged(boolean selected);
 }

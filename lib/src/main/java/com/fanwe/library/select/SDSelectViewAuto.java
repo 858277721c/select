@@ -49,6 +49,11 @@ public abstract class SDSelectViewAuto extends SDSelectView
         super.setContentView(view, params);
     }
 
+    /**
+     * 添加自动根据选中状态变化的view
+     *
+     * @param views
+     */
     protected void addAutoView(View... views)
     {
         if (views == null)
@@ -61,6 +66,11 @@ public abstract class SDSelectViewAuto extends SDSelectView
         }
     }
 
+    /**
+     * 移除自动根据选中状态变化的view
+     *
+     * @param views
+     */
     protected void removeAutoView(View... views)
     {
         if (views == null)
@@ -74,7 +84,7 @@ public abstract class SDSelectViewAuto extends SDSelectView
     }
 
     @Override
-    protected void onSelectedChanged(boolean selected)
+    public void onSelectedChanged(boolean selected)
     {
         if (mMapViews.isEmpty())
         {
