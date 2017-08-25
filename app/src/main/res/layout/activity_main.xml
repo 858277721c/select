@@ -2,11 +2,19 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
 
-    <TextView
+    <com.fanwe.www.select.CustomTabView
+        android:id="@+id/view_tab"
         android:layout_width="wrap_content"
+        android:layout_height="50dp"/>
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:onClick="onClickBtnChangeState"
+        android:text="选中状态切换"/>
 
 </LinearLayout>
