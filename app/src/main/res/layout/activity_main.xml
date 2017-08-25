@@ -6,10 +6,24 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <com.fanwe.www.select.CustomTabView
-        android:id="@+id/view_tab"
+    <com.fanwe.library.select.view.SDSelectFrameLayout
+        android:id="@+id/fl_select_layout"
         android:layout_width="50dp"
-        android:layout_height="50dp"/>
+        android:layout_height="50dp">
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="标题"/>
+
+        <View
+            android:id="@+id/view_underline"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="bottom"/>
+    </com.fanwe.library.select.view.SDSelectFrameLayout>
 
     <Button
         android:layout_width="match_parent"
