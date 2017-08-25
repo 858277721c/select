@@ -13,37 +13,43 @@ public class SDSelectViewConfig implements Cloneable
 
     private Context mContext;
 
-    //
+    //----------textColor----------
     private int textColorNormal = EMPTY_VALUE;
     private int textColorSelected = EMPTY_VALUE;
     private int textColorResIdNormal;
     private int textColorResIdSelected;
 
-    //
+    //----------textSize----------
     private int textSizeNormal = EMPTY_VALUE;
     private int textSizeSelected = EMPTY_VALUE;
 
-    //
+    //----------image resId----------
     private int imageResIdNormal = EMPTY_VALUE;
     private int imageResIdSelected = EMPTY_VALUE;
 
-    //
+    //----------background----------
     private Drawable backgroundNormal;
     private Drawable backgroundSelected;
 
-    //
     private int backgroundResIdNormal;
     private int backgroundResIdSelected;
 
-    //
     private int backgroundColorNormal;
     private int backgroundColorSelected;
     private int backgroundColorResIdNormal;
     private int backgroundColorResIdSelected;
 
-    //
+    //----------alpha----------
     private float alphaNormal = EMPTY_VALUE;
     private float alphaSelected = EMPTY_VALUE;
+
+    //----------width----------
+    public int widthNormal = EMPTY_VALUE;
+    public int widthSelected = EMPTY_VALUE;
+
+    //----------height----------
+    public int heightNormal = EMPTY_VALUE;
+    public int heightSelected = EMPTY_VALUE;
 
     public SDSelectViewConfig(Context context)
     {
@@ -262,6 +268,50 @@ public class SDSelectViewConfig implements Cloneable
     public SDSelectViewConfig setAlphaSelected(float alphaSelected)
     {
         this.alphaSelected = alphaSelected;
+        return this;
+    }
+
+    public int getWidthNormal()
+    {
+        return widthNormal;
+    }
+
+    public SDSelectViewConfig setWidthNormal(int widthNormal)
+    {
+        this.widthNormal = widthNormal;
+        return this;
+    }
+
+    public int getWidthSelected()
+    {
+        return widthSelected;
+    }
+
+    public SDSelectViewConfig setWidthSelected(int widthSelected)
+    {
+        this.widthSelected = widthSelected;
+        return this;
+    }
+
+    public int getHeightNormal()
+    {
+        return heightNormal;
+    }
+
+    public SDSelectViewConfig setHeightNormal(int heightNormal)
+    {
+        this.heightNormal = heightNormal;
+        return this;
+    }
+
+    public int getHeightSelected()
+    {
+        return heightSelected;
+    }
+
+    public SDSelectViewConfig setHeightSelected(int heightSelected)
+    {
+        this.heightSelected = heightSelected;
         return this;
     }
 
