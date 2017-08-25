@@ -44,7 +44,8 @@ view_tab.getViewConfig(view_tab.view_underline) //获得view_underline对应的�
 view_tab.setSelected(false); //设置为未选中
 ```
 ## SDSelectViewConfig目前支持的配置
-* textColor       (TextView字体颜色)
+* textColor       
+TextView字体颜色
 * textSize        (TextView字体大小)
 * imageResId      (ImageView资源图片)
 * background      (View的背景，支持颜色，Drawable，或者图片资源id)
