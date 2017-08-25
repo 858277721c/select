@@ -46,10 +46,24 @@ view_tab.setSelected(false); //设置为未选中
 ## SDSelectViewConfig目前支持的配置
 * textColor       
 TextView字体颜色
-* textSize        (TextView字体大小)
-* imageResId      (ImageView资源图片)
-* background      (View的背景，支持颜色，Drawable，或者图片资源id)
-* alpha           (View的透明度)
-* width           (View的宽度)
-* height          (View的高度)
-* visibility      (View的可见状态)
+
+* textSize        
+TextView字体大小
+
+* imageResId      
+ImageView资源图片
+
+* background      
+View的背景，支持颜色，Drawable，或者图片资源id
+
+* alpha           
+View的透明度
+
+* width           
+View的宽度
+
+* height          
+View的高度
+
+* visibility      
+View的可见状态
