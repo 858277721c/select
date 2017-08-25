@@ -16,30 +16,30 @@ public class SDSelectViewConfig implements Cloneable
     //
     private int textColorNormal = EMPTY_VALUE;
     private int textColorSelected = EMPTY_VALUE;
-    private int textColorNormalResId;
-    private int textColorSelectedResId;
+    private int textColorResIdNormal;
+    private int textColorResIdSelected;
 
     //
     private int textSizeNormal = EMPTY_VALUE;
     private int textSizeSelected = EMPTY_VALUE;
 
     //
-    private int imageNormalResId = EMPTY_VALUE;
-    private int imageSelectedResId = EMPTY_VALUE;
+    private int imageResIdNormal = EMPTY_VALUE;
+    private int imageResIdSelected = EMPTY_VALUE;
 
     //
     private Drawable backgroundNormal;
     private Drawable backgroundSelected;
 
     //
-    private int backgroundNormalResId;
-    private int backgroundSelectedResId;
+    private int backgroundResIdNormal;
+    private int backgroundResIdSelected;
 
     //
     private int backgroundColorNormal;
     private int backgroundColorSelected;
-    private int backgroundColorNormalResId;
-    private int backgroundColorSelectedResId;
+    private int backgroundColorResIdNormal;
+    private int backgroundColorResIdSelected;
 
     //
     private float alphaNormal = EMPTY_VALUE;
@@ -74,29 +74,29 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
-    public int getTextColorNormalResId()
+    public int getTextColorResIdNormal()
     {
-        return textColorNormalResId;
+        return textColorResIdNormal;
     }
 
     //
-    public SDSelectViewConfig setTextColorNormalResId(int textColorNormalResId)
+    public SDSelectViewConfig setTextColorResIdNormal(int textColorResIdNormal)
     {
-        this.textColorNormalResId = textColorNormalResId;
-        this.textColorNormal = mContext.getResources().getColor(textColorNormalResId);
+        this.textColorResIdNormal = textColorResIdNormal;
+        this.textColorNormal = mContext.getResources().getColor(textColorResIdNormal);
         return this;
     }
 
-    public int getTextColorSelectedResId()
+    public int getTextColorResIdSelected()
     {
-        return textColorSelectedResId;
+        return textColorResIdSelected;
     }
 
     //
-    public SDSelectViewConfig setTextColorSelectedResId(int textColorSelectedResId)
+    public SDSelectViewConfig setTextColorResIdSelected(int textColorResIdSelected)
     {
-        this.textColorSelectedResId = textColorSelectedResId;
-        this.textColorSelected = mContext.getResources().getColor(textColorSelectedResId);
+        this.textColorResIdSelected = textColorResIdSelected;
+        this.textColorSelected = mContext.getResources().getColor(textColorResIdSelected);
         return this;
     }
 
@@ -122,25 +122,25 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
-    public int getImageNormalResId()
+    public int getImageResIdNormal()
     {
-        return imageNormalResId;
+        return imageResIdNormal;
     }
 
-    public SDSelectViewConfig setImageNormalResId(int imageNormalResId)
+    public SDSelectViewConfig setImageResIdNormal(int imageResIdNormal)
     {
-        this.imageNormalResId = imageNormalResId;
+        this.imageResIdNormal = imageResIdNormal;
         return this;
     }
 
-    public int getImageSelectedResId()
+    public int getImageResIdSelected()
     {
-        return imageSelectedResId;
+        return imageResIdSelected;
     }
 
-    public SDSelectViewConfig setImageSelectedResId(int imageSelectedResId)
+    public SDSelectViewConfig setImageResIdSelected(int imageResIdSelected)
     {
-        this.imageSelectedResId = imageSelectedResId;
+        this.imageResIdSelected = imageResIdSelected;
         return this;
     }
 
@@ -166,29 +166,29 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
-    public int getBackgroundNormalResId()
+    public int getBackgroundResIdNormal()
     {
-        return backgroundNormalResId;
+        return backgroundResIdNormal;
     }
 
     //
-    public SDSelectViewConfig setBackgroundNormalResId(int backgroundNormalResId)
+    public SDSelectViewConfig setBackgroundResIdNormal(int backgroundResIdNormal)
     {
-        this.backgroundNormalResId = backgroundNormalResId;
-        this.backgroundNormal = mContext.getResources().getDrawable(backgroundNormalResId);
+        this.backgroundResIdNormal = backgroundResIdNormal;
+        this.backgroundNormal = mContext.getResources().getDrawable(backgroundResIdNormal);
         return this;
     }
 
-    public int getBackgroundSelectedResId()
+    public int getBackgroundResIdSelected()
     {
-        return backgroundSelectedResId;
+        return backgroundResIdSelected;
     }
 
     //
-    public SDSelectViewConfig setBackgroundSelectedResId(int backgroundSelectedResId)
+    public SDSelectViewConfig setBackgroundResIdSelected(int backgroundResIdSelected)
     {
-        this.backgroundSelectedResId = backgroundSelectedResId;
-        this.backgroundSelected = mContext.getResources().getDrawable(backgroundSelectedResId);
+        this.backgroundResIdSelected = backgroundResIdSelected;
+        this.backgroundSelected = mContext.getResources().getDrawable(backgroundResIdSelected);
         return this;
     }
 
@@ -205,16 +205,16 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
-    public int getBackgroundColorNormalResId()
+    public int getBackgroundColorResIdNormal()
     {
-        return backgroundColorNormalResId;
+        return backgroundColorResIdNormal;
     }
 
     //
-    public SDSelectViewConfig setBackgroundColorNormalResId(int backgroundColorNormalResId)
+    public SDSelectViewConfig setBackgroundColorResIdNormal(int backgroundColorResIdNormal)
     {
-        this.backgroundColorNormalResId = backgroundColorNormalResId;
-        this.backgroundNormal = new ColorDrawable(mContext.getResources().getColor(backgroundColorNormalResId));
+        this.backgroundColorResIdNormal = backgroundColorResIdNormal;
+        this.backgroundNormal = new ColorDrawable(mContext.getResources().getColor(backgroundColorResIdNormal));
         return this;
     }
 
@@ -231,15 +231,15 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
-    public int getBackgroundColorSelectedResId()
+    public int getBackgroundColorResIdSelected()
     {
-        return backgroundColorSelectedResId;
+        return backgroundColorResIdSelected;
     }
 
-    public SDSelectViewConfig setBackgroundColorSelectedResId(int backgroundColorSelectedResId)
+    public SDSelectViewConfig setBackgroundColorResIdSelected(int backgroundColorResIdSelected)
     {
-        this.backgroundColorSelectedResId = backgroundColorSelectedResId;
-        this.backgroundSelected = new ColorDrawable(mContext.getResources().getColor(backgroundColorSelectedResId));
+        this.backgroundColorResIdSelected = backgroundColorResIdSelected;
+        this.backgroundSelected = new ColorDrawable(mContext.getResources().getColor(backgroundColorResIdSelected));
         return this;
     }
 

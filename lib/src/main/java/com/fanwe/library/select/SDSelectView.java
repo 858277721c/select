@@ -122,10 +122,10 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         int value = 0;
         if (selected)
         {
-            value = getViewConfig(view).getImageSelectedResId();
+            value = getViewConfig(view).getImageResIdSelected();
         } else
         {
-            value = getViewConfig(view).getImageNormalResId();
+            value = getViewConfig(view).getImageResIdNormal();
         }
 
         if (value != SDSelectViewConfig.EMPTY_VALUE)
