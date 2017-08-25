@@ -93,8 +93,6 @@ public abstract class SDSelectViewAuto extends SDSelectView
         {
             return;
         }
-        updateView_background(selected, view);
-        updateView_alpha(selected, view);
 
         if (view instanceof TextView)
         {
@@ -106,5 +104,9 @@ public abstract class SDSelectViewAuto extends SDSelectView
             ImageView iv = (ImageView) view;
             updateImageView_imageResource(selected, iv);
         }
+
+        updateView_alpha(selected, view);
+        updateView_background(selected, view);
+        updateView_size(selected, view);
     }
 }

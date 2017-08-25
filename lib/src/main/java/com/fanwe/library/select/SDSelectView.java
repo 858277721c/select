@@ -115,7 +115,7 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         return config;
     }
 
-    // util method
+    //----------update method start----------
 
     protected void updateImageView_imageResource(boolean selected, ImageView view)
     {
@@ -185,7 +185,7 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
-    protected SDSelectView updateView_background(boolean selected, View view)
+    protected void updateView_background(boolean selected, View view)
     {
         Drawable value = null;
         if (selected)
@@ -200,8 +200,62 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         {
             setBackgroundDrawable(view, value);
         }
-        return this;
     }
+
+    protected void updateView_size(boolean selected, View view)
+    {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (params == null)
+        {
+            return;
+        }
+
+        int width = 0;
+        if (selected)
+        {
+            width = getViewConfig(view).getWidthSelected();
+        } else
+        {
+            width = getViewConfig(view).getWidthNormal();
+        }
+
+        int height = 0;
+        if (selected)
+        {
+            height = getViewConfig(view).getHeightSelected();
+        } else
+        {
+            height = getViewConfig(view).getHeightNormal();
+        }
+
+        boolean needUpdate = false;
+
+        if (width != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            if (params.width != width)
+            {
+                params.width = width;
+                needUpdate = true;
+            }
+        }
+
+        if (height != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            if (params.height != height)
+            {
+                params.height = height;
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            view.setLayoutParams(params);
+        }
+    }
+
+
+    //----------update method end----------
 
     private static void setBackgroundDrawable(View view, Drawable drawable)
     {
