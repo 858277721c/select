@@ -40,6 +40,8 @@ view_tab.getViewConfig(view_tab.view_underline) //获得view_underline对应的�
 
         .setVisibilityNormal(View.INVISIBLE) //正常可见状态
         .setVisibilitySelected(View.VISIBLE); //选中可见状态
+        
+view_tab.setSelected(false); //设置为未选中
 ```
 ## SDSelectViewConfig目前支持的配置
 * textColor       (TextView字体颜色)
