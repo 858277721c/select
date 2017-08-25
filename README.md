@@ -35,9 +35,6 @@ view_tab.getViewConfig(view_tab.tv_title) //获得tv_title对应的配置config
         .setAlphaNormal(0.2f) //正常透明度
         .setAlphaSelected(1.0f); //选中透明度
 
-// .setHeightNormal(10)  //正常高度
-// .setHeightSelected(30); //选中高度
-
 view_tab.getViewConfig(view_tab.view_underline) //获得view_underline对应的配置config
         .setBackgroundColorSelected(Color.parseColor("#f57c00")) //选中背景颜色
 
