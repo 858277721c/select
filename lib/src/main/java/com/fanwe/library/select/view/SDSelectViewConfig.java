@@ -44,12 +44,17 @@ public class SDSelectViewConfig implements Cloneable
     private float alphaSelected = EMPTY_VALUE;
 
     //----------width----------
-    public int widthNormal = EMPTY_VALUE;
-    public int widthSelected = EMPTY_VALUE;
+    private int widthNormal = EMPTY_VALUE;
+    private int widthSelected = EMPTY_VALUE;
 
     //----------height----------
-    public int heightNormal = EMPTY_VALUE;
-    public int heightSelected = EMPTY_VALUE;
+    private int heightNormal = EMPTY_VALUE;
+    private int heightSelected = EMPTY_VALUE;
+
+    //----------visibility----------
+    private int visibilityNormal = EMPTY_VALUE;
+    private int visibilitySelected = EMPTY_VALUE;
+
 
     public SDSelectViewConfig(Context context)
     {
@@ -312,6 +317,28 @@ public class SDSelectViewConfig implements Cloneable
     public SDSelectViewConfig setHeightSelected(int heightSelected)
     {
         this.heightSelected = heightSelected;
+        return this;
+    }
+
+    public int getVisibilityNormal()
+    {
+        return visibilityNormal;
+    }
+
+    public SDSelectViewConfig setVisibilityNormal(int visibilityNormal)
+    {
+        this.visibilityNormal = visibilityNormal;
+        return this;
+    }
+
+    public int getVisibilitySelected()
+    {
+        return visibilitySelected;
+    }
+
+    public SDSelectViewConfig setVisibilitySelected(int visibilitySelected)
+    {
+        this.visibilitySelected = visibilitySelected;
         return this;
     }
 

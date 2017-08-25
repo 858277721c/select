@@ -290,6 +290,31 @@ public abstract class SDSelectView extends LinearLayout implements ISDSelectView
         }
     }
 
+    /**
+     * 根据选中状态更新View的可见状态
+     *
+     * @param selected
+     * @param view
+     */
+    protected void updateView_visibility(boolean selected, View view)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getViewConfig(view).getVisibilitySelected();
+        } else
+        {
+            value = getViewConfig(view).getVisibilityNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            if (view.getVisibility() != value)
+            {
+                view.setVisibility(value);
+            }
+        }
+    }
 
     //----------update method end----------
 

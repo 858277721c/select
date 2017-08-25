@@ -118,5 +118,6 @@ public abstract class SDSelectViewAuto extends SDSelectView
         updateView_alpha(selected, view);
         updateView_background(selected, view);
         updateView_size(selected, view);
+        updateView_visibility(selected, view);
     }
 }
