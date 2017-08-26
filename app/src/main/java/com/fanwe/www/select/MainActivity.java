@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity
         mTvTitle = (TextView) findViewById(R.id.tv_title);
         mViewUnderline = findViewById(R.id.view_underline);
 
-        mSelectViewContainer.config(mTvTitle) // 返回tv_title对应的配置config
+        mSelectViewContainer.config(mTvTitle) // 获得mTvTitle对应的config
                 .setTextColorNormal(Color.parseColor("#616161")) // 正常字体颜色
                 .setTextColorSelected(Color.parseColor("#f57c00")) // 选中字体颜色
                 .setTextSizeNormal(40) // 正常字体大小
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
                 .setAlphaSelected(1.0f) // 选中透明度
                 .setSelected(false); //设置默认未选中
 
-        mSelectViewContainer.config(mViewUnderline) // 获得view_underline对应的配置config
+        mSelectViewContainer.config(mViewUnderline) // 获得mViewUnderline对应的config
                 .setBackgroundColorSelected(Color.parseColor("#f57c00")) // 选中背景颜色
                 .setVisibilityNormal(View.INVISIBLE) // 正常可见状态
                 .setVisibilitySelected(View.VISIBLE) // 选中可见状态
