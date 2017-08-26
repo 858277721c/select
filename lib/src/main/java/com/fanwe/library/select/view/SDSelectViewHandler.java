@@ -20,9 +20,9 @@ public class SDSelectViewHandler extends SDSelectViewConfig
     private static Map<View, SDSelectViewHandler> sMapViewHandler = new WeakHashMap<>();
     private WeakReference<View> mView;
     /**
-     * View的Selected状态发生变化的时候是否自动刷新View的展示状态，默认true
+     * View的Selected状态发生变化的时候是否自动刷新View的展示状态，默认false
      */
-    private boolean mIsAutoUpdate = true;
+    private boolean mIsAutoUpdate = false;
     private Boolean mIsSelected = false;
 
     SDSelectViewHandler(View view)
@@ -64,7 +64,7 @@ public class SDSelectViewHandler extends SDSelectViewConfig
     }
 
     /**
-     * 设置View的Selected状态发生变化的时候是否自动刷新View的展示状态，默认true
+     * 设置View的Selected状态发生变化的时候是否自动刷新View的展示状态，默认false
      *
      * @param autoUpdate
      */
