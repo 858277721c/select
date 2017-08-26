@@ -17,7 +17,7 @@ import java.util.WeakHashMap;
  */
 public class SDSelectViewConfig implements Cloneable
 {
-    protected static final int EMPTY_VALUE = -Integer.MAX_VALUE;
+    public static final int EMPTY_VALUE = -Integer.MAX_VALUE;
 
     private Context mContext;
 
