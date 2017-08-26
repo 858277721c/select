@@ -432,7 +432,7 @@ public class SDSelectViewConfig implements Cloneable
     }
 
     /**
-     * 返回该View对应的选中状态处理对象
+     * 返回该View对应的Config
      *
      * @param view
      * @return

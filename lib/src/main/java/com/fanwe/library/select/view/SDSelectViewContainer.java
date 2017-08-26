@@ -14,32 +14,50 @@ public class SDSelectViewContainer
     private Map<View, Integer> mMapView = new WeakHashMap<>();
 
     /**
-     * 把View添加到容器中，并返回该View对应的选中状态处理对象
+     * 把View添加到容器中，并返回该View对应的Config
      *
      * @param view
+     * @return
      */
     public SDSelectViewConfig config(View view)
     {
-        final SDSelectViewConfig config = SDSelectViewConfig.config(view);
+        SDSelectViewConfig config = SDSelectViewConfig.config(view);
         if (config != null)
         {
-            mMapView.put(view, 0);
+            add(view);
         }
         return config;
     }
 
     /**
-     * 把View从容器中移除
+     * 把View添加到容器中
      *
      * @param view
      */
-    public void remove(View view)
+    private void add(View view)
     {
         if (view == null)
         {
             return;
         }
-        mMapView.remove(view);
+        mMapView.put(view, 0);
+    }
+
+    /**
+     * 把View从容器中移除
+     *
+     * @param views
+     */
+    public void remove(View... views)
+    {
+        if (views == null)
+        {
+            return;
+        }
+        for (View item : views)
+        {
+            mMapView.remove(item);
+        }
     }
 
     /**
