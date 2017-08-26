@@ -7,9 +7,9 @@
     android:orientation="vertical">
 
     <FrameLayout
-        android:id="@+id/fl_select_layout"
         android:layout_width="50dp"
         android:layout_height="50dp">
+
         <TextView
             android:id="@+id/tv_title"
             android:layout_width="match_parent"
@@ -23,6 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_gravity="bottom"/>
+
     </FrameLayout>
 
     <Button

@@ -28,13 +28,13 @@ public class MainActivity extends AppCompatActivity
                 .setTextSizeSelected(60) // 选中字体大小
                 .setAlphaNormal(0.2f) // 正常透明度
                 .setAlphaSelected(1.0f) // 选中透明度
-                .setAutoUpdate(false);
+                .setSelected(false); //设置默认未选中
 
         SDSelectViewHandler.config(mViewUnderline) // 获得view_underline对应的配置config
                 .setBackgroundColorSelected(Color.parseColor("#f57c00")) // 选中背景颜色
                 .setVisibilityNormal(View.INVISIBLE) // 正常可见状态
                 .setVisibilitySelected(View.VISIBLE) // 选中可见状态
-                .setAutoUpdate(false);
+                .setSelected(false); //设置默认未选中
     }
 
     public void onClickBtnChangeState(View view)
