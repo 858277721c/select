@@ -7,9 +7,9 @@ import android.graphics.drawable.Drawable;
 /**
  * SDSelectView的参数配置
  */
-public class SDSelectViewConfig implements Cloneable
+class SDSelectViewConfig implements Cloneable
 {
-    public static final int EMPTY_VALUE = -Integer.MAX_VALUE;
+    protected static final int EMPTY_VALUE = -Integer.MAX_VALUE;
 
     private Context mContext;
 
@@ -55,10 +55,12 @@ public class SDSelectViewConfig implements Cloneable
     private int visibilityNormal = EMPTY_VALUE;
     private int visibilitySelected = EMPTY_VALUE;
 
-
-    public SDSelectViewConfig(Context context)
+    SDSelectViewConfig(Context context)
     {
-        mContext = context.getApplicationContext();
+        if (context != null)
+        {
+            mContext = context.getApplicationContext();
+        }
     }
 
     // ----------------------setter getter

@@ -6,7 +6,7 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <com.fanwe.library.select.view.SDSelectFrameLayout
+    <FrameLayout
         android:id="@+id/fl_select_layout"
         android:layout_width="50dp"
         android:layout_height="50dp">
@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_gravity="bottom"/>
-    </com.fanwe.library.select.view.SDSelectFrameLayout>
+    </FrameLayout>
 
     <Button
         android:layout_width="match_parent"
