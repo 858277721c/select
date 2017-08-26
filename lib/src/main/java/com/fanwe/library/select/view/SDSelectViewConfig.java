@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
-import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
@@ -365,7 +364,7 @@ public class SDSelectViewConfig implements Cloneable
 
     //==================== select logic start ====================
 
-    private static Map<View, SDSelectViewConfig> sMapViewConfig = new WeakHashMap<>();
+    private static WeakHashMap<View, SDSelectViewConfig> sMapViewConfig = new WeakHashMap<>();
     private WeakReference<View> mView;
 
     private View getView()
@@ -451,25 +450,6 @@ public class SDSelectViewConfig implements Cloneable
             sMapViewConfig.put(view, config);
         }
         return config;
-    }
-
-    /**
-     * 把View从状态更新列表移除
-     *
-     * @param view
-     */
-    public static void remove(View view)
-    {
-        if (view == null)
-        {
-            return;
-        }
-        final SDSelectViewConfig config = sMapViewConfig.get(view);
-        if (config != null)
-        {
-            config.setView(null);
-        }
-        sMapViewConfig.remove(view);
     }
 
     //----------update method start----------

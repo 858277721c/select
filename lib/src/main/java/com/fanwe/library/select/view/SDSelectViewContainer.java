@@ -68,4 +68,12 @@ public class SDSelectViewContainer
             }
         }
     }
+
+    /**
+     * 清空容器中的所有View
+     */
+    public void clear()
+    {
+        mMapView.clear();
+    }
 }
