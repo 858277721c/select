@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 /**
- * Created by Administrator on 2017/8/26.
+ * View选中状态处理对象
  */
 public class SDSelectViewHandler extends SDSelectViewConfig
 {
@@ -147,7 +147,7 @@ public class SDSelectViewHandler extends SDSelectViewConfig
     }
 
     /**
-     * 把View加入状态更新列表，并返回该View对应的处理对象
+     * 返回该View对应的选中状态处理对象
      *
      * @param view
      * @return
