@@ -18,14 +18,14 @@ public class SDSelectViewContainer
      *
      * @param view
      */
-    public SDSelectViewHandler config(View view)
+    public SDSelectViewConfig config(View view)
     {
-        final SDSelectViewHandler handler = SDSelectViewHandler.config(view);
-        if (handler != null)
+        final SDSelectViewConfig config = SDSelectViewConfig.config(view);
+        if (config != null)
         {
             mMapView.put(view, 0);
         }
-        return handler;
+        return config;
     }
 
     /**
@@ -61,7 +61,7 @@ public class SDSelectViewContainer
             View view = item.getKey();
             if (view != null)
             {
-                SDSelectViewHandler.setSelected(view, selected);
+                SDSelectViewConfig.setSelected(view, selected);
             } else
             {
                 it.remove();

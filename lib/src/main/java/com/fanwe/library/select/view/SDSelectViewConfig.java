@@ -3,11 +3,20 @@ package com.fanwe.library.select.view;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.lang.ref.WeakReference;
+import java.util.Map;
+import java.util.WeakHashMap;
 
 /**
  * SDSelectView的参数配置
  */
-class SDSelectViewConfig implements Cloneable
+public class SDSelectViewConfig implements Cloneable
 {
     protected static final int EMPTY_VALUE = -Integer.MAX_VALUE;
 
@@ -55,12 +64,10 @@ class SDSelectViewConfig implements Cloneable
     private int visibilityNormal = EMPTY_VALUE;
     private int visibilitySelected = EMPTY_VALUE;
 
-    SDSelectViewConfig(Context context)
+    SDSelectViewConfig(View view)
     {
-        if (context != null)
-        {
-            mContext = context.getApplicationContext();
-        }
+        mContext = view.getContext().getApplicationContext();
+        setView(view);
     }
 
     // ----------------------setter getter
@@ -355,4 +362,352 @@ class SDSelectViewConfig implements Cloneable
             return null;
         }
     }
+
+    //==================== select logic start ====================
+
+    private static Map<View, SDSelectViewConfig> sMapViewConfig = new WeakHashMap<>();
+    private WeakReference<View> mView;
+
+    private View getView()
+    {
+        if (mView != null)
+        {
+            return mView.get();
+        } else
+        {
+            return null;
+        }
+    }
+
+    private void setView(View view)
+    {
+        final View oldView = getView();
+        if (oldView != view)
+        {
+            if (view != null)
+            {
+                mView = new WeakReference<>(view);
+            } else
+            {
+                mView = null;
+            }
+        }
+    }
+
+    /**
+     * 设置View是否选中
+     *
+     * @param selected
+     */
+    public void setSelected(boolean selected)
+    {
+        final View view = getView();
+        if (view == null)
+        {
+            return;
+        }
+        view.setSelected(selected);
+        updateViewState(selected);
+    }
+
+    /**
+     * 设置View是否选中
+     *
+     * @param selected
+     */
+    public static void setSelected(View view, boolean selected)
+    {
+        if (view == null)
+        {
+            return;
+        }
+
+        final SDSelectViewConfig config = sMapViewConfig.get(view);
+        if (config != null)
+        {
+            config.setSelected(selected);
+        } else
+        {
+            view.setSelected(selected);
+        }
+    }
+
+    /**
+     * 返回该View对应的选中状态处理对象
+     *
+     * @param view
+     * @return
+     */
+    public static SDSelectViewConfig config(View view)
+    {
+        if (view == null)
+        {
+            return null;
+        }
+        SDSelectViewConfig config = sMapViewConfig.get(view);
+        if (config == null)
+        {
+            config = new SDSelectViewConfig(view);
+            sMapViewConfig.put(view, config);
+        }
+        return config;
+    }
+
+    /**
+     * 把View从状态更新列表移除
+     *
+     * @param view
+     */
+    public static void remove(View view)
+    {
+        if (view == null)
+        {
+            return;
+        }
+        final SDSelectViewConfig config = sMapViewConfig.get(view);
+        if (config != null)
+        {
+            config.setView(null);
+        }
+        sMapViewConfig.remove(view);
+    }
+
+    //----------update method start----------
+
+    private void updateViewState(boolean selected)
+    {
+        final View view = getView();
+        if (view instanceof TextView)
+        {
+            TextView tv = (TextView) view;
+            updateTextView_textColor(tv, selected);
+            updateTextView_textSize(tv, selected);
+        } else if (view instanceof ImageView)
+        {
+            ImageView iv = (ImageView) view;
+            updateImageView_imageResource(iv, selected);
+        }
+
+        updateView_alpha(view, selected);
+        updateView_background(view, selected);
+        updateView_size(view, selected);
+        updateView_visibility(view, selected);
+    }
+
+    /**
+     * 更新ImageView的图片
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateImageView_imageResource(ImageView view, boolean selected)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getImageResIdSelected();
+        } else
+        {
+            value = getImageResIdNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setImageResource(value);
+        }
+    }
+
+    /**
+     * 更新TextView的字体颜色
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateTextView_textColor(TextView view, boolean selected)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getTextColorSelected();
+        } else
+        {
+            value = getTextColorNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setTextColor(value);
+        }
+    }
+
+    /**
+     * 更新TextView的字体大小
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateTextView_textSize(TextView view, boolean selected)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getTextSizeSelected();
+        } else
+        {
+            value = getTextSizeNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setTextSize(TypedValue.COMPLEX_UNIT_PX, value);
+        }
+    }
+
+    /**
+     * 更新View的透明度
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateView_alpha(View view, boolean selected)
+    {
+        float value = 0;
+        if (selected)
+        {
+            value = getAlphaSelected();
+        } else
+        {
+            value = getAlphaNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            view.setAlpha(value);
+        }
+    }
+
+    /**
+     * 更新View的背景
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateView_background(View view, boolean selected)
+    {
+        Drawable value = null;
+        if (selected)
+        {
+            value = getBackgroundSelected();
+        } else
+        {
+            value = getBackgroundNormal();
+        }
+
+        if (value != null)
+        {
+            setBackgroundDrawable(view, value);
+        }
+    }
+
+    /**
+     * 更新View的大小
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateView_size(View view, boolean selected)
+    {
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (params == null)
+        {
+            return;
+        }
+
+        int width = 0;
+        if (selected)
+        {
+            width = getWidthSelected();
+        } else
+        {
+            width = getWidthNormal();
+        }
+
+        int height = 0;
+        if (selected)
+        {
+            height = getHeightSelected();
+        } else
+        {
+            height = getHeightNormal();
+        }
+
+        boolean needUpdate = false;
+
+        if (width != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            if (params.width != width)
+            {
+                params.width = width;
+                needUpdate = true;
+            }
+        }
+
+        if (height != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            if (params.height != height)
+            {
+                params.height = height;
+                needUpdate = true;
+            }
+        }
+
+        if (needUpdate)
+        {
+            view.setLayoutParams(params);
+        }
+    }
+
+    /**
+     * 更新View的可见状态
+     *
+     * @param view
+     * @param selected
+     */
+    private void updateView_visibility(View view, boolean selected)
+    {
+        int value = 0;
+        if (selected)
+        {
+            value = getVisibilitySelected();
+        } else
+        {
+            value = getVisibilityNormal();
+        }
+
+        if (value != SDSelectViewConfig.EMPTY_VALUE)
+        {
+            if (view.getVisibility() != value)
+            {
+                view.setVisibility(value);
+            }
+        }
+    }
+
+    //----------update method end----------
+
+    private static void setBackgroundDrawable(View view, Drawable drawable)
+    {
+        if (view == null)
+        {
+            return;
+        }
+        int paddingLeft = view.getPaddingLeft();
+        int paddingTop = view.getPaddingTop();
+        int paddingRight = view.getPaddingRight();
+        int paddingBottom = view.getPaddingBottom();
+        view.setBackgroundDrawable(drawable);
+        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+    }
+
+    //==================== select logic end ====================
 }
