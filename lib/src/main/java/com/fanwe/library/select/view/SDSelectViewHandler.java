@@ -47,19 +47,29 @@ public class SDSelectViewHandler extends SDSelectViewConfig
         final View oldView = getView();
         if (oldView != view)
         {
-            if (oldView != null)
-            {
-                oldView.getViewTreeObserver().removeOnPreDrawListener(mOnPreDrawListener);
-            }
+            addAutoListener(false);
 
             if (view != null)
             {
                 mView = new WeakReference<>(view);
-                view.getViewTreeObserver().addOnPreDrawListener(mOnPreDrawListener);
             } else
             {
                 mView = null;
             }
+        }
+    }
+
+    private void addAutoListener(boolean add)
+    {
+        final View view = getView();
+        if (view == null)
+        {
+            return;
+        }
+        view.getViewTreeObserver().removeOnPreDrawListener(mOnPreDrawListener);
+        if (add)
+        {
+            view.getViewTreeObserver().addOnPreDrawListener(mOnPreDrawListener);
         }
     }
 
@@ -70,7 +80,11 @@ public class SDSelectViewHandler extends SDSelectViewConfig
      */
     public SDSelectViewHandler setAutoUpdate(boolean autoUpdate)
     {
-        mIsAutoUpdate = autoUpdate;
+        if (mIsAutoUpdate != autoUpdate)
+        {
+            mIsAutoUpdate = autoUpdate;
+            addAutoListener(autoUpdate);
+        }
         return this;
     }
 
