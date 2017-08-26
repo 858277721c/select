@@ -1,4 +1,4 @@
-package com.fanwe.library.select.view;
+package com.fanwe.library.select;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -63,7 +63,7 @@ public class SDSelectViewConfig implements Cloneable
     private int visibilityNormal = EMPTY_VALUE;
     private int visibilitySelected = EMPTY_VALUE;
 
-    SDSelectViewConfig(View view)
+    private SDSelectViewConfig(View view)
     {
         mContext = view.getContext().getApplicationContext();
         setView(view);

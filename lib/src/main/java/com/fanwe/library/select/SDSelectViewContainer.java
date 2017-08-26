@@ -1,4 +1,4 @@
-package com.fanwe.library.select.view;
+package com.fanwe.library.select;
 
 import android.view.View;
 
@@ -11,7 +11,7 @@ import java.util.WeakHashMap;
  */
 public class SDSelectViewContainer
 {
-    private Map<View, Integer> mMapView = new WeakHashMap<>();
+    private WeakHashMap<View, Integer> mMapView = new WeakHashMap<>();
 
     /**
      * 把View添加到容器中，并返回该View对应的Config
