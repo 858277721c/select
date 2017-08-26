@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.fanwe.library.select.view.SDSelectViewContainer;
+import com.fanwe.library.select.SDSelectViewContainer;
+
 
 public class MainActivity extends AppCompatActivity
 {
