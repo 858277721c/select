@@ -415,11 +415,13 @@ public class SDSelectViewConfig implements Cloneable
         if (view instanceof TextView)
         {
             TextView tv = (TextView) view;
+
             updateTextView_textColor(tv, selected);
             updateTextView_textSize(tv, selected);
         } else if (view instanceof ImageView)
         {
             ImageView iv = (ImageView) view;
+
             updateImageView_imageResource(iv, selected);
         }
 
