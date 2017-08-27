@@ -11,7 +11,7 @@ import java.util.WeakHashMap;
  */
 public class SDSelectViewContainer
 {
-    private WeakHashMap<View, Integer> mMapView = new WeakHashMap<>();
+    private WeakHashMap<View, SDSelectViewConfig> mMapViewConfig = new WeakHashMap<>();
 
     /**
      * 把View添加到容器中，并返回该View对应的Config
@@ -21,43 +21,36 @@ public class SDSelectViewContainer
      */
     public SDSelectViewConfig config(View view)
     {
-        SDSelectViewConfig config = SDSelectViewConfig.config(view);
-        if (config != null)
+        if (view == null)
         {
-            add(view);
+            return null;
+        }
+        SDSelectViewConfig config = mMapViewConfig.get(view);
+        if (config == null)
+        {
+            config = new SDSelectViewConfig(view);
+            mMapViewConfig.put(view, config);
         }
         return config;
     }
 
     /**
-     * 把View添加到容器中
+     * 把View从容器中移除
      *
      * @param view
      */
-    private void add(View view)
+    public void remove(View view)
     {
         if (view == null)
         {
             return;
         }
-        mMapView.put(view, 0);
-    }
-
-    /**
-     * 把View从容器中移除
-     *
-     * @param views
-     */
-    public void remove(View... views)
-    {
-        if (views == null)
+        SDSelectViewConfig config = mMapViewConfig.get(view);
+        if (config != null)
         {
-            return;
+            config.setView(null);
         }
-        for (View item : views)
-        {
-            mMapView.remove(item);
-        }
+        mMapViewConfig.remove(view);
     }
 
     /**
@@ -67,22 +60,19 @@ public class SDSelectViewContainer
      */
     public void setSelected(boolean selected)
     {
-        if (mMapView.isEmpty())
+        if (mMapViewConfig.isEmpty())
         {
             return;
         }
 
-        Iterator<Map.Entry<View, Integer>> it = mMapView.entrySet().iterator();
+        Iterator<Map.Entry<View, SDSelectViewConfig>> it = mMapViewConfig.entrySet().iterator();
         while (it.hasNext())
         {
-            Map.Entry<View, Integer> item = it.next();
-            View view = item.getKey();
-            if (view != null)
+            Map.Entry<View, SDSelectViewConfig> item = it.next();
+            SDSelectViewConfig config = item.getValue();
+            if (config != null)
             {
-                SDSelectViewConfig.setSelected(view, selected);
-            } else
-            {
-                it.remove();
+                config.setSelected(selected);
             }
         }
     }
@@ -92,6 +82,6 @@ public class SDSelectViewContainer
      */
     public void clear()
     {
-        mMapView.clear();
+        mMapViewConfig.clear();
     }
 }

@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
-import java.util.WeakHashMap;
 
 /**
  * SDSelectView的参数配置
@@ -63,7 +62,7 @@ public class SDSelectViewConfig implements Cloneable
     private int visibilityNormal = EMPTY_VALUE;
     private int visibilitySelected = EMPTY_VALUE;
 
-    private SDSelectViewConfig(View view)
+    SDSelectViewConfig(View view)
     {
         mContext = view.getContext().getApplicationContext();
         setView(view);
@@ -364,7 +363,6 @@ public class SDSelectViewConfig implements Cloneable
 
     //==================== select logic start ====================
 
-    private static WeakHashMap<View, SDSelectViewConfig> sMapViewConfig = new WeakHashMap<>();
     private WeakReference<View> mView;
 
     private View getView()
@@ -378,7 +376,7 @@ public class SDSelectViewConfig implements Cloneable
         }
     }
 
-    private void setView(View view)
+    public void setView(View view)
     {
         final View oldView = getView();
         if (oldView != view)
@@ -407,49 +405,6 @@ public class SDSelectViewConfig implements Cloneable
         }
         view.setSelected(selected);
         updateViewState(selected);
-    }
-
-    /**
-     * 设置View是否选中
-     *
-     * @param selected
-     */
-    public static void setSelected(View view, boolean selected)
-    {
-        if (view == null)
-        {
-            return;
-        }
-
-        final SDSelectViewConfig config = sMapViewConfig.get(view);
-        if (config != null)
-        {
-            config.setSelected(selected);
-        } else
-        {
-            view.setSelected(selected);
-        }
-    }
-
-    /**
-     * 返回该View对应的Config
-     *
-     * @param view
-     * @return
-     */
-    public static SDSelectViewConfig config(View view)
-    {
-        if (view == null)
-        {
-            return null;
-        }
-        SDSelectViewConfig config = sMapViewConfig.get(view);
-        if (config == null)
-        {
-            config = new SDSelectViewConfig(view);
-            sMapViewConfig.put(view, config);
-        }
-        return config;
     }
 
     //----------update method start----------
