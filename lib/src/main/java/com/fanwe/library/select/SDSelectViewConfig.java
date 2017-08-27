@@ -403,15 +403,15 @@ public class SDSelectViewConfig implements Cloneable
         {
             return;
         }
+
         view.setSelected(selected);
-        updateViewState(selected);
+        updateViewState(view, selected);
     }
 
     //----------update method start----------
 
-    private void updateViewState(boolean selected)
+    private void updateViewState(View view, boolean selected)
     {
-        final View view = getView();
         if (view instanceof TextView)
         {
             TextView tv = (TextView) view;
