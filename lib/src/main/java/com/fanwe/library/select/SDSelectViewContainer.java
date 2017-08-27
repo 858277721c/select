@@ -9,16 +9,11 @@ import java.util.WeakHashMap;
 /**
  * Created by Administrator on 2017/8/26.
  */
-public class SDSelectViewContainer
+public class SDSelectViewContainer implements ISDSelectViewContainer
 {
     private WeakHashMap<View, SDSelectViewConfig> mMapViewConfig = new WeakHashMap<>();
 
-    /**
-     * 把View添加到容器中，并返回该View对应的Config
-     *
-     * @param view
-     * @return
-     */
+    @Override
     public SDSelectViewConfig config(View view)
     {
         if (view == null)
@@ -34,12 +29,8 @@ public class SDSelectViewContainer
         return config;
     }
 
-    /**
-     * 把View从容器中移除
-     *
-     * @param view
-     */
-    public void remove(View view)
+    @Override
+    public void removeConfig(View view)
     {
         if (view == null)
         {
@@ -53,11 +44,13 @@ public class SDSelectViewContainer
         mMapViewConfig.remove(view);
     }
 
-    /**
-     * 设置容器中的所有View是否选中
-     *
-     * @param selected
-     */
+    @Override
+    public void clearConfig()
+    {
+        mMapViewConfig.clear();
+    }
+
+    @Override
     public void setSelected(boolean selected)
     {
         if (mMapViewConfig.isEmpty())
@@ -75,13 +68,5 @@ public class SDSelectViewContainer
                 config.setSelected(selected);
             }
         }
-    }
-
-    /**
-     * 清空容器中的所有View
-     */
-    public void clear()
-    {
-        mMapViewConfig.clear();
     }
 }
