@@ -2,7 +2,7 @@
 可以动态指定View选中和非选中的时候展示状态
 
 ## Gradle
-`compile 'com.fanwe.android:select:1.0.1'`
+`compile 'com.fanwe.android:select:1.0.2'`
 
 ## 简单Demo
 ![](http://thumbsnap.com/i/Usz4FkxC.gif?0825)<br>
