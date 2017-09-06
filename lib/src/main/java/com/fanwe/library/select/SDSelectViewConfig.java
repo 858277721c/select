@@ -83,6 +83,58 @@ public class SDSelectViewConfig implements Cloneable
         setView(view);
     }
 
+    /**
+     * 重置所有已经设置的参数
+     *
+     * @return
+     */
+    public SDSelectViewConfig reset()
+    {
+        //----------textColor----------
+        textColorNormal = EMPTY_VALUE;
+        textColorSelected = EMPTY_VALUE;
+        textColorResIdNormal = 0;
+        textColorResIdSelected = 0;
+
+        //----------textSize----------
+        textSizeNormal = EMPTY_VALUE;
+        textSizeSelected = EMPTY_VALUE;
+
+        //----------image resId----------
+        imageResIdNormal = EMPTY_VALUE;
+        imageResIdSelected = EMPTY_VALUE;
+
+        //----------background----------
+        backgroundNormal = null;
+        backgroundSelected = null;
+
+        backgroundResIdNormal = 0;
+        backgroundResIdSelected = 0;
+
+        backgroundColorNormal = 0;
+        backgroundColorSelected = 0;
+        backgroundColorResIdNormal = 0;
+        backgroundColorResIdSelected = 0;
+
+        //----------alpha----------
+        alphaNormal = EMPTY_VALUE;
+        alphaSelected = EMPTY_VALUE;
+
+        //----------width----------
+        widthNormal = EMPTY_VALUE;
+        widthSelected = EMPTY_VALUE;
+
+        //----------height----------
+        heightNormal = EMPTY_VALUE;
+        heightSelected = EMPTY_VALUE;
+
+        //----------visibility----------
+        visibilityNormal = EMPTY_VALUE;
+        visibilitySelected = EMPTY_VALUE;
+
+        return this;
+    }
+
     // ----------------------setter getter
 
     public int getTextColorNormal()
