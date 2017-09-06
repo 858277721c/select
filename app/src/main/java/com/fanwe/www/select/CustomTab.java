@@ -44,8 +44,8 @@ public class CustomTab extends SDSelectView
                 .setSelected(false); //设置默认未选中
 
         config(this) // 获得对应的config
-                .setWidthNormal(150)
-                .setWidthSelected(300)
+                .setWidthNormal(150) //正常宽度
+                .setWidthSelected(300) //选中宽度
                 .setSelected(false); //设置默认未选中
     }
 }
