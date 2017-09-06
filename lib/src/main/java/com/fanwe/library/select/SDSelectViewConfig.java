@@ -379,6 +379,19 @@ public class SDSelectViewConfig implements Cloneable
     //==================== select logic start ====================
 
     private WeakReference<View> mView;
+    private boolean mInvokeViewSetSelected = true;
+
+    /**
+     * 设置调用setSelected的时候是否也触发View的setSelected方法，默认true
+     *
+     * @param invokeViewSetSelected
+     * @return
+     */
+    public SDSelectViewConfig setInvokeViewSetSelected(boolean invokeViewSetSelected)
+    {
+        mInvokeViewSetSelected = invokeViewSetSelected;
+        return this;
+    }
 
     private View getView()
     {
@@ -419,8 +432,12 @@ public class SDSelectViewConfig implements Cloneable
             return;
         }
 
-        view.setSelected(selected);
         updateViewState(view, selected);
+
+        if (mInvokeViewSetSelected)
+        {
+            view.setSelected(selected);
+        }
     }
 
     //----------update method start----------
