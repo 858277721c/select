@@ -77,7 +77,7 @@ public class SDSelectViewConfig implements Cloneable
     private int visibilityNormal = EMPTY_VALUE;
     private int visibilitySelected = EMPTY_VALUE;
 
-    SDSelectViewConfig(View view)
+    public SDSelectViewConfig(View view)
     {
         mContext = view.getContext().getApplicationContext();
         setView(view);
@@ -379,10 +379,10 @@ public class SDSelectViewConfig implements Cloneable
     //==================== select logic start ====================
 
     private WeakReference<View> mView;
-    private boolean mInvokeViewSelected = true;
+    private boolean mInvokeViewSelected;
 
     /**
-     * 调用setSelected的时候是否也触发View的setSelected方法，默认true
+     * 调用setSelected的时候是否也触发View的setSelected方法，默认false
      *
      * @param invokeViewSelected
      * @return
