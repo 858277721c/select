@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity
                 .setTextSizeSelected(60) // 选中字体大小
                 .setAlphaNormal(0.2f) // 正常透明度
                 .setAlphaSelected(1.0f) // 选中透明度
+                .setInvokeViewSelected(true) //设置选中状态变化的时候是否也触发View的setSelected方法，默认false
                 .setSelected(false); //设置默认未选中
 
         mSelectViewContainer.config(mViewUnderline) // 获得mViewUnderline对应的config
