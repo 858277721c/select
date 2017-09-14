@@ -79,7 +79,6 @@ public class SDSelectViewConfig implements Cloneable
 
     public SDSelectViewConfig(View view)
     {
-        mContext = view.getContext().getApplicationContext();
         setView(view);
     }
 
@@ -431,29 +430,6 @@ public class SDSelectViewConfig implements Cloneable
     //==================== select logic start ====================
 
     private WeakReference<View> mView;
-    private boolean mInvokeViewSelected;
-
-    /**
-     * 调用setSelected的时候是否也触发View的setSelected方法，默认false
-     *
-     * @param invokeViewSelected
-     * @return
-     */
-    public SDSelectViewConfig setInvokeViewSelected(boolean invokeViewSelected)
-    {
-        mInvokeViewSelected = invokeViewSelected;
-        return this;
-    }
-
-    /**
-     * 调用setSelected的时候是否也触发View的setSelected方法
-     *
-     * @return
-     */
-    public boolean isInvokeViewSelected()
-    {
-        return mInvokeViewSelected;
-    }
 
     private View getView()
     {
@@ -466,7 +442,7 @@ public class SDSelectViewConfig implements Cloneable
         }
     }
 
-    public void setView(View view)
+    public SDSelectViewConfig setView(View view)
     {
         final View oldView = getView();
         if (oldView != view)
@@ -474,11 +450,14 @@ public class SDSelectViewConfig implements Cloneable
             if (view != null)
             {
                 mView = new WeakReference<>(view);
+
+                mContext = view.getContext().getApplicationContext();
             } else
             {
                 mView = null;
             }
         }
+        return this;
     }
 
     /**
@@ -488,6 +467,17 @@ public class SDSelectViewConfig implements Cloneable
      */
     public void setSelected(boolean selected)
     {
+        setSelected(selected, true);
+    }
+
+    /**
+     * 设置View是否选中
+     *
+     * @param selected
+     * @param invokeViewSelected 是否触发View的setSelected方法
+     */
+    public void setSelected(boolean selected, boolean invokeViewSelected)
+    {
         final View view = getView();
         if (view == null)
         {
@@ -496,7 +486,7 @@ public class SDSelectViewConfig implements Cloneable
 
         updateViewState(view, selected);
 
-        if (mInvokeViewSelected)
+        if (invokeViewSelected)
         {
             view.setSelected(selected);
         }

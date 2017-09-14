@@ -75,6 +75,12 @@ public class SDSelectView extends FrameLayout implements ISDSelectViewContainer
     }
 
     @Override
+    public void setInvokeViewSelected(boolean invokeViewSelected)
+    {
+        mSelectViewContainer.setInvokeViewSelected(invokeViewSelected);
+    }
+
+    @Override
     public SDSelectViewConfig config(View view)
     {
         return mSelectViewContainer.config(view);

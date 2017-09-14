@@ -25,6 +25,14 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
 {
     private WeakHashMap<View, SDSelectViewConfig> mMapViewConfig = new WeakHashMap<>();
 
+    private boolean mInvokeViewSelected = false;
+
+    @Override
+    public void setInvokeViewSelected(boolean invokeViewSelected)
+    {
+        mInvokeViewSelected = invokeViewSelected;
+    }
+
     @Override
     public SDSelectViewConfig config(View view)
     {
@@ -47,11 +55,6 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
         if (view == null)
         {
             return;
-        }
-        SDSelectViewConfig config = mMapViewConfig.get(view);
-        if (config != null)
-        {
-            config.setView(null);
         }
         mMapViewConfig.remove(view);
     }
@@ -82,7 +85,7 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
                 it.remove();
             } else
             {
-                config.setSelected(selected);
+                config.setSelected(selected, mInvokeViewSelected);
             }
         }
     }

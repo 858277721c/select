@@ -21,6 +21,13 @@ import android.view.View;
 public interface ISDSelectViewContainer
 {
     /**
+     * 调用setSelected的时候是否也触发View的setSelected方法，默认false
+     *
+     * @param invokeViewSelected
+     */
+    void setInvokeViewSelected(boolean invokeViewSelected);
+
+    /**
      * 把View添加到容器中，并返回该View对应的Config
      *
      * @param view
