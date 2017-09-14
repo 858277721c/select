@@ -74,12 +74,15 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
         while (it.hasNext())
         {
             Map.Entry<View, SDSelectViewConfig> item = it.next();
-            if (item.getKey() == null)
+            View view = item.getKey();
+            SDSelectViewConfig config = item.getValue();
+
+            if (view == null)
             {
                 it.remove();
             } else
             {
-                item.getValue().setSelected(selected);
+                config.setSelected(selected);
             }
         }
     }

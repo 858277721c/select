@@ -445,6 +445,16 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
+    /**
+     * 调用setSelected的时候是否也触发View的setSelected方法
+     *
+     * @return
+     */
+    public boolean isInvokeViewSelected()
+    {
+        return mInvokeViewSelected;
+    }
+
     private View getView()
     {
         if (mView != null)
