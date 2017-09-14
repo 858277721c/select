@@ -29,7 +29,7 @@ import java.lang.ref.WeakReference;
 /**
  * SDSelectView的参数配置
  */
-public class SDSelectViewConfig implements Cloneable
+public class SDSelectViewConfig
 {
     public static final int EMPTY_VALUE = -Integer.MAX_VALUE;
 
@@ -38,6 +38,7 @@ public class SDSelectViewConfig implements Cloneable
     //----------textColor----------
     private int textColorNormal = EMPTY_VALUE;
     private int textColorSelected = EMPTY_VALUE;
+
     private int textColorResIdNormal;
     private int textColorResIdSelected;
 
@@ -58,6 +59,7 @@ public class SDSelectViewConfig implements Cloneable
 
     private int backgroundColorNormal;
     private int backgroundColorSelected;
+
     private int backgroundColorResIdNormal;
     private int backgroundColorResIdSelected;
 
@@ -89,49 +91,7 @@ public class SDSelectViewConfig implements Cloneable
      */
     public SDSelectViewConfig reset()
     {
-        //----------textColor----------
-        textColorNormal = EMPTY_VALUE;
-        textColorSelected = EMPTY_VALUE;
-        textColorResIdNormal = 0;
-        textColorResIdSelected = 0;
-
-        //----------textSize----------
-        textSizeNormal = EMPTY_VALUE;
-        textSizeSelected = EMPTY_VALUE;
-
-        //----------image resId----------
-        imageResIdNormal = EMPTY_VALUE;
-        imageResIdSelected = EMPTY_VALUE;
-
-        //----------background----------
-        backgroundNormal = null;
-        backgroundSelected = null;
-
-        backgroundResIdNormal = 0;
-        backgroundResIdSelected = 0;
-
-        backgroundColorNormal = 0;
-        backgroundColorSelected = 0;
-        backgroundColorResIdNormal = 0;
-        backgroundColorResIdSelected = 0;
-
-        //----------alpha----------
-        alphaNormal = EMPTY_VALUE;
-        alphaSelected = EMPTY_VALUE;
-
-        //----------width----------
-        widthNormal = EMPTY_VALUE;
-        widthSelected = EMPTY_VALUE;
-
-        //----------height----------
-        heightNormal = EMPTY_VALUE;
-        heightSelected = EMPTY_VALUE;
-
-        //----------visibility----------
-        visibilityNormal = EMPTY_VALUE;
-        visibilitySelected = EMPTY_VALUE;
-
-        return this;
+        return copy(new SDSelectViewConfig(null));
     }
 
     // ----------------------setter getter
@@ -415,16 +375,61 @@ public class SDSelectViewConfig implements Cloneable
         return this;
     }
 
-    @Override
-    public SDSelectViewConfig clone()
+    /**
+     * 把config的参数复制到当前对象
+     *
+     * @param config
+     * @return
+     */
+    public SDSelectViewConfig copy(SDSelectViewConfig config)
     {
-        try
+        if (this != config && config != null)
         {
-            return (SDSelectViewConfig) super.clone();
-        } catch (Exception e)
-        {
-            return null;
+            //----------textColor----------
+            textColorNormal = config.getTextColorNormal();
+            textColorSelected = config.getTextColorSelected();
+
+            textColorResIdNormal = config.getTextColorResIdNormal();
+            textColorResIdSelected = config.getTextColorResIdSelected();
+
+            //----------textSize----------
+            textSizeNormal = config.getTextSizeNormal();
+            textSizeSelected = config.getTextSizeSelected();
+
+            //----------image resId----------
+            imageResIdNormal = config.getImageResIdNormal();
+            imageResIdSelected = config.getImageResIdSelected();
+
+            //----------background----------
+            backgroundNormal = config.getBackgroundNormal();
+            backgroundSelected = config.getBackgroundSelected();
+
+            backgroundResIdNormal = config.getBackgroundResIdNormal();
+            backgroundResIdSelected = config.getBackgroundResIdSelected();
+
+            backgroundColorNormal = config.getBackgroundColorNormal();
+            backgroundColorSelected = config.getBackgroundColorSelected();
+
+            backgroundColorResIdNormal = config.getBackgroundColorResIdNormal();
+            backgroundColorResIdSelected = config.getBackgroundColorResIdSelected();
+
+            //----------alpha----------
+            alphaNormal = config.getAlphaNormal();
+            alphaSelected = config.getAlphaSelected();
+
+            //----------width----------
+            widthNormal = config.getWidthNormal();
+            widthSelected = config.getWidthSelected();
+
+            //----------height----------
+            heightNormal = config.getHeightNormal();
+            heightSelected = config.getHeightSelected();
+
+            //----------visibility----------
+            visibilityNormal = config.getVisibilityNormal();
+            visibilitySelected = config.getVisibilitySelected();
         }
+        return this;
     }
 
     //==================== select logic start ====================
@@ -442,7 +447,7 @@ public class SDSelectViewConfig implements Cloneable
         }
     }
 
-    public SDSelectViewConfig setView(View view)
+    private SDSelectViewConfig setView(View view)
     {
         final View oldView = getView();
         if (oldView != view)
