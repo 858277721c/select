@@ -17,7 +17,6 @@ package com.fanwe.library.select;
 
 import android.view.View;
 
-import java.util.Iterator;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -73,20 +72,9 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
             return;
         }
 
-        Iterator<Map.Entry<View, SDSelectViewConfig>> it = mMapViewConfig.entrySet().iterator();
-        while (it.hasNext())
+        for (Map.Entry<View, SDSelectViewConfig> item : mMapViewConfig.entrySet())
         {
-            Map.Entry<View, SDSelectViewConfig> item = it.next();
-            View view = item.getKey();
-            SDSelectViewConfig config = item.getValue();
-
-            if (view == null)
-            {
-                it.remove();
-            } else
-            {
-                config.setSelected(selected, mInvokeViewSelected);
-            }
+            item.getValue().setSelected(selected, mInvokeViewSelected);
         }
     }
 }
