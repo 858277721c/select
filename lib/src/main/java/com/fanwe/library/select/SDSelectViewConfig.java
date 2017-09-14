@@ -84,16 +84,6 @@ public class SDSelectViewConfig
         setView(view);
     }
 
-    /**
-     * 重置所有已经设置的参数
-     *
-     * @return
-     */
-    public SDSelectViewConfig reset()
-    {
-        return copy(new SDSelectViewConfig(null));
-    }
-
     // ----------------------setter getter
 
     public int getTextColorNormal()
