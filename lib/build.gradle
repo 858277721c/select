@@ -9,7 +9,7 @@ android {
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 20170915
-        versionName "1.1.0"
+        versionName "1.1.1"
     }
     buildTypes {
         release {
@@ -32,7 +32,7 @@ publish {
     userOrg = 'zj565061763'
     groupId = 'com.fanwe.android'
     artifactId = 'select'
-    publishVersion = '1.1.0'
+    publishVersion = '1.1.1'
     desc = 'fanwe android select library'
     website = 'https://github.com/zj565061763/select'
 }
