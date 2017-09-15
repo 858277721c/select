@@ -16,7 +16,6 @@
 package com.fanwe.library.select.config;
 
 import android.view.View;
-import android.view.ViewGroup;
 
 /**
  * Created by zhengjun on 2017/9/15.
@@ -36,11 +35,9 @@ class ViewVisibilityHandler extends ViewPropertyHandler<Integer>
             return;
         }
 
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params.height != value)
+        if (view.getVisibility() != value)
         {
-            params.height = value;
-            view.setLayoutParams(params);
+            view.setVisibility(value);
         }
     }
 }
