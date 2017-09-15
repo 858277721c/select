@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     }
 }
 ```
-## SDSelectViewConfig目前支持的配置
+## 目前支持的配置
 * textColor       
 TextView字体颜色
 
