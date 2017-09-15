@@ -7,6 +7,9 @@
 ## 简单Demo
 ![](http://thumbsnap.com/i/mYc3jx69.gif?0915)<br>
 
+如果对自定义View的父类无要求可以直接继承SDSelectView<br>
+如果自定义View已经继承了别的View，则可以通过SDSelectViewContainer来自己管理要处理选中状态的View，具体见SDSelectView内部实现<br>
+
 1. 自定义View
 ```java
 public class CustomTab extends SDSelectView
