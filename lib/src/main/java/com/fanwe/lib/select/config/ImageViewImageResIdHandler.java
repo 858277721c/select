@@ -13,19 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.config;
+package com.fanwe.lib.select.config;
 
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.ImageView;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewHeightHandler extends ViewPropertyHandler<Integer>
+class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewHeightHandler(View view)
+    public ImageViewImageResIdHandler(View view)
     {
         super(view);
+        if (!(view instanceof ImageView))
+        {
+            throw new IllegalArgumentException("view must be instance of ImageView");
+        }
     }
 
     @Override
@@ -35,12 +39,7 @@ class ViewHeightHandler extends ViewPropertyHandler<Integer>
         {
             return;
         }
-
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params != null && params.height != value)
-        {
-            params.height = value;
-            view.setLayoutParams(params);
-        }
+        ImageView imageView = (ImageView) view;
+        imageView.setImageResource(value);
     }
 }

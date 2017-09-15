@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.view;
+package com.fanwe.lib.select.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -24,11 +24,11 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fanwe.library.select.container.ISDSelectViewContainer;
-import com.fanwe.library.select.container.SDSelectViewContainer;
-import com.fanwe.library.select.config.SDSelectImageViewConfig;
-import com.fanwe.library.select.config.SDSelectTextViewConfig;
-import com.fanwe.library.select.config.SDSelectViewConfig;
+import com.fanwe.lib.select.config.SDSelectImageViewConfig;
+import com.fanwe.lib.select.config.SDSelectTextViewConfig;
+import com.fanwe.lib.select.config.SDSelectViewConfig;
+import com.fanwe.lib.select.container.ISDSelectViewContainer;
+import com.fanwe.lib.select.container.SDSelectViewContainer;
 
 public class SDSelectView extends FrameLayout implements ISDSelectViewContainer
 {

@@ -13,38 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.config;
+package com.fanwe.lib.select.config;
 
-import android.graphics.drawable.Drawable;
 import android.view.View;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewBackgroundHandler extends ViewPropertyHandler<Drawable>
+class ViewAlphaHandler extends ViewPropertyHandler<Float>
 {
-    public ViewBackgroundHandler(View view)
+    public ViewAlphaHandler(View view)
     {
         super(view);
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Drawable value, View view)
+    protected void onViewSelectedChanged(boolean selected, Float value, View view)
     {
-        setBackgroundDrawable(view, value);
-    }
-
-    public static void setBackgroundDrawable(View view, Drawable drawable)
-    {
-        if (view == null)
+        if (value == null)
         {
             return;
         }
-        int paddingLeft = view.getPaddingLeft();
-        int paddingTop = view.getPaddingTop();
-        int paddingRight = view.getPaddingRight();
-        int paddingBottom = view.getPaddingBottom();
-        view.setBackgroundDrawable(drawable);
-        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+
+        view.setAlpha(value);
     }
 }

@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.config;
+package com.fanwe.lib.select.config;
 
+import android.util.TypedValue;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewWidthHandler extends ViewPropertyHandler<Integer>
+class TextViewTextSizeHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewWidthHandler(View view)
+    public TextViewTextSizeHandler(View view)
     {
         super(view);
+        if (!(view instanceof TextView))
+        {
+            throw new IllegalArgumentException("view must be instance of TextView");
+        }
     }
 
     @Override
@@ -35,12 +40,7 @@ class ViewWidthHandler extends ViewPropertyHandler<Integer>
         {
             return;
         }
-
-        ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params != null && params.width != value)
-        {
-            params.width = value;
-            view.setLayoutParams(params);
-        }
+        TextView textView = (TextView) view;
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, value);
     }
 }

@@ -13,28 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.config;
+package com.fanwe.lib.select.config;
 
 import android.view.View;
+import android.view.ViewGroup;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewAlphaHandler extends ViewPropertyHandler<Float>
+class ViewWidthHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewAlphaHandler(View view)
+    public ViewWidthHandler(View view)
     {
         super(view);
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Float value, View view)
+    protected void onViewSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
         {
             return;
         }
 
-        view.setAlpha(value);
+        ViewGroup.LayoutParams params = view.getLayoutParams();
+        if (params != null && params.width != value)
+        {
+            params.width = value;
+            view.setLayoutParams(params);
+        }
     }
 }

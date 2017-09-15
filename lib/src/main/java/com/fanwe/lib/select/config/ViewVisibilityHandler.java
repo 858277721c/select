@@ -13,23 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.config;
+package com.fanwe.lib.select.config;
 
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
+class ViewVisibilityHandler extends ViewPropertyHandler<Integer>
 {
-    public TextViewTextColorHandler(View view)
+    public ViewVisibilityHandler(View view)
     {
         super(view);
-        if (!(view instanceof TextView))
-        {
-            throw new IllegalArgumentException("view must be instance of TextView");
-        }
     }
 
     @Override
@@ -39,7 +34,10 @@ class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
         {
             return;
         }
-        TextView textView = (TextView) view;
-        textView.setTextColor(value);
+
+        if (view.getVisibility() != value)
+        {
+            view.setVisibility(value);
+        }
     }
 }

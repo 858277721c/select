@@ -13,15 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select.container;
+package com.fanwe.lib.select.container;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fanwe.library.select.config.SDSelectImageViewConfig;
-import com.fanwe.library.select.config.SDSelectTextViewConfig;
-import com.fanwe.library.select.config.SDSelectViewConfig;
+import com.fanwe.lib.select.config.SDSelectImageViewConfig;
+import com.fanwe.lib.select.config.SDSelectTextViewConfig;
+import com.fanwe.lib.select.config.SDSelectViewConfig;
 
 import java.util.Map;
 import java.util.WeakHashMap;
