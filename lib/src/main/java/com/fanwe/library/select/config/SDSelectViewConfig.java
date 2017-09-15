@@ -248,15 +248,23 @@ public class SDSelectViewConfig
 
     protected final void addOrRemoveHandler(ViewPropertyHandler handler)
     {
-        if (mListHandler == null)
-        {
-            mListHandler = new ArrayList<>();
-        }
         if (handler.isEmpty())
         {
-            mListHandler.remove(handler);
+            if (mListHandler != null)
+            {
+                mListHandler.remove(handler);
+                if (mListHandler.isEmpty())
+                {
+                    mListHandler = null;
+                }
+            }
+            handler = null;
         } else
         {
+            if (mListHandler == null)
+            {
+                mListHandler = new ArrayList<>();
+            }
             if (!mListHandler.contains(handler))
             {
                 mListHandler.add(handler);
