@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import com.fanwe.library.select.view.SDSelectView;
+import com.fanwe.lib.select.view.SDSelectView;
 
 /**
  * Created by Administrator on 2017/9/6.
