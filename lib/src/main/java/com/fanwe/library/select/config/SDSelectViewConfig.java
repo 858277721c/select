@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * SDSelectView的参数配置
+ * View的参数配置
  */
 public class SDSelectViewConfig
 {
