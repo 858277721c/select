@@ -325,6 +325,30 @@ public class SDSelectViewConfig
 
     protected void onReleaseHandler(ViewPropertyHandler handler)
     {
-
+        if (handler == mAlphaHandler)
+        {
+            mAlphaHandler = null;
+            return;
+        }
+        if (handler == mBackgroundHandler)
+        {
+            mBackgroundHandler = null;
+            return;
+        }
+        if (handler == mWidthHandler)
+        {
+            mWidthHandler = null;
+            return;
+        }
+        if (handler == mHeightHandler)
+        {
+            mHeightHandler = null;
+            return;
+        }
+        if (handler == mVisibilityHandler)
+        {
+            mVisibilityHandler = null;
+            return;
+        }
     }
 }
