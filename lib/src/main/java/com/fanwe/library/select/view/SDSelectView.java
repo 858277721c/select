@@ -23,8 +23,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import com.fanwe.library.select.ISDSelectViewContainer;
-import com.fanwe.library.select.SDSelectViewConfig;
 import com.fanwe.library.select.SDSelectViewContainer;
+import com.fanwe.library.select.config.SDSelectViewConfig;
 
 public class SDSelectView extends FrameLayout implements ISDSelectViewContainer
 {

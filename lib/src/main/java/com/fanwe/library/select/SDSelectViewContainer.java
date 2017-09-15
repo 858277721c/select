@@ -17,6 +17,8 @@ package com.fanwe.library.select;
 
 import android.view.View;
 
+import com.fanwe.library.select.config.SDSelectViewConfig;
+
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -42,7 +44,7 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
         SDSelectViewConfig config = mMapViewConfig.get(view);
         if (config == null)
         {
-            config = new SDSelectViewConfig(view);
+            config = SDSelectViewConfig.config(view);
             mMapViewConfig.put(view, config);
         }
         return config;

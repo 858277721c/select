@@ -17,6 +17,8 @@ package com.fanwe.library.select;
 
 import android.view.View;
 
+import com.fanwe.library.select.config.SDSelectViewConfig;
+
 
 public interface ISDSelectViewContainer
 {
