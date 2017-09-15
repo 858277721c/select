@@ -32,10 +32,9 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
 
     //---------- properties start ----------
 
-    public SDSelectTextViewConfig setTextColor(Integer normal, Integer selected)
+    public SDSelectTextViewConfig setTextColorNormal(Integer value)
     {
-        getTextColorHandler().setValueNormal(normal);
-        getTextColorHandler().setValueSelected(selected);
+        getTextColorHandler().setValueNormal(value);
         if (!addOrRemoveHandler(getTextColorHandler()))
         {
             mTextColorHandler = null;
@@ -43,16 +42,39 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
         return this;
     }
 
-    public SDSelectTextViewConfig setTextColorResId(Integer normal, Integer selected)
+    public SDSelectTextViewConfig setTextColorSelected(Integer value)
     {
-        return setTextColor(normal == null ? null : getContext().getResources().getColor(normal),
-                selected == null ? null : getContext().getResources().getColor(selected));
+        getTextColorHandler().setValueSelected(value);
+        if (!addOrRemoveHandler(getTextColorHandler()))
+        {
+            mTextColorHandler = null;
+        }
+        return this;
     }
 
-    public SDSelectTextViewConfig setTextSize(Integer normal, Integer selected)
+    public SDSelectTextViewConfig setTextColorResIdNormal(Integer value)
     {
-        getTextSizeHandler().setValueNormal(normal);
-        getTextSizeHandler().setValueSelected(selected);
+        return setTextColorNormal(value == null ? null : getContext().getResources().getColor(value));
+    }
+
+    public SDSelectTextViewConfig setTextColorResIdSelected(Integer value)
+    {
+        return setTextColorSelected(value == null ? null : getContext().getResources().getColor(value));
+    }
+
+    public SDSelectTextViewConfig setTextSizeNormal(Integer value)
+    {
+        getTextSizeHandler().setValueNormal(value);
+        if (!addOrRemoveHandler(getTextSizeHandler()))
+        {
+            mTextSizeHandler = null;
+        }
+        return this;
+    }
+
+    public SDSelectTextViewConfig setTextSizeSelected(Integer value)
+    {
+        getTextSizeHandler().setValueSelected(value);
         if (!addOrRemoveHandler(getTextSizeHandler()))
         {
             mTextSizeHandler = null;

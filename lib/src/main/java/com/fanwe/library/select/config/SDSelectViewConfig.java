@@ -104,10 +104,9 @@ public class SDSelectViewConfig
 
     //---------- properties start ----------
 
-    public SDSelectViewConfig setBackground(Drawable normal, Drawable selected)
+    public SDSelectViewConfig setBackgroundNormal(Drawable value)
     {
-        getBackgroundHandler().setValueNormal(normal);
-        getBackgroundHandler().setValueSelected(selected);
+        getBackgroundHandler().setValueNormal(value);
         if (!addOrRemoveHandler(getBackgroundHandler()))
         {
             mBackgroundHandler = null;
@@ -115,31 +114,55 @@ public class SDSelectViewConfig
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundResId(Integer normal, Integer selected)
+    public SDSelectViewConfig setBackgroundSelected(Drawable value)
     {
-        setBackground(normal == null ? null : getContext().getResources().getDrawable(normal),
-                selected == null ? null : getContext().getResources().getDrawable(selected));
+        getBackgroundHandler().setValueSelected(value);
+        if (!addOrRemoveHandler(getBackgroundHandler()))
+        {
+            mBackgroundHandler = null;
+        }
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundColor(Integer normal, Integer selected)
+    public SDSelectViewConfig setBackgroundResIdNormal(Integer value)
     {
-        setBackground(normal == null ? null : new ColorDrawable(normal),
-                selected == null ? null : new ColorDrawable(selected));
+        setBackgroundNormal(value == null ? null : getContext().getResources().getDrawable(value));
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundColorResId(Integer normal, Integer selected)
+    public SDSelectViewConfig setBackgroundResIdSelected(Integer value)
     {
-        setBackground(normal == null ? null : new ColorDrawable(getContext().getResources().getColor(normal)),
-                selected == null ? null : new ColorDrawable(getContext().getResources().getColor(selected)));
+        setBackgroundSelected(value == null ? null : getContext().getResources().getDrawable(value));
         return this;
     }
 
-    public SDSelectViewConfig setAlpha(Float normal, Float selected)
+    public SDSelectViewConfig setBackgroundColorNormal(Integer value)
     {
-        getAlphaHandler().setValueNormal(normal);
-        getAlphaHandler().setValueSelected(selected);
+        setBackgroundNormal(value == null ? null : new ColorDrawable(value));
+        return this;
+    }
+
+    public SDSelectViewConfig setBackgroundColorSelected(Integer value)
+    {
+        setBackgroundSelected(value == null ? null : new ColorDrawable(value));
+        return this;
+    }
+
+    public SDSelectViewConfig setBackgroundColorResIdNormal(Integer value)
+    {
+        setBackgroundColorNormal(value == null ? null : getContext().getResources().getColor(value));
+        return this;
+    }
+
+    public SDSelectViewConfig setBackgroundColorResIdSelected(Integer value)
+    {
+        setBackgroundColorSelected(value == null ? null : getContext().getResources().getColor(value));
+        return this;
+    }
+
+    public SDSelectViewConfig setAlphaNormal(Float value)
+    {
+        getAlphaHandler().setValueNormal(value);
         if (!addOrRemoveHandler(getAlphaHandler()))
         {
             mAlphaHandler = null;
@@ -147,10 +170,19 @@ public class SDSelectViewConfig
         return this;
     }
 
-    public SDSelectViewConfig setWidth(Integer normal, Integer selected)
+    public SDSelectViewConfig setAlphaSelected(Float value)
     {
-        getWidthHandler().setValueNormal(normal);
-        getWidthHandler().setValueSelected(selected);
+        getAlphaHandler().setValueSelected(value);
+        if (!addOrRemoveHandler(getAlphaHandler()))
+        {
+            mAlphaHandler = null;
+        }
+        return this;
+    }
+
+    public SDSelectViewConfig setWidthNormal(Integer value)
+    {
+        getWidthHandler().setValueNormal(value);
         if (!addOrRemoveHandler(getWidthHandler()))
         {
             mWidthHandler = null;
@@ -158,10 +190,19 @@ public class SDSelectViewConfig
         return this;
     }
 
-    public SDSelectViewConfig setHeight(Integer normal, Integer selected)
+    public SDSelectViewConfig setWidthSelected(Integer value)
     {
-        getHeightHandler().setValueNormal(normal);
-        getHeightHandler().setValueSelected(selected);
+        getWidthHandler().setValueSelected(value);
+        if (!addOrRemoveHandler(getWidthHandler()))
+        {
+            mWidthHandler = null;
+        }
+        return this;
+    }
+
+    public SDSelectViewConfig setHeightNormal(Integer value)
+    {
+        getHeightHandler().setValueNormal(value);
         if (!addOrRemoveHandler(getHeightHandler()))
         {
             mHeightHandler = null;
@@ -169,11 +210,33 @@ public class SDSelectViewConfig
         return this;
     }
 
-    public SDSelectViewConfig setVisibility(Integer normal, Integer selected)
+    public SDSelectViewConfig setHeightSelected(Integer value)
     {
-        getVisibilityHandler().setValueNormal(normal);
-        getVisibilityHandler().setValueSelected(selected);
+        getHeightHandler().setValueSelected(value);
+        if (!addOrRemoveHandler(getHeightHandler()))
+        {
+            mHeightHandler = null;
+        }
+        return this;
+    }
 
+    public SDSelectViewConfig setVisibilityNormal(Integer value)
+    {
+        getVisibilityHandler().setValueNormal(value);
+        if (!addOrRemoveHandler(getVisibilityHandler()))
+        {
+            mVisibilityHandler = null;
+        }
+        return this;
+    }
+
+    public SDSelectViewConfig setVisibilitySelected(Integer value)
+    {
+        getVisibilityHandler().setValueSelected(value);
+        if (!addOrRemoveHandler(getVisibilityHandler()))
+        {
+            mVisibilityHandler = null;
+        }
         return this;
     }
 
