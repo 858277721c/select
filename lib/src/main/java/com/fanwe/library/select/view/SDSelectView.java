@@ -24,8 +24,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fanwe.library.select.ISDSelectViewContainer;
-import com.fanwe.library.select.SDSelectViewContainer;
+import com.fanwe.library.select.container.ISDSelectViewContainer;
+import com.fanwe.library.select.container.SDSelectViewContainer;
 import com.fanwe.library.select.config.SDSelectImageViewConfig;
 import com.fanwe.library.select.config.SDSelectTextViewConfig;
 import com.fanwe.library.select.config.SDSelectViewConfig;

@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.library.select;
+package com.fanwe.library.select.container;
 
 import android.view.View;
 import android.widget.ImageView;
