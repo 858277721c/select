@@ -108,7 +108,10 @@ public class SDSelectViewConfig
     {
         getBackgroundHandler().setValueNormal(normal);
         getBackgroundHandler().setValueSelected(selected);
-        addOrRemoveHandler(getBackgroundHandler());
+        if (!addOrRemoveHandler(getBackgroundHandler()))
+        {
+            mBackgroundHandler = null;
+        }
         return this;
     }
 
@@ -137,7 +140,10 @@ public class SDSelectViewConfig
     {
         getAlphaHandler().setValueNormal(normal);
         getAlphaHandler().setValueSelected(selected);
-        addOrRemoveHandler(getAlphaHandler());
+        if (!addOrRemoveHandler(getAlphaHandler()))
+        {
+            mAlphaHandler = null;
+        }
         return this;
     }
 
@@ -145,7 +151,10 @@ public class SDSelectViewConfig
     {
         getWidthHandler().setValueNormal(normal);
         getWidthHandler().setValueSelected(selected);
-        addOrRemoveHandler(getWidthHandler());
+        if (!addOrRemoveHandler(getWidthHandler()))
+        {
+            mWidthHandler = null;
+        }
         return this;
     }
 
@@ -153,7 +162,10 @@ public class SDSelectViewConfig
     {
         getHeightHandler().setValueNormal(normal);
         getHeightHandler().setValueSelected(selected);
-        addOrRemoveHandler(getHeightHandler());
+        if (!addOrRemoveHandler(getHeightHandler()))
+        {
+            mHeightHandler = null;
+        }
         return this;
     }
 
@@ -161,7 +173,7 @@ public class SDSelectViewConfig
     {
         getVisibilityHandler().setValueNormal(normal);
         getVisibilityHandler().setValueSelected(selected);
-        addOrRemoveHandler(getVisibilityHandler());
+
         return this;
     }
 

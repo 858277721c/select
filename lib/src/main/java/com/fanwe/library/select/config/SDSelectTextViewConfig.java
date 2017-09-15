@@ -36,7 +36,10 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
     {
         getTextColorHandler().setValueNormal(normal);
         getTextColorHandler().setValueSelected(selected);
-        addOrRemoveHandler(getTextColorHandler());
+        if (!addOrRemoveHandler(getTextColorHandler()))
+        {
+            mTextColorHandler = null;
+        }
         return this;
     }
 
@@ -50,7 +53,10 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
     {
         getTextSizeHandler().setValueNormal(normal);
         getTextSizeHandler().setValueSelected(selected);
-        addOrRemoveHandler(getTextSizeHandler());
+        if (!addOrRemoveHandler(getTextSizeHandler()))
+        {
+            mTextSizeHandler = null;
+        }
         return this;
     }
 

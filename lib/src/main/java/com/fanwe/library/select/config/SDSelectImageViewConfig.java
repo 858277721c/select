@@ -22,7 +22,7 @@ import android.view.View;
  */
 public class SDSelectImageViewConfig extends SDSelectViewConfig
 {
-    private ImageViewImageResIdHandler mImageViewImageResId;
+    private ImageViewImageResIdHandler mImageResIdHandler;
 
     SDSelectImageViewConfig(View view)
     {
@@ -33,20 +33,23 @@ public class SDSelectImageViewConfig extends SDSelectViewConfig
 
     public SDSelectImageViewConfig setImageResId(Integer normal, Integer selected)
     {
-        getImageViewImageResId().setValueNormal(normal);
-        getImageViewImageResId().setValueSelected(selected);
-        addOrRemoveHandler(getImageViewImageResId());
+        getImageResIdHandler().setValueNormal(normal);
+        getImageResIdHandler().setValueSelected(selected);
+        if (!addOrRemoveHandler(getImageResIdHandler()))
+        {
+            mImageResIdHandler = null;
+        }
         return this;
     }
 
     //---------- properties end ----------
 
-    private ImageViewImageResIdHandler getImageViewImageResId()
+    private ImageViewImageResIdHandler getImageResIdHandler()
     {
-        if (mImageViewImageResId == null)
+        if (mImageResIdHandler == null)
         {
-            mImageViewImageResId = new ImageViewImageResIdHandler(getView());
+            mImageResIdHandler = new ImageViewImageResIdHandler(getView());
         }
-        return mImageViewImageResId;
+        return mImageResIdHandler;
     }
 }

@@ -42,5 +42,10 @@ public class CustomTab extends SDSelectView
         config(this) // 获得对应的config，也可以在外部调用
                 .setWidth(150, 300)
                 .setSelected(false); //设置默认未选中
+
+        config(this).setHeight(100, 100)
+                .setHeight(null, null);
+
+        config(this).setAlpha(1f, 1f);
     }
 }
