@@ -16,7 +16,11 @@
 package com.fanwe.library.select;
 
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.fanwe.library.select.config.SDSelectImageViewConfig;
+import com.fanwe.library.select.config.SDSelectTextViewConfig;
 import com.fanwe.library.select.config.SDSelectViewConfig;
 
 
@@ -36,6 +40,22 @@ public interface ISDSelectViewContainer
      * @return
      */
     SDSelectViewConfig config(View view);
+
+    /**
+     * 把View添加到容器中，并返回该View对应的Config
+     *
+     * @param view
+     * @return
+     */
+    SDSelectImageViewConfig configImage(ImageView view);
+
+    /**
+     * 把View添加到容器中，并返回该View对应的Config
+     *
+     * @param view
+     * @return
+     */
+    SDSelectTextViewConfig configText(TextView view);
 
     /**
      * 把View和对应的Config移除

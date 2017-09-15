@@ -37,9 +37,9 @@ class ViewWidthHandler extends ViewPropertyHandler<Integer>
         }
 
         ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params.height != value)
+        if (params != null && params.width != value)
         {
-            params.height = value;
+            params.width = value;
             view.setLayoutParams(params);
         }
     }

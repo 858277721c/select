@@ -28,24 +28,19 @@ public class CustomTab extends SDSelectView
         tv_title = (TextView) findViewById(R.id.tv_title);
         view_underline = findViewById(R.id.view_underline);
 
-        config(tv_title) // 获得对应的config，也可以在外部调用
-                .setTextColorNormal(Color.parseColor("#616161")) // 正常字体颜色
-                .setTextColorSelected(Color.parseColor("#f57c00")) // 选中字体颜色
-                .setTextSizeNormal(40) // 正常字体大小
-                .setTextSizeSelected(60) // 选中字体大小
-                .setAlphaNormal(0.2f) // 正常透明度
-                .setAlphaSelected(1.0f) // 选中透明度
+        configText(tv_title) // 获得对应的config，也可以在外部调用
+                .setTextColor(Color.parseColor("#616161"), Color.parseColor("#f57c00"))
+                .setTextSize(40, 60)
+                .setAlpha(0.2f, 1.0f)
                 .setSelected(false); //设置默认未选中
 
         config(view_underline) // 获得对应的config，也可以在外部调用
-                .setBackgroundColorSelected(Color.parseColor("#f57c00")) // 选中背景颜色
-                .setVisibilityNormal(View.INVISIBLE) // 正常可见状态
-                .setVisibilitySelected(View.VISIBLE) // 选中可见状态
+                .setBackgroundColor(null, Color.parseColor("#f57c00"))
+                .setVisibility(View.INVISIBLE, View.VISIBLE)
                 .setSelected(false); //设置默认未选中
 
         config(this) // 获得对应的config，也可以在外部调用
-                .setWidthNormal(150) //正常宽度
-                .setWidthSelected(300) //选中宽度
+                .setWidth(150, 300)
                 .setSelected(false); //设置默认未选中
     }
 }

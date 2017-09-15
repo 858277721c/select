@@ -37,9 +37,9 @@ class ViewHeightHandler extends ViewPropertyHandler<Integer>
         }
 
         ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params.width != value)
+        if (params != null && params.height != value)
         {
-            params.width = value;
+            params.height = value;
             view.setLayoutParams(params);
         }
     }

@@ -16,7 +16,11 @@
 package com.fanwe.library.select;
 
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.fanwe.library.select.config.SDSelectImageViewConfig;
+import com.fanwe.library.select.config.SDSelectTextViewConfig;
 import com.fanwe.library.select.config.SDSelectViewConfig;
 
 import java.util.Map;
@@ -45,6 +49,38 @@ public class SDSelectViewContainer implements ISDSelectViewContainer
         if (config == null)
         {
             config = SDSelectViewConfig.config(view);
+            mMapViewConfig.put(view, config);
+        }
+        return config;
+    }
+
+    @Override
+    public SDSelectImageViewConfig configImage(ImageView view)
+    {
+        if (view == null)
+        {
+            return null;
+        }
+        SDSelectImageViewConfig config = (SDSelectImageViewConfig) mMapViewConfig.get(view);
+        if (config == null)
+        {
+            config = SDSelectViewConfig.configImage(view);
+            mMapViewConfig.put(view, config);
+        }
+        return config;
+    }
+
+    @Override
+    public SDSelectTextViewConfig configText(TextView view)
+    {
+        if (view == null)
+        {
+            return null;
+        }
+        SDSelectTextViewConfig config = (SDSelectTextViewConfig) mMapViewConfig.get(view);
+        if (config == null)
+        {
+            config = SDSelectViewConfig.configText(view);
             mMapViewConfig.put(view, config);
         }
         return config;

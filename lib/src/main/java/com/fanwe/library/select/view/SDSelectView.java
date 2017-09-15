@@ -21,9 +21,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.fanwe.library.select.ISDSelectViewContainer;
 import com.fanwe.library.select.SDSelectViewContainer;
+import com.fanwe.library.select.config.SDSelectImageViewConfig;
+import com.fanwe.library.select.config.SDSelectTextViewConfig;
 import com.fanwe.library.select.config.SDSelectViewConfig;
 
 public class SDSelectView extends FrameLayout implements ISDSelectViewContainer
@@ -84,6 +88,18 @@ public class SDSelectView extends FrameLayout implements ISDSelectViewContainer
     public SDSelectViewConfig config(View view)
     {
         return mSelectViewContainer.config(view);
+    }
+
+    @Override
+    public SDSelectImageViewConfig configImage(ImageView view)
+    {
+        return mSelectViewContainer.configImage(view);
+    }
+
+    @Override
+    public SDSelectTextViewConfig configText(TextView view)
+    {
+        return mSelectViewContainer.configText(view);
     }
 
     @Override
