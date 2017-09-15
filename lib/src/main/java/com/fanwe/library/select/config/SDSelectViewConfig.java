@@ -20,6 +20,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -54,6 +55,12 @@ public class SDSelectViewConfig
     public static SDSelectImageViewConfig configImage(ImageView view)
     {
         SDSelectImageViewConfig config = new SDSelectImageViewConfig(view);
+        return config;
+    }
+
+    public static SDSelectTextViewConfig configText(TextView view)
+    {
+        SDSelectTextViewConfig config = new SDSelectTextViewConfig(view);
         return config;
     }
 
