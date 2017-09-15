@@ -323,32 +323,29 @@ public class SDSelectViewConfig
         }
     }
 
-    protected void onReleaseHandler(ViewPropertyHandler handler)
+    protected boolean onReleaseHandler(ViewPropertyHandler handler)
     {
         if (handler == mAlphaHandler)
         {
             mAlphaHandler = null;
-            return;
-        }
-        if (handler == mBackgroundHandler)
+            return true;
+        } else if (handler == mBackgroundHandler)
         {
             mBackgroundHandler = null;
-            return;
-        }
-        if (handler == mWidthHandler)
+            return true;
+        } else if (handler == mWidthHandler)
         {
             mWidthHandler = null;
-            return;
-        }
-        if (handler == mHeightHandler)
+            return true;
+        } else if (handler == mHeightHandler)
         {
             mHeightHandler = null;
-            return;
-        }
-        if (handler == mVisibilityHandler)
+            return true;
+        } else if (handler == mVisibilityHandler)
         {
             mVisibilityHandler = null;
-            return;
+            return true;
         }
+        return false;
     }
 }

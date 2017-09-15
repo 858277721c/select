@@ -72,6 +72,28 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
 
     //---------- properties end ----------
 
+
+    @Override
+    protected boolean onReleaseHandler(ViewPropertyHandler handler)
+    {
+        if (super.onReleaseHandler(handler))
+        {
+            return true;
+        } else
+        {
+            if (handler == mTextColorHandler)
+            {
+                mTextColorHandler = null;
+                return true;
+            } else if (handler == mTextSizeHandler)
+            {
+                mTextSizeHandler = null;
+                return true;
+            }
+            return false;
+        }
+    }
+
     private TextViewTextColorHandler getTextColorHandler()
     {
         if (mTextColorHandler == null)
