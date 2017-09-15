@@ -246,7 +246,13 @@ public class SDSelectViewConfig
         return mVisibilityHandler;
     }
 
-    protected final void addOrRemoveHandler(ViewPropertyHandler handler)
+    /**
+     * 把handler添加到列表或者从列表移除
+     *
+     * @param handler
+     * @return true-添加,false-移除
+     */
+    protected final boolean addOrRemoveHandler(ViewPropertyHandler handler)
     {
         if (handler.isEmpty())
         {
@@ -258,7 +264,7 @@ public class SDSelectViewConfig
                     mListHandler = null;
                 }
             }
-            handler = null;
+            return false;
         } else
         {
             if (mListHandler == null)
@@ -269,6 +275,7 @@ public class SDSelectViewConfig
             {
                 mListHandler.add(handler);
             }
+            return true;
         }
     }
 }
