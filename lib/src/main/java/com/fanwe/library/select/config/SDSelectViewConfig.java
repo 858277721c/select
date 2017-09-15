@@ -107,20 +107,14 @@ public class SDSelectViewConfig
     public SDSelectViewConfig setBackgroundNormal(Drawable value)
     {
         getBackgroundHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getBackgroundHandler()))
-        {
-            mBackgroundHandler = null;
-        }
+        addOrRemoveHandler(getBackgroundHandler());
         return this;
     }
 
     public SDSelectViewConfig setBackgroundSelected(Drawable value)
     {
         getBackgroundHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getBackgroundHandler()))
-        {
-            mBackgroundHandler = null;
-        }
+        addOrRemoveHandler(getBackgroundHandler());
         return this;
     }
 
@@ -163,80 +157,56 @@ public class SDSelectViewConfig
     public SDSelectViewConfig setAlphaNormal(Float value)
     {
         getAlphaHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getAlphaHandler()))
-        {
-            mAlphaHandler = null;
-        }
+        addOrRemoveHandler(getAlphaHandler());
         return this;
     }
 
     public SDSelectViewConfig setAlphaSelected(Float value)
     {
         getAlphaHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getAlphaHandler()))
-        {
-            mAlphaHandler = null;
-        }
+        addOrRemoveHandler(getAlphaHandler());
         return this;
     }
 
     public SDSelectViewConfig setWidthNormal(Integer value)
     {
         getWidthHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getWidthHandler()))
-        {
-            mWidthHandler = null;
-        }
+        addOrRemoveHandler(getWidthHandler());
         return this;
     }
 
     public SDSelectViewConfig setWidthSelected(Integer value)
     {
         getWidthHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getWidthHandler()))
-        {
-            mWidthHandler = null;
-        }
+        addOrRemoveHandler(getWidthHandler());
         return this;
     }
 
     public SDSelectViewConfig setHeightNormal(Integer value)
     {
         getHeightHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getHeightHandler()))
-        {
-            mHeightHandler = null;
-        }
+        addOrRemoveHandler(getHeightHandler());
         return this;
     }
 
     public SDSelectViewConfig setHeightSelected(Integer value)
     {
         getHeightHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getHeightHandler()))
-        {
-            mHeightHandler = null;
-        }
+        addOrRemoveHandler(getHeightHandler());
         return this;
     }
 
     public SDSelectViewConfig setVisibilityNormal(Integer value)
     {
         getVisibilityHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getVisibilityHandler()))
-        {
-            mVisibilityHandler = null;
-        }
+        addOrRemoveHandler(getVisibilityHandler());
         return this;
     }
 
     public SDSelectViewConfig setVisibilitySelected(Integer value)
     {
         getVisibilityHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getVisibilityHandler()))
-        {
-            mVisibilityHandler = null;
-        }
+        addOrRemoveHandler(getVisibilityHandler());
         return this;
     }
 
@@ -327,7 +297,7 @@ public class SDSelectViewConfig
      * @param handler
      * @return true-添加,false-移除
      */
-    protected final boolean addOrRemoveHandler(ViewPropertyHandler handler)
+    protected final void addOrRemoveHandler(ViewPropertyHandler handler)
     {
         if (handler.isEmpty())
         {
@@ -339,7 +309,7 @@ public class SDSelectViewConfig
                     mListHandler = null;
                 }
             }
-            return false;
+            onReleaseHandler(handler);
         } else
         {
             if (mListHandler == null)
@@ -350,7 +320,11 @@ public class SDSelectViewConfig
             {
                 mListHandler.add(handler);
             }
-            return true;
         }
+    }
+
+    protected void onReleaseHandler(ViewPropertyHandler handler)
+    {
+
     }
 }

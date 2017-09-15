@@ -34,20 +34,14 @@ public class SDSelectImageViewConfig extends SDSelectViewConfig
     public SDSelectImageViewConfig setImageResIdNormal(Integer value)
     {
         getImageResIdHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getImageResIdHandler()))
-        {
-            mImageResIdHandler = null;
-        }
+        addOrRemoveHandler(getImageResIdHandler());
         return this;
     }
 
     public SDSelectImageViewConfig setImageResIdSelected(Integer value)
     {
         getImageResIdHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getImageResIdHandler()))
-        {
-            mImageResIdHandler = null;
-        }
+        addOrRemoveHandler(getImageResIdHandler());
         return this;
     }
 

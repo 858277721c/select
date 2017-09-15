@@ -35,20 +35,14 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
     public SDSelectTextViewConfig setTextColorNormal(Integer value)
     {
         getTextColorHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getTextColorHandler()))
-        {
-            mTextColorHandler = null;
-        }
+        addOrRemoveHandler(getTextColorHandler());
         return this;
     }
 
     public SDSelectTextViewConfig setTextColorSelected(Integer value)
     {
         getTextColorHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getTextColorHandler()))
-        {
-            mTextColorHandler = null;
-        }
+        addOrRemoveHandler(getTextColorHandler());
         return this;
     }
 
@@ -65,20 +59,14 @@ public class SDSelectTextViewConfig extends SDSelectViewConfig
     public SDSelectTextViewConfig setTextSizeNormal(Integer value)
     {
         getTextSizeHandler().setValueNormal(value);
-        if (!addOrRemoveHandler(getTextSizeHandler()))
-        {
-            mTextSizeHandler = null;
-        }
+        addOrRemoveHandler(getTextSizeHandler());
         return this;
     }
 
     public SDSelectTextViewConfig setTextSizeSelected(Integer value)
     {
         getTextSizeHandler().setValueSelected(value);
-        if (!addOrRemoveHandler(getTextSizeHandler()))
-        {
-            mTextSizeHandler = null;
-        }
+        addOrRemoveHandler(getTextSizeHandler());
         return this;
     }
 
