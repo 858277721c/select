@@ -2,7 +2,18 @@
 可以动态指定View选中和非选中的时候展示状态
 
 ## Gradle
-`compile 'com.fanwe.android:select:1.1.1'`
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+dependencies {
+        compile 'com.github.zj565061763:select:1.1.2'
+}
+
+```
 
 ## 简单Demo
 ![](http://thumbsnap.com/i/mYc3jx69.gif?0915)<br>
