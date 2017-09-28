@@ -11,7 +11,7 @@ allprojects {
 }
 
 dependencies {
-        compile 'com.github.zj565061763:select:1.1.2'
+        compile 'com.github.zj565061763:select:1.1.3'
 }
 
 ```
