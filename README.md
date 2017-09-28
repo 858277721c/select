@@ -2,6 +2,7 @@
 可以动态指定View选中和非选中的时候展示状态
 
 ## Gradle
+```
 allprojects {
     repositories {
         ...
@@ -10,7 +11,7 @@ allprojects {
 }
 
 dependencies {
-        compile 'com.github.zj565061763:select:1.1.2'
+        compile 'com.github.zj565061763:player:1.0.2'
 }
 
 ```
