@@ -48,19 +48,13 @@ public class SDSelectImageViewConfig extends SDSelectViewConfig
     //---------- properties end ----------
 
     @Override
-    protected boolean onReleaseHandler(ViewPropertyHandler handler)
+    protected void onReleaseHandler(ViewPropertyHandler handler)
     {
-        if (super.onReleaseHandler(handler))
+        super.onReleaseHandler(handler);
+
+        if (mImageResIdHandler == handler)
         {
-            return true;
-        } else
-        {
-            if (handler == mImageResIdHandler)
-            {
-                mImageResIdHandler = null;
-                return true;
-            }
-            return false;
+            mImageResIdHandler = null;
         }
     }
 
