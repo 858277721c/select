@@ -5,12 +5,12 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import com.fanwe.lib.select.view.SDSelectView;
+import com.fanwe.lib.select.view.FSelectView;
 
 /**
  * Created by Administrator on 2017/9/6.
  */
-public class CustomTab extends SDSelectView
+public class CustomTab extends FSelectView
 {
     public CustomTab(Context context, AttributeSet attrs)
     {

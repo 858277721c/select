@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * View的参数配置
  */
-public class SDSelectViewConfig
+public class FSelectViewConfig
 {
     private Context mContext;
     private WeakReference<View> mView;
@@ -41,26 +41,26 @@ public class SDSelectViewConfig
     private ViewHeightHandler mHeightHandler;
     private ViewVisibilityHandler mVisibilityHandler;
 
-    protected SDSelectViewConfig(View view)
+    protected FSelectViewConfig(View view)
     {
         setView(view);
     }
 
-    public static SDSelectViewConfig config(View view)
+    public static FSelectViewConfig config(View view)
     {
-        SDSelectViewConfig config = new SDSelectViewConfig(view);
+        FSelectViewConfig config = new FSelectViewConfig(view);
         return config;
     }
 
-    public static SDSelectImageViewConfig configImage(ImageView view)
+    public static FSelectImageViewConfig configImage(ImageView view)
     {
-        SDSelectImageViewConfig config = new SDSelectImageViewConfig(view);
+        FSelectImageViewConfig config = new FSelectImageViewConfig(view);
         return config;
     }
 
-    public static SDSelectTextViewConfig configText(TextView view)
+    public static FSelectTextViewConfig configText(TextView view)
     {
-        SDSelectTextViewConfig config = new SDSelectTextViewConfig(view);
+        FSelectTextViewConfig config = new FSelectTextViewConfig(view);
         return config;
     }
 
@@ -104,106 +104,106 @@ public class SDSelectViewConfig
 
     //---------- properties start ----------
 
-    public SDSelectViewConfig setBackgroundNormal(Drawable value)
+    public FSelectViewConfig setBackgroundNormal(Drawable value)
     {
         getBackgroundHandler().setValueNormal(value);
         addOrRemoveHandler(getBackgroundHandler());
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundSelected(Drawable value)
+    public FSelectViewConfig setBackgroundSelected(Drawable value)
     {
         getBackgroundHandler().setValueSelected(value);
         addOrRemoveHandler(getBackgroundHandler());
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundResIdNormal(Integer value)
+    public FSelectViewConfig setBackgroundResIdNormal(Integer value)
     {
         setBackgroundNormal(value == null ? null : getContext().getResources().getDrawable(value));
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundResIdSelected(Integer value)
+    public FSelectViewConfig setBackgroundResIdSelected(Integer value)
     {
         setBackgroundSelected(value == null ? null : getContext().getResources().getDrawable(value));
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundColorNormal(Integer value)
+    public FSelectViewConfig setBackgroundColorNormal(Integer value)
     {
         setBackgroundNormal(value == null ? null : new ColorDrawable(value));
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundColorSelected(Integer value)
+    public FSelectViewConfig setBackgroundColorSelected(Integer value)
     {
         setBackgroundSelected(value == null ? null : new ColorDrawable(value));
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundColorResIdNormal(Integer value)
+    public FSelectViewConfig setBackgroundColorResIdNormal(Integer value)
     {
         setBackgroundColorNormal(value == null ? null : getContext().getResources().getColor(value));
         return this;
     }
 
-    public SDSelectViewConfig setBackgroundColorResIdSelected(Integer value)
+    public FSelectViewConfig setBackgroundColorResIdSelected(Integer value)
     {
         setBackgroundColorSelected(value == null ? null : getContext().getResources().getColor(value));
         return this;
     }
 
-    public SDSelectViewConfig setAlphaNormal(Float value)
+    public FSelectViewConfig setAlphaNormal(Float value)
     {
         getAlphaHandler().setValueNormal(value);
         addOrRemoveHandler(getAlphaHandler());
         return this;
     }
 
-    public SDSelectViewConfig setAlphaSelected(Float value)
+    public FSelectViewConfig setAlphaSelected(Float value)
     {
         getAlphaHandler().setValueSelected(value);
         addOrRemoveHandler(getAlphaHandler());
         return this;
     }
 
-    public SDSelectViewConfig setWidthNormal(Integer value)
+    public FSelectViewConfig setWidthNormal(Integer value)
     {
         getWidthHandler().setValueNormal(value);
         addOrRemoveHandler(getWidthHandler());
         return this;
     }
 
-    public SDSelectViewConfig setWidthSelected(Integer value)
+    public FSelectViewConfig setWidthSelected(Integer value)
     {
         getWidthHandler().setValueSelected(value);
         addOrRemoveHandler(getWidthHandler());
         return this;
     }
 
-    public SDSelectViewConfig setHeightNormal(Integer value)
+    public FSelectViewConfig setHeightNormal(Integer value)
     {
         getHeightHandler().setValueNormal(value);
         addOrRemoveHandler(getHeightHandler());
         return this;
     }
 
-    public SDSelectViewConfig setHeightSelected(Integer value)
+    public FSelectViewConfig setHeightSelected(Integer value)
     {
         getHeightHandler().setValueSelected(value);
         addOrRemoveHandler(getHeightHandler());
         return this;
     }
 
-    public SDSelectViewConfig setVisibilityNormal(Integer value)
+    public FSelectViewConfig setVisibilityNormal(Integer value)
     {
         getVisibilityHandler().setValueNormal(value);
         addOrRemoveHandler(getVisibilityHandler());
         return this;
     }
 
-    public SDSelectViewConfig setVisibilitySelected(Integer value)
+    public FSelectViewConfig setVisibilitySelected(Integer value)
     {
         getVisibilityHandler().setValueSelected(value);
         addOrRemoveHandler(getVisibilityHandler());
@@ -228,7 +228,7 @@ public class SDSelectViewConfig
         }
     }
 
-    private SDSelectViewConfig setView(View view)
+    private FSelectViewConfig setView(View view)
     {
         final View oldView = getView();
         if (oldView != view)

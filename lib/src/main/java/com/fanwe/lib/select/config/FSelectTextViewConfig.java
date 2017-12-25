@@ -20,50 +20,50 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class SDSelectTextViewConfig extends SDSelectViewConfig
+public class FSelectTextViewConfig extends FSelectViewConfig
 {
     private TextViewTextColorHandler mTextColorHandler;
     private TextViewTextSizeHandler mTextSizeHandler;
 
-    SDSelectTextViewConfig(View view)
+    FSelectTextViewConfig(View view)
     {
         super(view);
     }
 
     //---------- properties start ----------
 
-    public SDSelectTextViewConfig setTextColorNormal(Integer value)
+    public FSelectTextViewConfig setTextColorNormal(Integer value)
     {
         getTextColorHandler().setValueNormal(value);
         addOrRemoveHandler(getTextColorHandler());
         return this;
     }
 
-    public SDSelectTextViewConfig setTextColorSelected(Integer value)
+    public FSelectTextViewConfig setTextColorSelected(Integer value)
     {
         getTextColorHandler().setValueSelected(value);
         addOrRemoveHandler(getTextColorHandler());
         return this;
     }
 
-    public SDSelectTextViewConfig setTextColorResIdNormal(Integer value)
+    public FSelectTextViewConfig setTextColorResIdNormal(Integer value)
     {
         return setTextColorNormal(value == null ? null : getContext().getResources().getColor(value));
     }
 
-    public SDSelectTextViewConfig setTextColorResIdSelected(Integer value)
+    public FSelectTextViewConfig setTextColorResIdSelected(Integer value)
     {
         return setTextColorSelected(value == null ? null : getContext().getResources().getColor(value));
     }
 
-    public SDSelectTextViewConfig setTextSizeNormal(Integer value)
+    public FSelectTextViewConfig setTextSizeNormal(Integer value)
     {
         getTextSizeHandler().setValueNormal(value);
         addOrRemoveHandler(getTextSizeHandler());
         return this;
     }
 
-    public SDSelectTextViewConfig setTextSizeSelected(Integer value)
+    public FSelectTextViewConfig setTextSizeSelected(Integer value)
     {
         getTextSizeHandler().setValueSelected(value);
         addOrRemoveHandler(getTextSizeHandler());
