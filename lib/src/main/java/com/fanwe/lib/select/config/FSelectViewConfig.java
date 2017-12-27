@@ -34,7 +34,8 @@ public class FSelectViewConfig
     private Context mContext;
     private WeakReference<View> mView;
 
-    private List<ViewPropertyHandler> mListHandler;
+    private List<ViewPropertyHandler> mListHandler = new ArrayList<>();
+
     private ViewBackgroundHandler mBackgroundHandler;
     private ViewAlphaHandler mAlphaHandler;
     private ViewWidthHandler mWidthHandler;
@@ -88,12 +89,9 @@ public class FSelectViewConfig
             return;
         }
 
-        if (mListHandler != null)
+        for (ViewPropertyHandler item : mListHandler)
         {
-            for (ViewPropertyHandler item : mListHandler)
-            {
-                item.setSelected(selected);
-            }
+            item.setSelected(selected);
         }
 
         if (invokeViewSelected)
@@ -301,21 +299,10 @@ public class FSelectViewConfig
     {
         if (handler.isEmpty())
         {
-            if (mListHandler != null)
-            {
-                mListHandler.remove(handler);
-                if (mListHandler.isEmpty())
-                {
-                    mListHandler = null;
-                }
-            }
+            mListHandler.remove(handler);
             onReleaseHandler(handler);
         } else
         {
-            if (mListHandler == null)
-            {
-                mListHandler = new ArrayList<>();
-            }
             if (!mListHandler.contains(handler))
             {
                 mListHandler.add(handler);
