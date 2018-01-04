@@ -29,9 +29,12 @@ abstract class ViewPropertyHandler<T>
     private T mValueNormal;
     private T mValueSelected;
 
-    public ViewPropertyHandler(View view)
+    private OnValueChangedCallback mOnValueChangedCallback;
+
+    public ViewPropertyHandler(View view, OnValueChangedCallback onValueChangedCallback)
     {
-        setView(view);
+        mView = new WeakReference<>(view);
+        mOnValueChangedCallback = onValueChangedCallback;
     }
 
     private View getView()
@@ -45,29 +48,22 @@ abstract class ViewPropertyHandler<T>
         }
     }
 
-    private void setView(View view)
-    {
-        final View oldView = getView();
-        if (oldView != view)
-        {
-            if (view != null)
-            {
-                mView = new WeakReference<>(view);
-            } else
-            {
-                mView = null;
-            }
-        }
-    }
-
     public final void setValueNormal(T valueNormal)
     {
         mValueNormal = valueNormal;
+        if (mOnValueChangedCallback != null)
+        {
+            mOnValueChangedCallback.onValueChanged(false, valueNormal, this);
+        }
     }
 
     public final void setValueSelected(T valueSelected)
     {
         mValueSelected = valueSelected;
+        if (mOnValueChangedCallback != null)
+        {
+            mOnValueChangedCallback.onValueChanged(true, valueSelected, this);
+        }
     }
 
     public final void setSelected(boolean selected)
@@ -85,5 +81,10 @@ abstract class ViewPropertyHandler<T>
     public final boolean isEmpty()
     {
         return mValueNormal == null && mValueSelected == null;
+    }
+
+    public interface OnValueChangedCallback<T>
+    {
+        void onValueChanged(boolean selectedValue, T value, ViewPropertyHandler<T> handler);
     }
 }

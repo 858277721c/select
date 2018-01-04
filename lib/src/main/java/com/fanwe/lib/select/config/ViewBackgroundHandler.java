@@ -23,28 +23,21 @@ import android.view.View;
  */
 class ViewBackgroundHandler extends ViewPropertyHandler<Drawable>
 {
-    public ViewBackgroundHandler(View view)
+    public ViewBackgroundHandler(View view, OnValueChangedCallback onValueChangedCallback)
     {
-        super(view);
+        super(view, onValueChangedCallback);
     }
 
     @Override
     protected void onViewSelectedChanged(boolean selected, Drawable value, View view)
     {
-        setBackgroundDrawable(view, value);
-    }
-
-    public static void setBackgroundDrawable(View view, Drawable drawable)
-    {
-        if (view == null)
-        {
-            return;
-        }
         int paddingLeft = view.getPaddingLeft();
         int paddingTop = view.getPaddingTop();
         int paddingRight = view.getPaddingRight();
         int paddingBottom = view.getPaddingBottom();
-        view.setBackgroundDrawable(drawable);
+
+        view.setBackgroundDrawable(value);
+
         view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
     }
 }

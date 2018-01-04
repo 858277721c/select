@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * View的参数配置
  */
-public class FSelectViewConfig
+public class FSelectViewConfig implements ViewPropertyHandler.OnValueChangedCallback
 {
     private Context mContext;
     private WeakReference<View> mView;
@@ -100,22 +100,6 @@ public class FSelectViewConfig
         }
     }
 
-    //---------- properties start ----------
-
-    public FSelectViewConfig setBackgroundNormal(Drawable value)
-    {
-        getBackgroundHandler().setValueNormal(value);
-        addOrRemoveHandler(getBackgroundHandler());
-        return this;
-    }
-
-    public FSelectViewConfig setBackgroundSelected(Drawable value)
-    {
-        getBackgroundHandler().setValueSelected(value);
-        addOrRemoveHandler(getBackgroundHandler());
-        return this;
-    }
-
     public FSelectViewConfig setBackgroundResIdNormal(Integer value)
     {
         setBackgroundNormal(value == null ? null : getContext().getResources().getDrawable(value));
@@ -152,59 +136,65 @@ public class FSelectViewConfig
         return this;
     }
 
+    //---------- property start ----------
+
+    public FSelectViewConfig setBackgroundNormal(Drawable value)
+    {
+        getBackgroundHandler().setValueNormal(value);
+        return this;
+    }
+
+    public FSelectViewConfig setBackgroundSelected(Drawable value)
+    {
+        getBackgroundHandler().setValueSelected(value);
+        return this;
+    }
+
     public FSelectViewConfig setAlphaNormal(Float value)
     {
         getAlphaHandler().setValueNormal(value);
-        addOrRemoveHandler(getAlphaHandler());
         return this;
     }
 
     public FSelectViewConfig setAlphaSelected(Float value)
     {
         getAlphaHandler().setValueSelected(value);
-        addOrRemoveHandler(getAlphaHandler());
         return this;
     }
 
     public FSelectViewConfig setWidthNormal(Integer value)
     {
         getWidthHandler().setValueNormal(value);
-        addOrRemoveHandler(getWidthHandler());
         return this;
     }
 
     public FSelectViewConfig setWidthSelected(Integer value)
     {
         getWidthHandler().setValueSelected(value);
-        addOrRemoveHandler(getWidthHandler());
         return this;
     }
 
     public FSelectViewConfig setHeightNormal(Integer value)
     {
         getHeightHandler().setValueNormal(value);
-        addOrRemoveHandler(getHeightHandler());
         return this;
     }
 
     public FSelectViewConfig setHeightSelected(Integer value)
     {
         getHeightHandler().setValueSelected(value);
-        addOrRemoveHandler(getHeightHandler());
         return this;
     }
 
     public FSelectViewConfig setVisibilityNormal(Integer value)
     {
         getVisibilityHandler().setValueNormal(value);
-        addOrRemoveHandler(getVisibilityHandler());
         return this;
     }
 
     public FSelectViewConfig setVisibilitySelected(Integer value)
     {
         getVisibilityHandler().setValueSelected(value);
-        addOrRemoveHandler(getVisibilityHandler());
         return this;
     }
 
@@ -234,7 +224,6 @@ public class FSelectViewConfig
             if (view != null)
             {
                 mView = new WeakReference<>(view);
-
                 mContext = view.getContext().getApplicationContext();
             } else
             {
@@ -248,7 +237,7 @@ public class FSelectViewConfig
     {
         if (mBackgroundHandler == null)
         {
-            mBackgroundHandler = new ViewBackgroundHandler(getView());
+            mBackgroundHandler = new ViewBackgroundHandler(getView(), this);
         }
         return mBackgroundHandler;
     }
@@ -257,7 +246,7 @@ public class FSelectViewConfig
     {
         if (mAlphaHandler == null)
         {
-            mAlphaHandler = new ViewAlphaHandler(getView());
+            mAlphaHandler = new ViewAlphaHandler(getView(), this);
         }
         return mAlphaHandler;
     }
@@ -266,7 +255,7 @@ public class FSelectViewConfig
     {
         if (mWidthHandler == null)
         {
-            mWidthHandler = new ViewWidthHandler(getView());
+            mWidthHandler = new ViewWidthHandler(getView(), this);
         }
         return mWidthHandler;
     }
@@ -275,7 +264,7 @@ public class FSelectViewConfig
     {
         if (mHeightHandler == null)
         {
-            mHeightHandler = new ViewHeightHandler(getView());
+            mHeightHandler = new ViewHeightHandler(getView(), this);
         }
         return mHeightHandler;
     }
@@ -284,18 +273,13 @@ public class FSelectViewConfig
     {
         if (mVisibilityHandler == null)
         {
-            mVisibilityHandler = new ViewVisibilityHandler(getView());
+            mVisibilityHandler = new ViewVisibilityHandler(getView(), this);
         }
         return mVisibilityHandler;
     }
 
-    /**
-     * 把handler添加到列表或者从列表移除
-     *
-     * @param handler
-     * @return true-添加,false-移除
-     */
-    protected final void addOrRemoveHandler(ViewPropertyHandler handler)
+    @Override
+    public final void onValueChanged(boolean selectedValue, Object value, ViewPropertyHandler handler)
     {
         if (handler.isEmpty())
         {

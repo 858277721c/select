@@ -22,9 +22,9 @@ import android.view.View;
  */
 class ViewVisibilityHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewVisibilityHandler(View view)
+    public ViewVisibilityHandler(View view, OnValueChangedCallback onValueChangedCallback)
     {
-        super(view);
+        super(view, onValueChangedCallback);
     }
 
     @Override

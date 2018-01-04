@@ -23,9 +23,9 @@ import android.widget.ImageView;
  */
 class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
 {
-    public ImageViewImageResIdHandler(View view)
+    public ImageViewImageResIdHandler(View view, OnValueChangedCallback onValueChangedCallback)
     {
-        super(view);
+        super(view, onValueChangedCallback);
         if (!(view instanceof ImageView))
         {
             throw new IllegalArgumentException("view must be instance of ImageView");

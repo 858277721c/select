@@ -22,9 +22,9 @@ import android.view.View;
  */
 class ViewAlphaHandler extends ViewPropertyHandler<Float>
 {
-    public ViewAlphaHandler(View view)
+    public ViewAlphaHandler(View view, OnValueChangedCallback onValueChangedCallback)
     {
-        super(view);
+        super(view, onValueChangedCallback);
     }
 
     @Override

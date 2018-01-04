@@ -30,22 +30,6 @@ public class FSelectTextViewConfig extends FSelectViewConfig
         super(view);
     }
 
-    //---------- properties start ----------
-
-    public FSelectTextViewConfig setTextColorNormal(Integer value)
-    {
-        getTextColorHandler().setValueNormal(value);
-        addOrRemoveHandler(getTextColorHandler());
-        return this;
-    }
-
-    public FSelectTextViewConfig setTextColorSelected(Integer value)
-    {
-        getTextColorHandler().setValueSelected(value);
-        addOrRemoveHandler(getTextColorHandler());
-        return this;
-    }
-
     public FSelectTextViewConfig setTextColorResIdNormal(Integer value)
     {
         return setTextColorNormal(value == null ? null : getContext().getResources().getColor(value));
@@ -56,17 +40,29 @@ public class FSelectTextViewConfig extends FSelectViewConfig
         return setTextColorSelected(value == null ? null : getContext().getResources().getColor(value));
     }
 
+    //---------- properties start ----------
+
+    public FSelectTextViewConfig setTextColorNormal(Integer value)
+    {
+        getTextColorHandler().setValueNormal(value);
+        return this;
+    }
+
+    public FSelectTextViewConfig setTextColorSelected(Integer value)
+    {
+        getTextColorHandler().setValueSelected(value);
+        return this;
+    }
+
     public FSelectTextViewConfig setTextSizeNormal(Integer value)
     {
         getTextSizeHandler().setValueNormal(value);
-        addOrRemoveHandler(getTextSizeHandler());
         return this;
     }
 
     public FSelectTextViewConfig setTextSizeSelected(Integer value)
     {
         getTextSizeHandler().setValueSelected(value);
-        addOrRemoveHandler(getTextSizeHandler());
         return this;
     }
 
@@ -76,7 +72,6 @@ public class FSelectTextViewConfig extends FSelectViewConfig
     protected void onReleaseHandler(ViewPropertyHandler handler)
     {
         super.onReleaseHandler(handler);
-
         if (mTextColorHandler == handler)
         {
             mTextColorHandler = null;
@@ -90,7 +85,7 @@ public class FSelectTextViewConfig extends FSelectViewConfig
     {
         if (mTextColorHandler == null)
         {
-            mTextColorHandler = new TextViewTextColorHandler(getView());
+            mTextColorHandler = new TextViewTextColorHandler(getView(), this);
         }
         return mTextColorHandler;
     }
@@ -99,7 +94,7 @@ public class FSelectTextViewConfig extends FSelectViewConfig
     {
         if (mTextSizeHandler == null)
         {
-            mTextSizeHandler = new TextViewTextSizeHandler(getView());
+            mTextSizeHandler = new TextViewTextSizeHandler(getView(), this);
         }
         return mTextSizeHandler;
     }

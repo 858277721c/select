@@ -34,14 +34,12 @@ public class FSelectImageViewConfig extends FSelectViewConfig
     public FSelectImageViewConfig setImageResIdNormal(Integer value)
     {
         getImageResIdHandler().setValueNormal(value);
-        addOrRemoveHandler(getImageResIdHandler());
         return this;
     }
 
     public FSelectImageViewConfig setImageResIdSelected(Integer value)
     {
         getImageResIdHandler().setValueSelected(value);
-        addOrRemoveHandler(getImageResIdHandler());
         return this;
     }
 
@@ -51,7 +49,6 @@ public class FSelectImageViewConfig extends FSelectViewConfig
     protected void onReleaseHandler(ViewPropertyHandler handler)
     {
         super.onReleaseHandler(handler);
-
         if (mImageResIdHandler == handler)
         {
             mImageResIdHandler = null;
@@ -62,7 +59,7 @@ public class FSelectImageViewConfig extends FSelectViewConfig
     {
         if (mImageResIdHandler == null)
         {
-            mImageResIdHandler = new ImageViewImageResIdHandler(getView());
+            mImageResIdHandler = new ImageViewImageResIdHandler(getView(), this);
         }
         return mImageResIdHandler;
     }
