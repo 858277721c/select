@@ -60,17 +60,17 @@ abstract class ViewPropertyHandler<T>
         }
     }
 
-    public void setValueNormal(T valueNormal)
+    public final void setValueNormal(T valueNormal)
     {
-        this.mValueNormal = valueNormal;
+        mValueNormal = valueNormal;
     }
 
-    public void setValueSelected(T valueSelected)
+    public final void setValueSelected(T valueSelected)
     {
-        this.mValueSelected = valueSelected;
+        mValueSelected = valueSelected;
     }
 
-    public void setSelected(boolean selected)
+    public final void setSelected(boolean selected)
     {
         final View view = getView();
         if (view != null)
@@ -82,7 +82,7 @@ abstract class ViewPropertyHandler<T>
 
     protected abstract void onViewSelectedChanged(boolean selected, T value, View view);
 
-    public boolean isEmpty()
+    public final boolean isEmpty()
     {
         return mValueNormal == null && mValueSelected == null;
     }

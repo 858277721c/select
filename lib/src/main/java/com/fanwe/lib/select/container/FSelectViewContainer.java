@@ -89,10 +89,6 @@ public class FSelectViewContainer implements FISelectViewContainer
     @Override
     public void removeConfig(View view)
     {
-        if (view == null)
-        {
-            return;
-        }
         mMapViewConfig.remove(view);
     }
 
@@ -109,7 +105,6 @@ public class FSelectViewContainer implements FISelectViewContainer
         {
             return;
         }
-
         for (Map.Entry<View, FSelectViewConfig> item : mMapViewConfig.entrySet())
         {
             item.getValue().setSelected(selected, mInvokeViewSelected);
