@@ -20,24 +20,24 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class FSelectImageViewConfig extends FSelectViewConfig
+public class FImageViewSelectConfig extends FViewSelectConfig
 {
     private ImageViewImageResIdHandler mImageResIdHandler;
 
-    FSelectImageViewConfig(View view)
+    FImageViewSelectConfig(View view)
     {
         super(view);
     }
 
     //---------- properties start ----------
 
-    public FSelectImageViewConfig setImageResIdNormal(Integer value)
+    public FImageViewSelectConfig setImageResIdNormal(Integer value)
     {
         getImageResIdHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectImageViewConfig setImageResIdSelected(Integer value)
+    public FImageViewSelectConfig setImageResIdSelected(Integer value)
     {
         getImageResIdHandler().setValueSelected(value);
         return this;

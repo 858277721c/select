@@ -20,47 +20,47 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class FSelectTextViewConfig extends FSelectViewConfig
+public class FTextViewSelectConfig extends FViewSelectConfig
 {
     private TextViewTextColorHandler mTextColorHandler;
     private TextViewTextSizeHandler mTextSizeHandler;
 
-    FSelectTextViewConfig(View view)
+    FTextViewSelectConfig(View view)
     {
         super(view);
     }
 
-    public FSelectTextViewConfig setTextColorResIdNormal(Integer value)
+    public FTextViewSelectConfig setTextColorResIdNormal(Integer value)
     {
         return setTextColorNormal(value == null ? null : getContext().getResources().getColor(value));
     }
 
-    public FSelectTextViewConfig setTextColorResIdSelected(Integer value)
+    public FTextViewSelectConfig setTextColorResIdSelected(Integer value)
     {
         return setTextColorSelected(value == null ? null : getContext().getResources().getColor(value));
     }
 
     //---------- properties start ----------
 
-    public FSelectTextViewConfig setTextColorNormal(Integer value)
+    public FTextViewSelectConfig setTextColorNormal(Integer value)
     {
         getTextColorHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectTextViewConfig setTextColorSelected(Integer value)
+    public FTextViewSelectConfig setTextColorSelected(Integer value)
     {
         getTextColorHandler().setValueSelected(value);
         return this;
     }
 
-    public FSelectTextViewConfig setTextSizeNormal(Integer value)
+    public FTextViewSelectConfig setTextSizeNormal(Integer value)
     {
         getTextSizeHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectTextViewConfig setTextSizeSelected(Integer value)
+    public FTextViewSelectConfig setTextSizeSelected(Integer value)
     {
         getTextSizeHandler().setValueSelected(value);
         return this;

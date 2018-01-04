@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * View的参数配置
  */
-public class FSelectViewConfig implements ViewPropertyHandler.OnValueChangedCallback
+public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCallback
 {
     private Context mContext;
     private WeakReference<View> mView;
@@ -42,26 +42,26 @@ public class FSelectViewConfig implements ViewPropertyHandler.OnValueChangedCall
     private ViewHeightHandler mHeightHandler;
     private ViewVisibilityHandler mVisibilityHandler;
 
-    protected FSelectViewConfig(View view)
+    protected FViewSelectConfig(View view)
     {
         setView(view);
     }
 
-    public static FSelectViewConfig config(View view)
+    public static FViewSelectConfig config(View view)
     {
-        FSelectViewConfig config = new FSelectViewConfig(view);
+        FViewSelectConfig config = new FViewSelectConfig(view);
         return config;
     }
 
-    public static FSelectImageViewConfig configImage(ImageView view)
+    public static FImageViewSelectConfig configImage(ImageView view)
     {
-        FSelectImageViewConfig config = new FSelectImageViewConfig(view);
+        FImageViewSelectConfig config = new FImageViewSelectConfig(view);
         return config;
     }
 
-    public static FSelectTextViewConfig configText(TextView view)
+    public static FTextViewSelectConfig configText(TextView view)
     {
-        FSelectTextViewConfig config = new FSelectTextViewConfig(view);
+        FTextViewSelectConfig config = new FTextViewSelectConfig(view);
         return config;
     }
 
@@ -100,37 +100,37 @@ public class FSelectViewConfig implements ViewPropertyHandler.OnValueChangedCall
         }
     }
 
-    public FSelectViewConfig setBackgroundResIdNormal(Integer value)
+    public FViewSelectConfig setBackgroundResIdNormal(Integer value)
     {
         setBackgroundNormal(value == null ? null : getContext().getResources().getDrawable(value));
         return this;
     }
 
-    public FSelectViewConfig setBackgroundResIdSelected(Integer value)
+    public FViewSelectConfig setBackgroundResIdSelected(Integer value)
     {
         setBackgroundSelected(value == null ? null : getContext().getResources().getDrawable(value));
         return this;
     }
 
-    public FSelectViewConfig setBackgroundColorNormal(Integer value)
+    public FViewSelectConfig setBackgroundColorNormal(Integer value)
     {
         setBackgroundNormal(value == null ? null : new ColorDrawable(value));
         return this;
     }
 
-    public FSelectViewConfig setBackgroundColorSelected(Integer value)
+    public FViewSelectConfig setBackgroundColorSelected(Integer value)
     {
         setBackgroundSelected(value == null ? null : new ColorDrawable(value));
         return this;
     }
 
-    public FSelectViewConfig setBackgroundColorResIdNormal(Integer value)
+    public FViewSelectConfig setBackgroundColorResIdNormal(Integer value)
     {
         setBackgroundColorNormal(value == null ? null : getContext().getResources().getColor(value));
         return this;
     }
 
-    public FSelectViewConfig setBackgroundColorResIdSelected(Integer value)
+    public FViewSelectConfig setBackgroundColorResIdSelected(Integer value)
     {
         setBackgroundColorSelected(value == null ? null : getContext().getResources().getColor(value));
         return this;
@@ -138,61 +138,61 @@ public class FSelectViewConfig implements ViewPropertyHandler.OnValueChangedCall
 
     //---------- property start ----------
 
-    public FSelectViewConfig setBackgroundNormal(Drawable value)
+    public FViewSelectConfig setBackgroundNormal(Drawable value)
     {
         getBackgroundHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectViewConfig setBackgroundSelected(Drawable value)
+    public FViewSelectConfig setBackgroundSelected(Drawable value)
     {
         getBackgroundHandler().setValueSelected(value);
         return this;
     }
 
-    public FSelectViewConfig setAlphaNormal(Float value)
+    public FViewSelectConfig setAlphaNormal(Float value)
     {
         getAlphaHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectViewConfig setAlphaSelected(Float value)
+    public FViewSelectConfig setAlphaSelected(Float value)
     {
         getAlphaHandler().setValueSelected(value);
         return this;
     }
 
-    public FSelectViewConfig setWidthNormal(Integer value)
+    public FViewSelectConfig setWidthNormal(Integer value)
     {
         getWidthHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectViewConfig setWidthSelected(Integer value)
+    public FViewSelectConfig setWidthSelected(Integer value)
     {
         getWidthHandler().setValueSelected(value);
         return this;
     }
 
-    public FSelectViewConfig setHeightNormal(Integer value)
+    public FViewSelectConfig setHeightNormal(Integer value)
     {
         getHeightHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectViewConfig setHeightSelected(Integer value)
+    public FViewSelectConfig setHeightSelected(Integer value)
     {
         getHeightHandler().setValueSelected(value);
         return this;
     }
 
-    public FSelectViewConfig setVisibilityNormal(Integer value)
+    public FViewSelectConfig setVisibilityNormal(Integer value)
     {
         getVisibilityHandler().setValueNormal(value);
         return this;
     }
 
-    public FSelectViewConfig setVisibilitySelected(Integer value)
+    public FViewSelectConfig setVisibilitySelected(Integer value)
     {
         getVisibilityHandler().setValueSelected(value);
         return this;
@@ -216,7 +216,7 @@ public class FSelectViewConfig implements ViewPropertyHandler.OnValueChangedCall
         }
     }
 
-    private FSelectViewConfig setView(View view)
+    private FViewSelectConfig setView(View view)
     {
         final View oldView = getView();
         if (oldView != view)

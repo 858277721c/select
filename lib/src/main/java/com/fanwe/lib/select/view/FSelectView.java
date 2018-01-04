@@ -24,9 +24,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fanwe.lib.select.config.FSelectImageViewConfig;
-import com.fanwe.lib.select.config.FSelectTextViewConfig;
-import com.fanwe.lib.select.config.FSelectViewConfig;
+import com.fanwe.lib.select.config.FImageViewSelectConfig;
+import com.fanwe.lib.select.config.FTextViewSelectConfig;
+import com.fanwe.lib.select.config.FViewSelectConfig;
 import com.fanwe.lib.select.container.FISelectViewContainer;
 import com.fanwe.lib.select.container.FSelectViewContainer;
 
@@ -85,19 +85,19 @@ public class FSelectView extends FrameLayout implements FISelectViewContainer
     }
 
     @Override
-    public FSelectViewConfig config(View view)
+    public FViewSelectConfig config(View view)
     {
         return mSelectViewContainer.config(view);
     }
 
     @Override
-    public FSelectImageViewConfig configImage(ImageView view)
+    public FImageViewSelectConfig configImage(ImageView view)
     {
         return mSelectViewContainer.configImage(view);
     }
 
     @Override
-    public FSelectTextViewConfig configText(TextView view)
+    public FTextViewSelectConfig configText(TextView view)
     {
         return mSelectViewContainer.configText(view);
     }

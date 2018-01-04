@@ -19,9 +19,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.fanwe.lib.select.config.FSelectImageViewConfig;
-import com.fanwe.lib.select.config.FSelectTextViewConfig;
-import com.fanwe.lib.select.config.FSelectViewConfig;
+import com.fanwe.lib.select.config.FImageViewSelectConfig;
+import com.fanwe.lib.select.config.FTextViewSelectConfig;
+import com.fanwe.lib.select.config.FViewSelectConfig;
 
 
 public interface FISelectViewContainer
@@ -39,7 +39,7 @@ public interface FISelectViewContainer
      * @param view
      * @return
      */
-    FSelectViewConfig config(View view);
+    FViewSelectConfig config(View view);
 
     /**
      * 把View添加到容器中，并返回该View对应的Config
@@ -47,7 +47,7 @@ public interface FISelectViewContainer
      * @param view
      * @return
      */
-    FSelectImageViewConfig configImage(ImageView view);
+    FImageViewSelectConfig configImage(ImageView view);
 
     /**
      * 把View添加到容器中，并返回该View对应的Config
@@ -55,7 +55,7 @@ public interface FISelectViewContainer
      * @param view
      * @return
      */
-    FSelectTextViewConfig configText(TextView view);
+    FTextViewSelectConfig configText(TextView view);
 
     /**
      * 把View和对应的Config移除
