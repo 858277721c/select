@@ -4,6 +4,10 @@ import com.fanwe.lib.select.handler.BasePropertyHandler;
 
 class SimpleImageViewProperty<T> extends SimpleViewProperty<T> implements ImageViewProperty<T>
 {
+    public SimpleImageViewProperty()
+    {
+    }
+
     public SimpleImageViewProperty(BasePropertyHandler<T> handler, ViewProperties properties)
     {
         super(handler, properties);

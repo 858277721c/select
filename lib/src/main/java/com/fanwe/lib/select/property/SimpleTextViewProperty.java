@@ -4,6 +4,10 @@ import com.fanwe.lib.select.handler.BasePropertyHandler;
 
 class SimpleTextViewProperty<V> extends SimpleViewProperty<V> implements TextViewProperty<V>
 {
+    public SimpleTextViewProperty()
+    {
+    }
+
     public SimpleTextViewProperty(BasePropertyHandler<V> handler, ViewProperties properties)
     {
         super(handler, properties);
