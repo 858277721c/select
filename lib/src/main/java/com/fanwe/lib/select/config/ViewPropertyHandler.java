@@ -22,7 +22,7 @@ import java.lang.ref.WeakReference;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-abstract class ViewPropertyHandler<T>
+public abstract class ViewPropertyHandler<T>
 {
     private WeakReference<View> mView;
 
@@ -45,36 +45,56 @@ abstract class ViewPropertyHandler<T>
         return mView == null ? null : mView.get();
     }
 
-    public final void setValueNormal(T valueNormal)
+    /**
+     * 设置未选中状态的值
+     *
+     * @param value
+     */
+    public final void setValueNormal(T value)
     {
-        if (mValueNormal != valueNormal)
+        if (mValueNormal != value)
         {
-            mValueNormal = valueNormal;
-            mOnValueChangeCallback.onValueChanged(false, valueNormal, this);
+            mValueNormal = value;
+            mOnValueChangeCallback.onValueChanged(false, value, this);
         }
     }
 
-    public final void setValueSelected(T valueSelected)
+    /**
+     * 设置选中状态的值
+     *
+     * @param value
+     */
+    public final void setValueSelected(T value)
     {
-        if (mValueSelected != valueSelected)
+        if (mValueSelected != value)
         {
-            mValueSelected = valueSelected;
-            mOnValueChangeCallback.onValueChanged(true, valueSelected, this);
+            mValueSelected = value;
+            mOnValueChangeCallback.onValueChanged(true, value, this);
         }
     }
 
+    /**
+     * 设置是否选中
+     *
+     * @param selected
+     */
     public final void setSelected(boolean selected)
     {
         final View view = getView();
         if (view != null)
         {
-            T value = selected ? mValueSelected : mValueNormal;
+            final T value = selected ? mValueSelected : mValueNormal;
             onViewSelectedChanged(selected, value, view);
         }
     }
 
     protected abstract void onViewSelectedChanged(boolean selected, T value, View view);
 
+    /**
+     * 值是否为空
+     *
+     * @return
+     */
     public final boolean isEmpty()
     {
         return mValueNormal == null && mValueSelected == null;
@@ -82,6 +102,13 @@ abstract class ViewPropertyHandler<T>
 
     public interface OnValueChangeCallback<T>
     {
+        /**
+         * 值变化回调
+         *
+         * @param selectedValue true-选中状态的值，false-未选中状态的值
+         * @param value
+         * @param handler
+         */
         void onValueChanged(boolean selectedValue, T value, ViewPropertyHandler<T> handler);
     }
 }
