@@ -4,11 +4,11 @@ import android.view.View;
 
 public interface ViewPropertyHolder
 {
-    void put(SimpleViewPropertyHolder.Type type, ViewProperty property);
+    void put(Type type, ViewProperty property);
 
-    <T> ViewProperty<T> get(SimpleViewPropertyHolder.Type type);
+    <T> ViewProperty<T> get(Type type);
 
-    void remove(SimpleViewPropertyHolder.Type type);
+    void remove(Type type);
 
     /**
      * 设置View是否选中
