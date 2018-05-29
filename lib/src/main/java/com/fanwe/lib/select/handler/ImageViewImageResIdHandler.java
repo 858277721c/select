@@ -23,11 +23,9 @@ import android.widget.ImageView;
  */
 public class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
 {
-    public ImageViewImageResIdHandler(View view, OnValueChangeCallback callback)
+    public ImageViewImageResIdHandler(OnValueChangeCallback callback)
     {
-        super(view, callback);
-        if (!(view instanceof ImageView))
-            throw new IllegalArgumentException("view must be instance of ImageView");
+        super(callback);
     }
 
     @Override
@@ -35,6 +33,9 @@ public class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
     {
         if (value == null)
             return;
+
+        if (!(view instanceof ImageView))
+            throw new IllegalArgumentException("view must be instance of ImageView");
 
         final ImageView imageView = (ImageView) view;
         imageView.setImageResource(value);

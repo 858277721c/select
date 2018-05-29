@@ -23,9 +23,9 @@ import android.view.ViewGroup;
  */
 public class ViewWidthHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewWidthHandler(View view, OnValueChangeCallback onValueChangedCallback)
+    public ViewWidthHandler(OnValueChangeCallback onValueChangedCallback)
     {
-        super(view, onValueChangedCallback);
+        super(onValueChangedCallback);
     }
 
     @Override

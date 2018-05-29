@@ -23,9 +23,9 @@ import android.view.ViewGroup;
  */
 public class ViewHeightHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewHeightHandler(View view, OnValueChangeCallback callback)
+    public ViewHeightHandler(OnValueChangeCallback callback)
     {
-        super(view, callback);
+        super(callback);
     }
 
     @Override

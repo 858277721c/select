@@ -23,11 +23,9 @@ import android.widget.TextView;
  */
 public class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
 {
-    public TextViewTextColorHandler(View view, OnValueChangeCallback callback)
+    public TextViewTextColorHandler(OnValueChangeCallback callback)
     {
-        super(view, callback);
-        if (!(view instanceof TextView))
-            throw new IllegalArgumentException("view must be instance of TextView");
+        super(callback);
     }
 
     @Override
@@ -35,6 +33,8 @@ public class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
     {
         if (value == null)
             return;
+        if (!(view instanceof TextView))
+            throw new IllegalArgumentException("view must be instance of TextView");
 
         final TextView textView = (TextView) view;
         textView.setTextColor(value);

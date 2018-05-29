@@ -53,17 +53,13 @@ public class FImageViewSelectConfig extends FViewSelectConfig
     {
         super.onReleaseHandler(handler);
         if (mImageResIdHandler == handler)
-        {
             mImageResIdHandler = null;
-        }
     }
 
     private ImageViewImageResIdHandler getImageResIdHandler()
     {
         if (mImageResIdHandler == null)
-        {
-            mImageResIdHandler = new ImageViewImageResIdHandler(getView(), this);
-        }
+            mImageResIdHandler = new ImageViewImageResIdHandler(this);
         return mImageResIdHandler;
     }
 }

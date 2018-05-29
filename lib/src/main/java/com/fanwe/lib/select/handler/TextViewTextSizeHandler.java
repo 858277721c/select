@@ -24,11 +24,9 @@ import android.widget.TextView;
  */
 public class TextViewTextSizeHandler extends ViewPropertyHandler<Integer>
 {
-    public TextViewTextSizeHandler(View view, OnValueChangeCallback callback)
+    public TextViewTextSizeHandler(OnValueChangeCallback callback)
     {
-        super(view, callback);
-        if (!(view instanceof TextView))
-            throw new IllegalArgumentException("view must be instance of TextView");
+        super(callback);
     }
 
     @Override
@@ -36,6 +34,8 @@ public class TextViewTextSizeHandler extends ViewPropertyHandler<Integer>
     {
         if (value == null)
             return;
+        if (!(view instanceof TextView))
+            throw new IllegalArgumentException("view must be instance of TextView");
 
         final TextView textView = (TextView) view;
         textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, value);

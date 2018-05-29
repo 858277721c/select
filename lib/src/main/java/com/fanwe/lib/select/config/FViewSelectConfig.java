@@ -96,7 +96,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallb
 
         for (ViewPropertyHandler item : mListHandler)
         {
-            item.setSelected(selected);
+            item.setSelected(selected, view);
         }
 
         if (invokeViewSelected)
@@ -233,35 +233,35 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallb
     private ViewBackgroundHandler getBackgroundHandler()
     {
         if (mBackgroundHandler == null)
-            mBackgroundHandler = new ViewBackgroundHandler(getView(), this);
+            mBackgroundHandler = new ViewBackgroundHandler(this);
         return mBackgroundHandler;
     }
 
     private ViewAlphaHandler getAlphaHandler()
     {
         if (mAlphaHandler == null)
-            mAlphaHandler = new ViewAlphaHandler(getView(), this);
+            mAlphaHandler = new ViewAlphaHandler(this);
         return mAlphaHandler;
     }
 
     private ViewWidthHandler getWidthHandler()
     {
         if (mWidthHandler == null)
-            mWidthHandler = new ViewWidthHandler(getView(), this);
+            mWidthHandler = new ViewWidthHandler(this);
         return mWidthHandler;
     }
 
     private ViewHeightHandler getHeightHandler()
     {
         if (mHeightHandler == null)
-            mHeightHandler = new ViewHeightHandler(getView(), this);
+            mHeightHandler = new ViewHeightHandler(this);
         return mHeightHandler;
     }
 
     private ViewVisibilityHandler getVisibilityHandler()
     {
         if (mVisibilityHandler == null)
-            mVisibilityHandler = new ViewVisibilityHandler(getView(), this);
+            mVisibilityHandler = new ViewVisibilityHandler(this);
         return mVisibilityHandler;
     }
 

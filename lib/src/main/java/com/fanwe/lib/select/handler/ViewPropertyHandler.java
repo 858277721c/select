@@ -17,32 +17,22 @@ package com.fanwe.lib.select.handler;
 
 import android.view.View;
 
-import java.lang.ref.WeakReference;
-
 /**
  * Created by zhengjun on 2017/9/15.
  */
 public abstract class ViewPropertyHandler<T>
 {
-    private WeakReference<View> mView;
-
     private T mValueNormal;
     private T mValueSelected;
 
     private OnValueChangeCallback mOnValueChangeCallback;
 
-    public ViewPropertyHandler(View view, OnValueChangeCallback callback)
+    public ViewPropertyHandler(OnValueChangeCallback callback)
     {
         if (callback == null)
             throw new NullPointerException("callback is null");
 
-        mView = new WeakReference<>(view);
         mOnValueChangeCallback = callback;
-    }
-
-    private View getView()
-    {
-        return mView == null ? null : mView.get();
     }
 
     /**
@@ -78,9 +68,8 @@ public abstract class ViewPropertyHandler<T>
      *
      * @param selected
      */
-    public final void setSelected(boolean selected)
+    public final void setSelected(boolean selected, View view)
     {
-        final View view = getView();
         if (view != null)
         {
             final T value = selected ? mValueSelected : mValueNormal;

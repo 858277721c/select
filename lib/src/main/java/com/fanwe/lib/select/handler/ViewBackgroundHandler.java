@@ -23,9 +23,9 @@ import android.view.View;
  */
 public class ViewBackgroundHandler extends ViewPropertyHandler<Drawable>
 {
-    public ViewBackgroundHandler(View view, OnValueChangeCallback callback)
+    public ViewBackgroundHandler(OnValueChangeCallback callback)
     {
-        super(view, callback);
+        super(callback);
     }
 
     @Override
