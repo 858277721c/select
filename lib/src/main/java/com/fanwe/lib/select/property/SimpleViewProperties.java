@@ -10,12 +10,14 @@ class SimpleViewProperties implements ViewProperties
     private final Map<Type, ViewProperty> mMapProperty = new HashMap<>();
 
     @Override
-    public final void put(Type type, ViewProperty property)
+    public final void put(ViewProperty property)
     {
-        if (type == null)
-            throw new NullPointerException("type is null");
         if (property == null)
             throw new NullPointerException("property is null");
+
+        final Type type = property.getType();
+        if (type == null)
+            throw new NullPointerException("type is null");
 
         mMapProperty.put(type, property);
     }

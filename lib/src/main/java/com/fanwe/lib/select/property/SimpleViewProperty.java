@@ -51,6 +51,12 @@ class SimpleViewProperty<T> implements ViewProperty<T>
     }
 
     @Override
+    public ViewProperties.Type getType()
+    {
+        return mType;
+    }
+
+    @Override
     public final ViewProperty<Float> alpha()
     {
         return property(ViewProperties.Type.Alpha);
@@ -115,7 +121,7 @@ class SimpleViewProperty<T> implements ViewProperty<T>
             }
 
             property = new SimpleViewProperty<>(type, handler, properties);
-            properties.put(type, property);
+            properties.put(property);
         }
         return property;
     }

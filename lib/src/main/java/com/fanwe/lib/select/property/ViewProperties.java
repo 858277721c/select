@@ -4,7 +4,7 @@ import android.view.View;
 
 public interface ViewProperties
 {
-    void put(Type type, ViewProperty property);
+    void put(ViewProperty property);
 
     <T> ViewProperty<T> get(Type type);
 
