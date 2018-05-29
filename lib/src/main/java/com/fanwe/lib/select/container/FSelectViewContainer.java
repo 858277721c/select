@@ -26,10 +26,9 @@ import com.fanwe.lib.select.config.FViewSelectConfig;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-public class FSelectViewContainer implements FISelectViewContainer
+public class FSelectViewContainer implements SelectViewContainer
 {
-    private WeakHashMap<View, FViewSelectConfig> mMapViewConfig = new WeakHashMap<>();
-
+    private final Map<View, FViewSelectConfig> mMapViewConfig = new WeakHashMap<>();
     private boolean mInvokeViewSelected = false;
 
     @Override
@@ -42,9 +41,8 @@ public class FSelectViewContainer implements FISelectViewContainer
     public FViewSelectConfig config(View view)
     {
         if (view == null)
-        {
             return null;
-        }
+
         FViewSelectConfig config = mMapViewConfig.get(view);
         if (config == null)
         {
@@ -58,9 +56,8 @@ public class FSelectViewContainer implements FISelectViewContainer
     public FImageViewSelectConfig configImage(ImageView view)
     {
         if (view == null)
-        {
             return null;
-        }
+
         FImageViewSelectConfig config = (FImageViewSelectConfig) mMapViewConfig.get(view);
         if (config == null)
         {
@@ -74,9 +71,8 @@ public class FSelectViewContainer implements FISelectViewContainer
     public FTextViewSelectConfig configText(TextView view)
     {
         if (view == null)
-        {
             return null;
-        }
+
         FTextViewSelectConfig config = (FTextViewSelectConfig) mMapViewConfig.get(view);
         if (config == null)
         {
@@ -102,9 +98,8 @@ public class FSelectViewContainer implements FISelectViewContainer
     public void setSelected(boolean selected)
     {
         if (mMapViewConfig.isEmpty())
-        {
             return;
-        }
+        
         for (Map.Entry<View, FViewSelectConfig> item : mMapViewConfig.entrySet())
         {
             item.getValue().setSelected(selected, mInvokeViewSelected);

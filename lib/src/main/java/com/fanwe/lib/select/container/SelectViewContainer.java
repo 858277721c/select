@@ -24,7 +24,7 @@ import com.fanwe.lib.select.config.FTextViewSelectConfig;
 import com.fanwe.lib.select.config.FViewSelectConfig;
 
 
-public interface FISelectViewContainer
+public interface SelectViewContainer
 {
     /**
      * 调用setSelected的时候是否也触发View的setSelected方法，默认false

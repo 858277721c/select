@@ -27,10 +27,10 @@ import android.widget.TextView;
 import com.fanwe.lib.select.config.FImageViewSelectConfig;
 import com.fanwe.lib.select.config.FTextViewSelectConfig;
 import com.fanwe.lib.select.config.FViewSelectConfig;
-import com.fanwe.lib.select.container.FISelectViewContainer;
 import com.fanwe.lib.select.container.FSelectViewContainer;
+import com.fanwe.lib.select.container.SelectViewContainer;
 
-public class FSelectView extends FrameLayout implements FISelectViewContainer
+public class FSelectView extends FrameLayout implements SelectViewContainer
 {
     public FSelectView(Context context)
     {
@@ -50,7 +50,7 @@ public class FSelectView extends FrameLayout implements FISelectViewContainer
         init();
     }
 
-    private FSelectViewContainer mSelectViewContainer = new FSelectViewContainer();
+    private final SelectViewContainer mSelectViewContainer = new FSelectViewContainer();
 
     private void init()
     {
