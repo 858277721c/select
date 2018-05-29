@@ -22,7 +22,7 @@ import android.widget.TextView;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class TextViewTextSizeHandler extends ViewPropertyHandler<Integer>
+public class TextViewTextSizeHandler extends BasePropertyHandler<Integer>
 {
     public TextViewTextSizeHandler(OnValueChangeCallback callback)
     {

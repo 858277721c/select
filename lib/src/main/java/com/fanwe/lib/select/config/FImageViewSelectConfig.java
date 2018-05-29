@@ -17,8 +17,8 @@ package com.fanwe.lib.select.config;
 
 import android.view.View;
 
+import com.fanwe.lib.select.handler.BasePropertyHandler;
 import com.fanwe.lib.select.handler.ImageViewImageResIdHandler;
-import com.fanwe.lib.select.handler.ViewPropertyHandler;
 
 /**
  * Created by zhengjun on 2017/9/15.
@@ -49,7 +49,7 @@ public class FImageViewSelectConfig extends FViewSelectConfig
     //---------- properties end ----------
 
     @Override
-    protected void onReleaseHandler(ViewPropertyHandler handler)
+    protected void onReleaseHandler(BasePropertyHandler handler)
     {
         super.onReleaseHandler(handler);
         if (mImageResIdHandler == handler)

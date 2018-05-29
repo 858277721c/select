@@ -21,7 +21,7 @@ import android.widget.ImageView;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
+public class ImageViewImageResIdHandler extends BasePropertyHandler<Integer>
 {
     public ImageViewImageResIdHandler(OnValueChangeCallback callback)
     {

@@ -20,7 +20,7 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class ViewAlphaHandler extends ViewPropertyHandler<Float>
+public class ViewAlphaHandler extends BasePropertyHandler<Float>
 {
     public ViewAlphaHandler(OnValueChangeCallback callback)
     {

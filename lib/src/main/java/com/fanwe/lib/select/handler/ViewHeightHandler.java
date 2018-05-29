@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class ViewHeightHandler extends ViewPropertyHandler<Integer>
+public class ViewHeightHandler extends BasePropertyHandler<Integer>
 {
     public ViewHeightHandler(OnValueChangeCallback callback)
     {

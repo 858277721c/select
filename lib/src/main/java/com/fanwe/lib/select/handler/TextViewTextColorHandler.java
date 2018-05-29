@@ -21,7 +21,7 @@ import android.widget.TextView;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
+public class TextViewTextColorHandler extends BasePropertyHandler<Integer>
 {
     public TextViewTextColorHandler(OnValueChangeCallback callback)
     {

@@ -22,10 +22,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fanwe.lib.select.handler.BasePropertyHandler;
 import com.fanwe.lib.select.handler.ViewAlphaHandler;
 import com.fanwe.lib.select.handler.ViewBackgroundHandler;
 import com.fanwe.lib.select.handler.ViewHeightHandler;
-import com.fanwe.lib.select.handler.ViewPropertyHandler;
 import com.fanwe.lib.select.handler.ViewVisibilityHandler;
 import com.fanwe.lib.select.handler.ViewWidthHandler;
 
@@ -36,12 +36,12 @@ import java.util.List;
 /**
  * View的参数配置
  */
-public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallback
+public class FViewSelectConfig implements BasePropertyHandler.OnValueChangeCallback
 {
     private Context mContext;
     private WeakReference<View> mView;
 
-    private final List<ViewPropertyHandler> mListHandler = new ArrayList<>(1);
+    private final List<BasePropertyHandler> mListHandler = new ArrayList<>(1);
 
     private ViewBackgroundHandler mBackgroundHandler;
     private ViewAlphaHandler mAlphaHandler;
@@ -94,7 +94,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallb
         if (view == null)
             return;
 
-        for (ViewPropertyHandler item : mListHandler)
+        for (BasePropertyHandler item : mListHandler)
         {
             item.setSelected(selected, view);
         }
@@ -266,7 +266,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallb
     }
 
     @Override
-    public final void onValueChanged(boolean selectedValue, Object value, ViewPropertyHandler handler)
+    public final void onValueChanged(boolean selectedValue, Object value, BasePropertyHandler handler)
     {
         if (handler.isEmpty())
         {
@@ -279,7 +279,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallb
         }
     }
 
-    protected void onReleaseHandler(ViewPropertyHandler handler)
+    protected void onReleaseHandler(BasePropertyHandler handler)
     {
         if (mAlphaHandler == handler)
         {

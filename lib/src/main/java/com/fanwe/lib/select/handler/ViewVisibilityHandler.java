@@ -20,7 +20,7 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class ViewVisibilityHandler extends ViewPropertyHandler<Integer>
+public class ViewVisibilityHandler extends BasePropertyHandler<Integer>
 {
     public ViewVisibilityHandler(OnValueChangeCallback callback)
     {

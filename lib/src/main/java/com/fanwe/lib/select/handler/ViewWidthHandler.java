@@ -21,7 +21,7 @@ import android.view.ViewGroup;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class ViewWidthHandler extends ViewPropertyHandler<Integer>
+public class ViewWidthHandler extends BasePropertyHandler<Integer>
 {
     public ViewWidthHandler(OnValueChangeCallback onValueChangedCallback)
     {

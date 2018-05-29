@@ -20,14 +20,14 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public abstract class ViewPropertyHandler<T>
+public abstract class BasePropertyHandler<T>
 {
     private T mValueNormal;
     private T mValueSelected;
 
     private OnValueChangeCallback mOnValueChangeCallback;
 
-    public ViewPropertyHandler(OnValueChangeCallback callback)
+    public BasePropertyHandler(OnValueChangeCallback callback)
     {
         if (callback == null)
             throw new NullPointerException("callback is null");
@@ -98,6 +98,6 @@ public abstract class ViewPropertyHandler<T>
          * @param value
          * @param handler
          */
-        void onValueChanged(boolean selectedValue, T value, ViewPropertyHandler<T> handler);
+        void onValueChanged(boolean selectedValue, T value, BasePropertyHandler<T> handler);
     }
 }
