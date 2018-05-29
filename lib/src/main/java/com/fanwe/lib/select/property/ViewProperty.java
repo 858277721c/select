@@ -5,8 +5,6 @@ import android.view.View;
 
 public interface ViewProperty<V>
 {
-    ViewProperties.Type getType();
-
     ViewProperty<Float> alpha();
 
     ViewProperty<Drawable> backgroundDrawable();

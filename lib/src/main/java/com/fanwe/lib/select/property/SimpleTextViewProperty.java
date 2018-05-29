@@ -1,16 +1,37 @@
 package com.fanwe.lib.select.property;
 
-class SimpleTextViewProperty<T> extends SimpleViewProperty<T> implements TextViewProperty<T>
+import com.fanwe.lib.select.handler.BasePropertyHandler;
+
+class SimpleTextViewProperty<V> extends SimpleViewProperty<V> implements TextViewProperty<V>
 {
-    @Override
-    public final ViewProperty<Integer> textSize()
+    public SimpleTextViewProperty(BasePropertyHandler<V> handler, ViewProperties properties)
     {
-        return property(ViewProperties.Type.TextSize);
+        super(handler, properties);
     }
 
     @Override
-    public final ViewProperty<Integer> textColor()
+    public final TextViewProperty<Integer> textSize()
     {
-        return property(ViewProperties.Type.TextColor);
+        return (TextViewProperty<Integer>) properties().get(ViewProperties.Type.TextSize, Integer.class);
+    }
+
+    @Override
+    public final TextViewProperty<Integer> textColor()
+    {
+        return (TextViewProperty<Integer>) properties().get(ViewProperties.Type.TextColor, Integer.class);
+    }
+
+    @Override
+    public TextViewProperty<V> normal(V value)
+    {
+        super.normal(value);
+        return this;
+    }
+
+    @Override
+    public TextViewProperty<V> selected(V value)
+    {
+        super.selected(value);
+        return this;
     }
 }

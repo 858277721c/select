@@ -19,13 +19,6 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 
 import com.fanwe.lib.select.handler.BasePropertyHandler;
-import com.fanwe.lib.select.handler.ImageViewImageResIdHandler;
-import com.fanwe.lib.select.handler.TextViewTextColorHandler;
-import com.fanwe.lib.select.handler.TextViewTextSizeHandler;
-import com.fanwe.lib.select.handler.ViewAlphaHandler;
-import com.fanwe.lib.select.handler.ViewBackgroundHandler;
-import com.fanwe.lib.select.handler.ViewVisibilityHandler;
-import com.fanwe.lib.select.handler.ViewWidthHandler;
 
 /**
  * Created by zhengjun on 2017/9/15.
@@ -34,96 +27,48 @@ class SimpleViewProperty<T> implements ViewProperty<T>
 {
     private BasePropertyHandler<T> mPropertyHandler;
     private ViewProperties mProperties;
-    private ViewProperties.Type mType;
 
     public SimpleViewProperty()
     {
     }
 
-    private SimpleViewProperty(ViewProperties.Type type, BasePropertyHandler<T> handler, ViewProperties properties)
+    public SimpleViewProperty(BasePropertyHandler<T> handler, ViewProperties properties)
     {
-        if (type == null || handler == null || properties == null)
+        if (handler == null || properties == null)
             throw new NullPointerException("param must not be null");
 
-        mType = type;
         mPropertyHandler = handler;
         mProperties = properties;
     }
 
     @Override
-    public ViewProperties.Type getType()
-    {
-        return mType;
-    }
-
-    @Override
     public final ViewProperty<Float> alpha()
     {
-        return property(ViewProperties.Type.Alpha);
+        return properties().get(ViewProperties.Type.Alpha, Float.class);
     }
 
     @Override
     public final ViewProperty<Drawable> backgroundDrawable()
     {
-        return property(ViewProperties.Type.BackgroundDrawable);
+        return properties().get(ViewProperties.Type.BackgroundDrawable, Drawable.class);
     }
 
     @Override
     public final ViewProperty<Integer> visibility()
     {
-        return property(ViewProperties.Type.Visibility);
+        return properties().get(ViewProperties.Type.Visibility, Integer.class);
     }
 
     @Override
     public final ViewProperty<Integer> width()
     {
-        return property(ViewProperties.Type.Width);
+        return properties().get(ViewProperties.Type.Width, Integer.class);
     }
 
     @Override
     public final ViewProperty<Integer> height()
     {
-        return property(ViewProperties.Type.Height);
-    }
-
-    final <T> ViewProperty<T> property(ViewProperties.Type type)
-    {
-        final ViewProperties properties = properties();
-        ViewProperty<T> property = properties.get(type);
-        if (property == null)
-        {
-            BasePropertyHandler handler = null;
-            switch (type)
-            {
-                case Alpha:
-                    handler = new ViewAlphaHandler(mOnValueChangeCallback);
-                    break;
-                case BackgroundDrawable:
-                    handler = new ViewBackgroundHandler(mOnValueChangeCallback);
-                    break;
-                case Visibility:
-                    handler = new ViewVisibilityHandler(mOnValueChangeCallback);
-                    break;
-                case Width:
-                    handler = new ViewWidthHandler(mOnValueChangeCallback);
-                    break;
-                case TextColor:
-                    handler = new TextViewTextColorHandler(mOnValueChangeCallback);
-                    break;
-                case TextSize:
-                    handler = new TextViewTextSizeHandler(mOnValueChangeCallback);
-                    break;
-                case ImageResId:
-                    handler = new ImageViewImageResIdHandler(mOnValueChangeCallback);
-                    break;
-                default:
-                    break;
-            }
-
-            property = new SimpleViewProperty<>(type, handler, properties);
-            properties.put(property);
-        }
-        return property;
+        return properties().get(ViewProperties.Type.Height, Integer.class);
     }
 
     @Override
@@ -134,25 +79,15 @@ class SimpleViewProperty<T> implements ViewProperty<T>
         return mProperties;
     }
 
-    private final BasePropertyHandler.OnValueChangeCallback<T> mOnValueChangeCallback = new BasePropertyHandler.OnValueChangeCallback<T>()
-    {
-        @Override
-        public void onValueChanged(boolean selectedValue, T value, BasePropertyHandler<T> handler)
-        {
-            if (handler.isEmpty())
-                properties().remove(mType);
-        }
-    };
-
     @Override
-    public final ViewProperty<T> normal(T value)
+    public ViewProperty<T> normal(T value)
     {
         mPropertyHandler.setValueNormal(value);
         return this;
     }
 
     @Override
-    public final ViewProperty<T> selected(T value)
+    public ViewProperty<T> selected(T value)
     {
         mPropertyHandler.setValueSelected(value);
         return this;
