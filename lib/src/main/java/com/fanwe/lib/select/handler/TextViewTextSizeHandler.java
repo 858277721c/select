@@ -13,30 +13,31 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.config;
+package com.fanwe.lib.select.handler;
 
-import android.graphics.drawable.Drawable;
+import android.util.TypedValue;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewBackgroundHandler extends ViewPropertyHandler<Drawable>
+public class TextViewTextSizeHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewBackgroundHandler(View view, OnValueChangeCallback callback)
+    public TextViewTextSizeHandler(View view, OnValueChangeCallback callback)
     {
         super(view, callback);
+        if (!(view instanceof TextView))
+            throw new IllegalArgumentException("view must be instance of TextView");
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Drawable value, View view)
+    protected void onSelectedChanged(boolean selected, Integer value, View view)
     {
-        final int paddingLeft = view.getPaddingLeft();
-        final int paddingTop = view.getPaddingTop();
-        final int paddingRight = view.getPaddingRight();
-        final int paddingBottom = view.getPaddingBottom();
+        if (value == null)
+            return;
 
-        view.setBackgroundDrawable(value);
-        view.setPadding(paddingLeft, paddingTop, paddingRight, paddingBottom);
+        final TextView textView = (TextView) view;
+        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, value);
     }
 }

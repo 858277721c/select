@@ -17,6 +17,9 @@ package com.fanwe.lib.select.config;
 
 import android.view.View;
 
+import com.fanwe.lib.select.handler.ImageViewImageResIdHandler;
+import com.fanwe.lib.select.handler.ViewPropertyHandler;
+
 /**
  * Created by zhengjun on 2017/9/15.
  */

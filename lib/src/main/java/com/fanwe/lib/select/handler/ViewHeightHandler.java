@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.config;
+package com.fanwe.lib.select.handler;
 
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,23 +21,23 @@ import android.view.ViewGroup;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewWidthHandler extends ViewPropertyHandler<Integer>
+public class ViewHeightHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewWidthHandler(View view, OnValueChangeCallback onValueChangedCallback)
+    public ViewHeightHandler(View view, OnValueChangeCallback callback)
     {
-        super(view, onValueChangedCallback);
+        super(view, callback);
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Integer value, View view)
+    protected void onSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
             return;
 
         final ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params != null && params.width != value)
+        if (params != null && params.height != value)
         {
-            params.width = value;
+            params.height = value;
             view.setLayoutParams(params);
         }
     }

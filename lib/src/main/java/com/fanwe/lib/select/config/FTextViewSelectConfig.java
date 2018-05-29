@@ -17,6 +17,10 @@ package com.fanwe.lib.select.config;
 
 import android.view.View;
 
+import com.fanwe.lib.select.handler.TextViewTextColorHandler;
+import com.fanwe.lib.select.handler.TextViewTextSizeHandler;
+import com.fanwe.lib.select.handler.ViewPropertyHandler;
+
 /**
  * Created by zhengjun on 2017/9/15.
  */

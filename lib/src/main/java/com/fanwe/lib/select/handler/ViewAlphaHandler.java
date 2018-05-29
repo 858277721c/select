@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.config;
+package com.fanwe.lib.select.handler;
 
 import android.view.View;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewAlphaHandler extends ViewPropertyHandler<Float>
+public class ViewAlphaHandler extends ViewPropertyHandler<Float>
 {
     public ViewAlphaHandler(View view, OnValueChangeCallback callback)
     {
@@ -28,7 +28,7 @@ class ViewAlphaHandler extends ViewPropertyHandler<Float>
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Float value, View view)
+    protected void onSelectedChanged(boolean selected, Float value, View view)
     {
         if (value == null)
             return;

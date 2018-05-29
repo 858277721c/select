@@ -13,30 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.config;
+package com.fanwe.lib.select.handler;
 
 import android.view.View;
-import android.widget.ImageView;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
+public class ViewVisibilityHandler extends ViewPropertyHandler<Integer>
 {
-    public ImageViewImageResIdHandler(View view, OnValueChangeCallback callback)
+    public ViewVisibilityHandler(View view, OnValueChangeCallback callback)
     {
         super(view, callback);
-        if (!(view instanceof ImageView))
-            throw new IllegalArgumentException("view must be instance of ImageView");
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Integer value, View view)
+    protected void onSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
             return;
 
-        final ImageView imageView = (ImageView) view;
-        imageView.setImageResource(value);
+        view.setVisibility(value);
     }
 }

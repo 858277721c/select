@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.config;
+package com.fanwe.lib.select.handler;
 
 import android.view.View;
 
@@ -84,11 +84,11 @@ public abstract class ViewPropertyHandler<T>
         if (view != null)
         {
             final T value = selected ? mValueSelected : mValueNormal;
-            onViewSelectedChanged(selected, value, view);
+            onSelectedChanged(selected, value, view);
         }
     }
 
-    protected abstract void onViewSelectedChanged(boolean selected, T value, View view);
+    protected abstract void onSelectedChanged(boolean selected, T value, View view);
 
     /**
      * 值是否为空

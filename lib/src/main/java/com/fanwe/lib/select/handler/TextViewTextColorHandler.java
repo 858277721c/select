@@ -13,32 +13,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.config;
+package com.fanwe.lib.select.handler;
 
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.TextView;
 
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class ViewHeightHandler extends ViewPropertyHandler<Integer>
+public class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewHeightHandler(View view, OnValueChangeCallback callback)
+    public TextViewTextColorHandler(View view, OnValueChangeCallback callback)
     {
         super(view, callback);
+        if (!(view instanceof TextView))
+            throw new IllegalArgumentException("view must be instance of TextView");
     }
 
     @Override
-    protected void onViewSelectedChanged(boolean selected, Integer value, View view)
+    protected void onSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
             return;
 
-        final ViewGroup.LayoutParams params = view.getLayoutParams();
-        if (params != null && params.height != value)
-        {
-            params.height = value;
-            view.setLayoutParams(params);
-        }
+        final TextView textView = (TextView) view;
+        textView.setTextColor(value);
     }
 }

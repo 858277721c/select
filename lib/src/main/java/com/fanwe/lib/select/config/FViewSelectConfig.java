@@ -22,6 +22,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fanwe.lib.select.handler.ViewAlphaHandler;
+import com.fanwe.lib.select.handler.ViewBackgroundHandler;
+import com.fanwe.lib.select.handler.ViewHeightHandler;
+import com.fanwe.lib.select.handler.ViewPropertyHandler;
+import com.fanwe.lib.select.handler.ViewVisibilityHandler;
+import com.fanwe.lib.select.handler.ViewWidthHandler;
+
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
