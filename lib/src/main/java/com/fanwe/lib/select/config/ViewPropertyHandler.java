@@ -29,40 +29,37 @@ abstract class ViewPropertyHandler<T>
     private T mValueNormal;
     private T mValueSelected;
 
-    private OnValueChangedCallback mOnValueChangedCallback;
+    private OnValueChangeCallback mOnValueChangeCallback;
 
-    public ViewPropertyHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public ViewPropertyHandler(View view, OnValueChangeCallback callback)
     {
+        if (callback == null)
+            throw new NullPointerException("callback is null");
+
         mView = new WeakReference<>(view);
-        mOnValueChangedCallback = onValueChangedCallback;
+        mOnValueChangeCallback = callback;
     }
 
     private View getView()
     {
-        if (mView != null)
-        {
-            return mView.get();
-        } else
-        {
-            return null;
-        }
+        return mView == null ? null : mView.get();
     }
 
     public final void setValueNormal(T valueNormal)
     {
-        mValueNormal = valueNormal;
-        if (mOnValueChangedCallback != null)
+        if (mValueNormal != valueNormal)
         {
-            mOnValueChangedCallback.onValueChanged(false, valueNormal, this);
+            mValueNormal = valueNormal;
+            mOnValueChangeCallback.onValueChanged(false, valueNormal, this);
         }
     }
 
     public final void setValueSelected(T valueSelected)
     {
-        mValueSelected = valueSelected;
-        if (mOnValueChangedCallback != null)
+        if (mValueSelected != valueSelected)
         {
-            mOnValueChangedCallback.onValueChanged(true, valueSelected, this);
+            mValueSelected = valueSelected;
+            mOnValueChangeCallback.onValueChanged(true, valueSelected, this);
         }
     }
 
@@ -83,7 +80,7 @@ abstract class ViewPropertyHandler<T>
         return mValueNormal == null && mValueSelected == null;
     }
 
-    public interface OnValueChangedCallback<T>
+    public interface OnValueChangeCallback<T>
     {
         void onValueChanged(boolean selectedValue, T value, ViewPropertyHandler<T> handler);
     }

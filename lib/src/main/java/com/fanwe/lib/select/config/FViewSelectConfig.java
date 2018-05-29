@@ -29,12 +29,12 @@ import java.util.List;
 /**
  * View的参数配置
  */
-public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCallback
+public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangeCallback
 {
     private Context mContext;
     private WeakReference<View> mView;
 
-    private List<ViewPropertyHandler> mListHandler = new ArrayList<>();
+    private final List<ViewPropertyHandler> mListHandler = new ArrayList<>(1);
 
     private ViewBackgroundHandler mBackgroundHandler;
     private ViewAlphaHandler mAlphaHandler;
@@ -85,9 +85,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCall
     {
         final View view = getView();
         if (view == null)
-        {
             return;
-        }
 
         for (ViewPropertyHandler item : mListHandler)
         {
@@ -95,9 +93,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCall
         }
 
         if (invokeViewSelected)
-        {
             view.setSelected(selected);
-        }
     }
 
     public FViewSelectConfig setBackgroundResIdNormal(Integer value)
@@ -207,13 +203,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCall
 
     public final View getView()
     {
-        if (mView != null)
-        {
-            return mView.get();
-        } else
-        {
-            return null;
-        }
+        return mView == null ? null : mView.get();
     }
 
     private FViewSelectConfig setView(View view)
@@ -236,45 +226,35 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCall
     private ViewBackgroundHandler getBackgroundHandler()
     {
         if (mBackgroundHandler == null)
-        {
             mBackgroundHandler = new ViewBackgroundHandler(getView(), this);
-        }
         return mBackgroundHandler;
     }
 
     private ViewAlphaHandler getAlphaHandler()
     {
         if (mAlphaHandler == null)
-        {
             mAlphaHandler = new ViewAlphaHandler(getView(), this);
-        }
         return mAlphaHandler;
     }
 
     private ViewWidthHandler getWidthHandler()
     {
         if (mWidthHandler == null)
-        {
             mWidthHandler = new ViewWidthHandler(getView(), this);
-        }
         return mWidthHandler;
     }
 
     private ViewHeightHandler getHeightHandler()
     {
         if (mHeightHandler == null)
-        {
             mHeightHandler = new ViewHeightHandler(getView(), this);
-        }
         return mHeightHandler;
     }
 
     private ViewVisibilityHandler getVisibilityHandler()
     {
         if (mVisibilityHandler == null)
-        {
             mVisibilityHandler = new ViewVisibilityHandler(getView(), this);
-        }
         return mVisibilityHandler;
     }
 
@@ -288,9 +268,7 @@ public class FViewSelectConfig implements ViewPropertyHandler.OnValueChangedCall
         } else
         {
             if (!mListHandler.contains(handler))
-            {
                 mListHandler.add(handler);
-            }
         }
     }
 

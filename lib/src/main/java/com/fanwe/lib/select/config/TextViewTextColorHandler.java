@@ -23,23 +23,20 @@ import android.widget.TextView;
  */
 class TextViewTextColorHandler extends ViewPropertyHandler<Integer>
 {
-    public TextViewTextColorHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public TextViewTextColorHandler(View view, OnValueChangeCallback callback)
     {
-        super(view, onValueChangedCallback);
+        super(view, callback);
         if (!(view instanceof TextView))
-        {
             throw new IllegalArgumentException("view must be instance of TextView");
-        }
     }
 
     @Override
     protected void onViewSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
-        {
             return;
-        }
-        TextView textView = (TextView) view;
+
+        final TextView textView = (TextView) view;
         textView.setTextColor(value);
     }
 }

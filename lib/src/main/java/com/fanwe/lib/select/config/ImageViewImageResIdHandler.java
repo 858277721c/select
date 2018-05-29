@@ -23,23 +23,20 @@ import android.widget.ImageView;
  */
 class ImageViewImageResIdHandler extends ViewPropertyHandler<Integer>
 {
-    public ImageViewImageResIdHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public ImageViewImageResIdHandler(View view, OnValueChangeCallback callback)
     {
-        super(view, onValueChangedCallback);
+        super(view, callback);
         if (!(view instanceof ImageView))
-        {
             throw new IllegalArgumentException("view must be instance of ImageView");
-        }
     }
 
     @Override
     protected void onViewSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
-        {
             return;
-        }
-        ImageView imageView = (ImageView) view;
+
+        final ImageView imageView = (ImageView) view;
         imageView.setImageResource(value);
     }
 }

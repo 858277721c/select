@@ -23,7 +23,7 @@ import android.view.ViewGroup;
  */
 class ViewWidthHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewWidthHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public ViewWidthHandler(View view, OnValueChangeCallback onValueChangedCallback)
     {
         super(view, onValueChangedCallback);
     }
@@ -32,11 +32,9 @@ class ViewWidthHandler extends ViewPropertyHandler<Integer>
     protected void onViewSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
-        {
             return;
-        }
 
-        ViewGroup.LayoutParams params = view.getLayoutParams();
+        final ViewGroup.LayoutParams params = view.getLayoutParams();
         if (params != null && params.width != value)
         {
             params.width = value;

@@ -22,18 +22,16 @@ import android.view.View;
  */
 class ViewAlphaHandler extends ViewPropertyHandler<Float>
 {
-    public ViewAlphaHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public ViewAlphaHandler(View view, OnValueChangeCallback callback)
     {
-        super(view, onValueChangedCallback);
+        super(view, callback);
     }
 
     @Override
     protected void onViewSelectedChanged(boolean selected, Float value, View view)
     {
         if (value == null)
-        {
             return;
-        }
 
         view.setAlpha(value);
     }

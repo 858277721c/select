@@ -23,20 +23,18 @@ import android.view.ViewGroup;
  */
 class ViewHeightHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewHeightHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public ViewHeightHandler(View view, OnValueChangeCallback callback)
     {
-        super(view, onValueChangedCallback);
+        super(view, callback);
     }
 
     @Override
     protected void onViewSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
-        {
             return;
-        }
 
-        ViewGroup.LayoutParams params = view.getLayoutParams();
+        final ViewGroup.LayoutParams params = view.getLayoutParams();
         if (params != null && params.height != value)
         {
             params.height = value;

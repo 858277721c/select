@@ -22,22 +22,17 @@ import android.view.View;
  */
 class ViewVisibilityHandler extends ViewPropertyHandler<Integer>
 {
-    public ViewVisibilityHandler(View view, OnValueChangedCallback onValueChangedCallback)
+    public ViewVisibilityHandler(View view, OnValueChangeCallback callback)
     {
-        super(view, onValueChangedCallback);
+        super(view, callback);
     }
 
     @Override
     protected void onViewSelectedChanged(boolean selected, Integer value, View view)
     {
         if (value == null)
-        {
             return;
-        }
 
-        if (view.getVisibility() != value)
-        {
-            view.setVisibility(value);
-        }
+        view.setVisibility(value);
     }
 }
