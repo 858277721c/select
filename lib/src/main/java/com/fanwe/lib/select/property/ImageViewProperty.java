@@ -1,6 +1,6 @@
 package com.fanwe.lib.select.property;
 
-public interface ImageViewProperty<T> extends ViewProperty<T>
+public interface ImageViewProperty<V> extends ViewProperty<V>
 {
     ViewProperty<Integer> imageResId();
 }

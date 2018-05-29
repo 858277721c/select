@@ -3,7 +3,7 @@ package com.fanwe.lib.select.property;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-public interface ViewProperty<T>
+public interface ViewProperty<V>
 {
     ViewProperties.Type getType();
 
@@ -24,14 +24,14 @@ public interface ViewProperty<T>
      *
      * @param value
      */
-    ViewProperty<T> normal(T value);
+    ViewProperty<V> normal(V value);
 
     /**
      * 设置选中状态的值
      *
      * @param value
      */
-    ViewProperty<T> selected(T value);
+    ViewProperty<V> selected(V value);
 
     /**
      * 设置是否选中
