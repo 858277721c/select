@@ -2,7 +2,7 @@ package com.fanwe.lib.select.property;
 
 import android.view.View;
 
-public interface ViewPropertyHolder
+public interface ViewProperties
 {
     void put(Type type, ViewProperty property);
 

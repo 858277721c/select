@@ -30,60 +30,60 @@ import com.fanwe.lib.select.handler.ViewWidthHandler;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public class FViewProperty<T> implements ViewProperty<T>
+class SimpleViewProperty<T> implements ViewProperty<T>
 {
     private BasePropertyHandler<T> mPropertyHandler;
-    private ViewPropertyHolder mHolder;
-    private ViewPropertyHolder.Type mType;
+    private ViewProperties mProperties;
+    private ViewProperties.Type mType;
 
-    public FViewProperty()
+    public SimpleViewProperty()
     {
     }
 
-    private FViewProperty(ViewPropertyHolder.Type type, BasePropertyHandler<T> handler, ViewPropertyHolder holder)
+    private SimpleViewProperty(ViewProperties.Type type, BasePropertyHandler<T> handler, ViewProperties properties)
     {
-        if (type == null || handler == null || holder == null)
+        if (type == null || handler == null || properties == null)
             throw new NullPointerException("param must not be null");
 
         mType = type;
         mPropertyHandler = handler;
-        mHolder = holder;
+        mProperties = properties;
     }
 
     @Override
     public final ViewProperty<Float> alpha()
     {
-        return property(ViewPropertyHolder.Type.Alpha);
+        return property(ViewProperties.Type.Alpha);
     }
 
     @Override
     public final ViewProperty<Drawable> backgroundDrawable()
     {
-        return property(ViewPropertyHolder.Type.BackgroundDrawable);
+        return property(ViewProperties.Type.BackgroundDrawable);
     }
 
     @Override
     public final ViewProperty<Integer> visibility()
     {
-        return property(ViewPropertyHolder.Type.Visibility);
+        return property(ViewProperties.Type.Visibility);
     }
 
     @Override
     public final ViewProperty<Integer> width()
     {
-        return property(ViewPropertyHolder.Type.Width);
+        return property(ViewProperties.Type.Width);
     }
 
     @Override
     public final ViewProperty<Integer> height()
     {
-        return property(ViewPropertyHolder.Type.Height);
+        return property(ViewProperties.Type.Height);
     }
 
-    final <T> ViewProperty<T> property(ViewPropertyHolder.Type type)
+    final <T> ViewProperty<T> property(ViewProperties.Type type)
     {
-        final ViewPropertyHolder holder = holder();
-        ViewProperty<T> property = holder.get(type);
+        final ViewProperties properties = properties();
+        ViewProperty<T> property = properties.get(type);
         if (property == null)
         {
             BasePropertyHandler handler = null;
@@ -114,19 +114,18 @@ public class FViewProperty<T> implements ViewProperty<T>
                     break;
             }
 
-            property = new FViewProperty<>(type, handler, holder);
-            holder.put(type, property);
+            property = new SimpleViewProperty<>(type, handler, properties);
+            properties.put(type, property);
         }
         return property;
     }
 
-
     @Override
-    public ViewPropertyHolder holder()
+    public final ViewProperties properties()
     {
-        if (mHolder == null)
-            mHolder = new SimpleViewPropertyHolder();
-        return mHolder;
+        if (mProperties == null)
+            mProperties = new SimpleViewProperties();
+        return mProperties;
     }
 
     private final BasePropertyHandler.OnValueChangeCallback<T> mOnValueChangeCallback = new BasePropertyHandler.OnValueChangeCallback<T>()
@@ -135,7 +134,7 @@ public class FViewProperty<T> implements ViewProperty<T>
         public void onValueChanged(boolean selectedValue, T value, BasePropertyHandler<T> handler)
         {
             if (handler.isEmpty())
-                holder().remove(mType);
+                properties().remove(mType);
         }
     };
 

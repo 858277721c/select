@@ -15,7 +15,7 @@ public interface ViewProperty<T>
 
     ViewProperty<Integer> height();
 
-    ViewPropertyHolder holder();
+    ViewProperties properties();
 
     /**
      * 设置未选中状态的值

@@ -5,9 +5,9 @@ import android.view.View;
 import java.util.HashMap;
 import java.util.Map;
 
-final class SimpleViewPropertyHolder implements ViewPropertyHolder
+class SimpleViewProperties implements ViewProperties
 {
-    private Map<Type, ViewProperty> mMapProperty = new HashMap<>();
+    private final Map<Type, ViewProperty> mMapProperty = new HashMap<>();
 
     @Override
     public final void put(Type type, ViewProperty property)
