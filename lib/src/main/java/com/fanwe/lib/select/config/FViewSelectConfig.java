@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fanwe.lib.select.handler.BasePropertyHandler;
+import com.fanwe.lib.select.handler.PropertyHandler;
 import com.fanwe.lib.select.handler.ViewAlphaHandler;
 import com.fanwe.lib.select.handler.ViewBackgroundHandler;
 import com.fanwe.lib.select.handler.ViewHeightHandler;
@@ -30,8 +31,8 @@ import com.fanwe.lib.select.handler.ViewVisibilityHandler;
 import com.fanwe.lib.select.handler.ViewWidthHandler;
 
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * View的参数配置
@@ -41,7 +42,7 @@ public class FViewSelectConfig implements BasePropertyHandler.OnValueChangeCallb
     private Context mContext;
     private WeakReference<View> mView;
 
-    private final List<BasePropertyHandler> mListHandler = new ArrayList<>(1);
+    private final Map<PropertyHandler, Object> mMapHandler = new HashMap<>();
 
     private ViewBackgroundHandler mBackgroundHandler;
     private ViewAlphaHandler mAlphaHandler;
@@ -94,7 +95,7 @@ public class FViewSelectConfig implements BasePropertyHandler.OnValueChangeCallb
         if (view == null)
             return;
 
-        for (BasePropertyHandler item : mListHandler)
+        for (PropertyHandler item : mMapHandler.keySet())
         {
             item.setSelected(selected, view);
         }
@@ -281,36 +282,38 @@ public class FViewSelectConfig implements BasePropertyHandler.OnValueChangeCallb
     }
 
     @Override
-    public final void onValueChanged(boolean selectedValue, Object value, BasePropertyHandler handler)
+    public final void onValueChanged(boolean selectedValue, Object value, PropertyHandler handler)
     {
         if (handler.isEmpty())
         {
-            mListHandler.remove(handler);
+            mMapHandler.remove(handler);
+
+            if (mAlphaHandler == handler)
+            {
+                mAlphaHandler = null;
+            } else if (mBackgroundHandler == handler)
+            {
+                mBackgroundHandler = null;
+            } else if (mWidthHandler == handler)
+            {
+                mWidthHandler = null;
+            } else if (mHeightHandler == handler)
+            {
+                mHeightHandler = null;
+            } else if (mVisibilityHandler == handler)
+            {
+                mVisibilityHandler = null;
+            }
+
             onReleaseHandler(handler);
         } else
         {
-            if (!mListHandler.contains(handler))
-                mListHandler.add(handler);
+            mMapHandler.put(handler, null);
         }
     }
 
-    protected void onReleaseHandler(BasePropertyHandler handler)
+    protected void onReleaseHandler(PropertyHandler handler)
     {
-        if (mAlphaHandler == handler)
-        {
-            mAlphaHandler = null;
-        } else if (mBackgroundHandler == handler)
-        {
-            mBackgroundHandler = null;
-        } else if (mWidthHandler == handler)
-        {
-            mWidthHandler = null;
-        } else if (mHeightHandler == handler)
-        {
-            mHeightHandler = null;
-        } else if (mVisibilityHandler == handler)
-        {
-            mVisibilityHandler = null;
-        }
+
     }
 }

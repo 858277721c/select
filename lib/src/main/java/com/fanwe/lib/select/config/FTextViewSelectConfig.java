@@ -17,7 +17,7 @@ package com.fanwe.lib.select.config;
 
 import android.view.View;
 
-import com.fanwe.lib.select.handler.BasePropertyHandler;
+import com.fanwe.lib.select.handler.PropertyHandler;
 import com.fanwe.lib.select.handler.TextViewTextColorHandler;
 import com.fanwe.lib.select.handler.TextViewTextSizeHandler;
 
@@ -73,7 +73,7 @@ public class FTextViewSelectConfig extends FViewSelectConfig
     //---------- properties end ----------
 
     @Override
-    protected void onReleaseHandler(BasePropertyHandler handler)
+    protected void onReleaseHandler(PropertyHandler handler)
     {
         super.onReleaseHandler(handler);
         if (mTextColorHandler == handler)

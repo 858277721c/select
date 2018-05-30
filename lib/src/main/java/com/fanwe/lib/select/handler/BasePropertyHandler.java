@@ -20,23 +20,20 @@ import android.view.View;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-public abstract class BasePropertyHandler<T>
+public abstract class BasePropertyHandler<T> implements PropertyHandler<T>
 {
     private T mValueNormal;
     private T mValueSelected;
 
     private OnValueChangeCallback mOnValueChangeCallback;
 
+    @Override
     public void setOnValueChangeCallback(OnValueChangeCallback onValueChangeCallback)
     {
         mOnValueChangeCallback = onValueChangeCallback;
     }
 
-    /**
-     * 设置未选中状态的值
-     *
-     * @param value
-     */
+    @Override
     public final void setValueNormal(T value)
     {
         if (mValueNormal != value)
@@ -48,11 +45,7 @@ public abstract class BasePropertyHandler<T>
         }
     }
 
-    /**
-     * 设置选中状态的值
-     *
-     * @param value
-     */
+    @Override
     public final void setValueSelected(T value)
     {
         if (mValueSelected != value)
@@ -64,11 +57,13 @@ public abstract class BasePropertyHandler<T>
         }
     }
 
-    /**
-     * 设置是否选中
-     *
-     * @param selected
-     */
+    @Override
+    public final boolean isEmpty()
+    {
+        return mValueNormal == null && mValueSelected == null;
+    }
+
+    @Override
     public final void setSelected(boolean selected, View view)
     {
         if (view != null)
@@ -79,26 +74,4 @@ public abstract class BasePropertyHandler<T>
     }
 
     protected abstract void onSelectedChanged(boolean selected, T value, View view);
-
-    /**
-     * 值是否为空
-     *
-     * @return
-     */
-    public final boolean isEmpty()
-    {
-        return mValueNormal == null && mValueSelected == null;
-    }
-
-    public interface OnValueChangeCallback<T>
-    {
-        /**
-         * 值变化回调
-         *
-         * @param selectedValue true-选中状态的值，false-未选中状态的值
-         * @param value
-         * @param handler
-         */
-        void onValueChanged(boolean selectedValue, T value, BasePropertyHandler<T> handler);
-    }
 }
