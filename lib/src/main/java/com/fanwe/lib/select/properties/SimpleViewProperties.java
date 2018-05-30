@@ -53,6 +53,17 @@ class SimpleViewProperties implements ViewProperties
     }
 
     @Override
+    public ViewProperties reset()
+    {
+        mAlpha = null;
+        mBackgroundDrawable = null;
+        mVisibility = null;
+        mWidth = null;
+        mHeight = null;
+        return this;
+    }
+
+    @Override
     public void invoke(View view)
     {
         if (view != null)

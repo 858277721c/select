@@ -22,5 +22,8 @@ public interface TextViewProperties extends ViewProperties
     TextViewProperties setTextSize(Integer value);
 
     @Override
+    TextViewProperties reset();
+
+    @Override
     TextViewProperties clone();
 }

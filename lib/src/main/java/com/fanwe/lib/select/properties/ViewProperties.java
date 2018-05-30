@@ -49,6 +49,13 @@ public interface ViewProperties extends Cloneable
     ViewProperties setHeight(Integer value);
 
     /**
+     * 重置，会清空所有设置的属性
+     *
+     * @return
+     */
+    ViewProperties reset();
+
+    /**
      * 将当前属性配置应用到某个view
      *
      * @param view

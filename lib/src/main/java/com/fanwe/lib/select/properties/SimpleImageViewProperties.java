@@ -16,6 +16,14 @@ class SimpleImageViewProperties extends SimpleViewProperties implements ImageVie
     }
 
     @Override
+    public ImageViewProperties reset()
+    {
+        super.reset();
+        mImageResId = null;
+        return this;
+    }
+
+    @Override
     public void invoke(View view)
     {
         super.invoke(view);

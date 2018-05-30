@@ -14,5 +14,8 @@ public interface ImageViewProperties extends ViewProperties
     ImageViewProperties setImageResId(Integer value);
 
     @Override
+    ImageViewProperties reset();
+
+    @Override
     ImageViewProperties clone();
 }
