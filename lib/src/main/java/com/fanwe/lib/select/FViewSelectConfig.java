@@ -15,48 +15,39 @@ public class FViewSelectConfig implements ViewSelectConfig
     @Override
     public ViewSelectConfig configView(PropertiesIniter<ViewProperties> initer)
     {
-        final ViewProperties normal = mPropertiesNormal != null ?
+        mPropertiesNormal = mPropertiesNormal != null ?
                 mPropertiesNormal : FViewProperties.ofView();
 
-        final ViewProperties selected = mPropertiesSelected != null ?
+        mPropertiesSelected = mPropertiesSelected != null ?
                 mPropertiesSelected : FViewProperties.ofView();
 
-        initer.init(normal, selected);
-        mPropertiesNormal = normal;
-        mPropertiesSelected = selected;
-
+        initer.init(mPropertiesNormal, mPropertiesSelected);
         return this;
     }
 
     @Override
     public ViewSelectConfig configTextView(PropertiesIniter<TextViewProperties> initer)
     {
-        final TextViewProperties normal = mPropertiesNormal instanceof TextViewProperties ?
-                (TextViewProperties) mPropertiesNormal : FViewProperties.ofTextView();
+        mPropertiesNormal = mPropertiesNormal instanceof TextViewProperties ?
+                mPropertiesNormal : FViewProperties.ofTextView();
 
-        final TextViewProperties selected = mPropertiesSelected instanceof TextViewProperties ?
-                (TextViewProperties) mPropertiesSelected : FViewProperties.ofTextView();
+        mPropertiesSelected = mPropertiesSelected instanceof TextViewProperties ?
+                mPropertiesSelected : FViewProperties.ofTextView();
 
-        initer.init(normal, selected);
-        mPropertiesNormal = normal;
-        mPropertiesSelected = selected;
-
+        initer.init((TextViewProperties) mPropertiesNormal, (TextViewProperties) mPropertiesSelected);
         return this;
     }
 
     @Override
     public ViewSelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer)
     {
-        final ImageViewProperties normal = mPropertiesNormal instanceof ImageViewProperties ?
-                (ImageViewProperties) mPropertiesNormal : FViewProperties.ofImageView();
+        mPropertiesNormal = mPropertiesNormal instanceof ImageViewProperties ?
+                mPropertiesNormal : FViewProperties.ofImageView();
 
-        final ImageViewProperties selected = mPropertiesSelected instanceof ImageViewProperties ?
-                (ImageViewProperties) mPropertiesSelected : FViewProperties.ofImageView();
+        mPropertiesSelected = mPropertiesSelected instanceof ImageViewProperties ?
+                mPropertiesSelected : FViewProperties.ofImageView();
 
-        initer.init(normal, selected);
-        mPropertiesNormal = normal;
-        mPropertiesSelected = selected;
-
+        initer.init((ImageViewProperties) mPropertiesNormal, (ImageViewProperties) mPropertiesSelected);
         return this;
     }
 

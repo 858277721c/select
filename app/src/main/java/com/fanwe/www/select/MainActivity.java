@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity
                 normal.setTextColor(Color.parseColor("#616161"))
                         .setTextSize(40)
                         .setAlpha(0.2f);
+
                 selected.setTextColor(Color.parseColor("#f57c00"))
                         .setTextSize(60)
                         .setAlpha(1.0f);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity
             public void init(ViewProperties normal, ViewProperties selected)
             {
                 normal.setVisibility(View.INVISIBLE);
+
                 selected.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f57c00")))
                         .setVisibility(View.VISIBLE);
             }
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity
             public void init(ViewProperties normal, ViewProperties selected)
             {
                 normal.setWidth(150).setHeight(300);
+
                 selected.setWidth(300);
             }
         });
