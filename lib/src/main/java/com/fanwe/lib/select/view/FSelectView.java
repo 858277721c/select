@@ -22,7 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.fanwe.lib.select.ViewSelectConfig;
+import com.fanwe.lib.select.SelectConfig;
 import com.fanwe.lib.select.container.FSelectViewContainer;
 import com.fanwe.lib.select.container.SelectViewContainer;
 
@@ -82,7 +82,7 @@ public class FSelectView extends FrameLayout implements SelectViewContainer
     }
 
     @Override
-    public ViewSelectConfig config(View view)
+    public SelectConfig config(View view)
     {
         return mSelectViewContainer.config(view);
     }

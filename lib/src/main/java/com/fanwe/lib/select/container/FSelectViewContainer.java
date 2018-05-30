@@ -17,15 +17,15 @@ package com.fanwe.lib.select.container;
 
 import android.view.View;
 
-import com.fanwe.lib.select.FViewSelectConfig;
-import com.fanwe.lib.select.ViewSelectConfig;
+import com.fanwe.lib.select.FSelectConfig;
+import com.fanwe.lib.select.SelectConfig;
 
 import java.util.Map;
 import java.util.WeakHashMap;
 
 public class FSelectViewContainer implements SelectViewContainer
 {
-    private final Map<View, ViewSelectConfig> mMapViewConfig = new WeakHashMap<>();
+    private final Map<View, SelectConfig> mMapViewConfig = new WeakHashMap<>();
     private boolean mInvokeViewSelected = false;
 
     @Override
@@ -35,15 +35,15 @@ public class FSelectViewContainer implements SelectViewContainer
     }
 
     @Override
-    public ViewSelectConfig config(View view)
+    public SelectConfig config(View view)
     {
         if (view == null)
             return null;
 
-        ViewSelectConfig config = mMapViewConfig.get(view);
+        SelectConfig config = mMapViewConfig.get(view);
         if (config == null)
         {
-            config = new FViewSelectConfig();
+            config = new FSelectConfig();
             mMapViewConfig.put(view, config);
         }
         return config;
@@ -67,12 +67,14 @@ public class FSelectViewContainer implements SelectViewContainer
         if (mMapViewConfig.isEmpty())
             return;
 
-        for (Map.Entry<View, ViewSelectConfig> item : mMapViewConfig.entrySet())
+        for (Map.Entry<View, SelectConfig> item : mMapViewConfig.entrySet())
         {
             final View view = item.getKey();
-            final ViewSelectConfig config = item.getValue();
+            final SelectConfig config = item.getValue();
 
-            config.setSelected(selected, mInvokeViewSelected, view);
+            config.setSelected(selected, view);
+            if (mInvokeViewSelected)
+                view.setSelected(selected);
         }
     }
 }

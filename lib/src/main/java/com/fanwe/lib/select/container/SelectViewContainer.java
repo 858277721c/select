@@ -17,7 +17,7 @@ package com.fanwe.lib.select.container;
 
 import android.view.View;
 
-import com.fanwe.lib.select.ViewSelectConfig;
+import com.fanwe.lib.select.SelectConfig;
 
 public interface SelectViewContainer
 {
@@ -34,7 +34,7 @@ public interface SelectViewContainer
      * @param view
      * @return
      */
-    ViewSelectConfig config(View view);
+    SelectConfig config(View view);
 
     /**
      * 把View和对应的Config移除

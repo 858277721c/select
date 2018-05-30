@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.fanwe.lib.select.ViewSelectConfig;
+import com.fanwe.lib.select.SelectConfig;
 import com.fanwe.lib.select.properties.TextViewProperties;
 import com.fanwe.lib.select.properties.ViewProperties;
 
@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mCustomTab = findViewById(R.id.view_tab);
 
-        mCustomTab.config(mCustomTab.tv_title).configTextView(new ViewSelectConfig.PropertiesIniter<TextViewProperties>()
+        mCustomTab.config(mCustomTab.tv_title).configTextView(new SelectConfig.PropertiesIniter<TextViewProperties>()
         {
             @Override
             public void init(TextViewProperties normal, TextViewProperties selected)
@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity
                         .setAlpha(1.0f);
             }
         });
-        mCustomTab.config(mCustomTab.view_underline).configView(new ViewSelectConfig.PropertiesIniter<ViewProperties>()
+
+        mCustomTab.config(mCustomTab.view_underline).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
         {
             @Override
             public void init(ViewProperties normal, ViewProperties selected)
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity
                         .setVisibility(View.VISIBLE);
             }
         });
-        mCustomTab.config(mCustomTab).configView(new ViewSelectConfig.PropertiesIniter<ViewProperties>()
+        mCustomTab.config(mCustomTab).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
         {
             @Override
             public void init(ViewProperties normal, ViewProperties selected)

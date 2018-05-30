@@ -24,24 +24,23 @@ import com.fanwe.lib.select.properties.ViewProperties;
 /**
  * View的状态参数配置
  */
-public interface ViewSelectConfig
+public interface SelectConfig
 {
-    ViewSelectConfig configView(PropertiesIniter<ViewProperties> initer);
+    SelectConfig configView(PropertiesIniter<ViewProperties> initer);
 
-    ViewSelectConfig configTextView(PropertiesIniter<TextViewProperties> initer);
+    SelectConfig configTextView(PropertiesIniter<TextViewProperties> initer);
 
-    ViewSelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer);
+    SelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer);
 
-    ViewSelectConfig reset();
+    SelectConfig reset();
 
     /**
      * 设置view是否选中
      *
      * @param selected
-     * @param invokeViewSelected 是否触发{@link View#setSelected(boolean)}方法
      * @param view
      */
-    void setSelected(boolean selected, boolean invokeViewSelected, View view);
+    void setSelected(boolean selected, View view);
 
     interface PropertiesIniter<T extends ViewProperties>
     {

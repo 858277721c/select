@@ -7,13 +7,13 @@ import com.fanwe.lib.select.properties.ImageViewProperties;
 import com.fanwe.lib.select.properties.TextViewProperties;
 import com.fanwe.lib.select.properties.ViewProperties;
 
-public class FViewSelectConfig implements ViewSelectConfig
+public class FSelectConfig implements SelectConfig
 {
     private ViewProperties mPropertiesNormal;
     private ViewProperties mPropertiesSelected;
 
     @Override
-    public ViewSelectConfig configView(PropertiesIniter<ViewProperties> initer)
+    public SelectConfig configView(PropertiesIniter<ViewProperties> initer)
     {
         mPropertiesNormal = mPropertiesNormal != null ?
                 mPropertiesNormal : FViewProperties.ofView();
@@ -26,7 +26,7 @@ public class FViewSelectConfig implements ViewSelectConfig
     }
 
     @Override
-    public ViewSelectConfig configTextView(PropertiesIniter<TextViewProperties> initer)
+    public SelectConfig configTextView(PropertiesIniter<TextViewProperties> initer)
     {
         mPropertiesNormal = mPropertiesNormal instanceof TextViewProperties ?
                 mPropertiesNormal : FViewProperties.ofTextView();
@@ -39,7 +39,7 @@ public class FViewSelectConfig implements ViewSelectConfig
     }
 
     @Override
-    public ViewSelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer)
+    public SelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer)
     {
         mPropertiesNormal = mPropertiesNormal instanceof ImageViewProperties ?
                 mPropertiesNormal : FViewProperties.ofImageView();
@@ -52,7 +52,7 @@ public class FViewSelectConfig implements ViewSelectConfig
     }
 
     @Override
-    public ViewSelectConfig reset()
+    public SelectConfig reset()
     {
         mPropertiesNormal = null;
         mPropertiesSelected = null;
@@ -60,7 +60,7 @@ public class FViewSelectConfig implements ViewSelectConfig
     }
 
     @Override
-    public void setSelected(boolean selected, boolean invokeViewSelected, View view)
+    public void setSelected(boolean selected, View view)
     {
         if (view == null)
             return;
@@ -74,8 +74,5 @@ public class FViewSelectConfig implements ViewSelectConfig
             if (mPropertiesNormal != null)
                 mPropertiesNormal.invoke(view);
         }
-
-        if (invokeViewSelected)
-            view.setSelected(selected);
     }
 }
