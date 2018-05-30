@@ -233,35 +233,50 @@ public class FViewSelectConfig implements BasePropertyHandler.OnValueChangeCallb
     private ViewBackgroundHandler getBackgroundHandler()
     {
         if (mBackgroundHandler == null)
-            mBackgroundHandler = new ViewBackgroundHandler(this);
+        {
+            mBackgroundHandler = new ViewBackgroundHandler();
+            mBackgroundHandler.setOnValueChangeCallback(this);
+        }
         return mBackgroundHandler;
     }
 
     private ViewAlphaHandler getAlphaHandler()
     {
         if (mAlphaHandler == null)
-            mAlphaHandler = new ViewAlphaHandler(this);
+        {
+            mAlphaHandler = new ViewAlphaHandler();
+            mAlphaHandler.setOnValueChangeCallback(this);
+        }
         return mAlphaHandler;
     }
 
     private ViewWidthHandler getWidthHandler()
     {
         if (mWidthHandler == null)
-            mWidthHandler = new ViewWidthHandler(this);
+        {
+            mWidthHandler = new ViewWidthHandler();
+            mWidthHandler.setOnValueChangeCallback(this);
+        }
         return mWidthHandler;
     }
 
     private ViewHeightHandler getHeightHandler()
     {
         if (mHeightHandler == null)
-            mHeightHandler = new ViewHeightHandler(this);
+        {
+            mHeightHandler = new ViewHeightHandler();
+            mHeightHandler.setOnValueChangeCallback(this);
+        }
         return mHeightHandler;
     }
 
     private ViewVisibilityHandler getVisibilityHandler()
     {
         if (mVisibilityHandler == null)
-            mVisibilityHandler = new ViewVisibilityHandler(this);
+        {
+            mVisibilityHandler = new ViewVisibilityHandler();
+            mVisibilityHandler.setOnValueChangeCallback(this);
+        }
         return mVisibilityHandler;
     }
 

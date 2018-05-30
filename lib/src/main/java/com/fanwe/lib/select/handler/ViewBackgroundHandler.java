@@ -23,11 +23,6 @@ import android.view.View;
  */
 public class ViewBackgroundHandler extends BasePropertyHandler<Drawable>
 {
-    public ViewBackgroundHandler(OnValueChangeCallback callback)
-    {
-        super(callback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Drawable value, View view)
     {

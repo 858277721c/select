@@ -22,11 +22,6 @@ import android.view.View;
  */
 public class ViewVisibilityHandler extends BasePropertyHandler<Integer>
 {
-    public ViewVisibilityHandler(OnValueChangeCallback callback)
-    {
-        super( callback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Integer value, View view)
     {

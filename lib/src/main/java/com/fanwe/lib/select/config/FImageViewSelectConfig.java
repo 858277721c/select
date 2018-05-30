@@ -59,7 +59,10 @@ public class FImageViewSelectConfig extends FViewSelectConfig
     private ImageViewImageResIdHandler getImageResIdHandler()
     {
         if (mImageResIdHandler == null)
-            mImageResIdHandler = new ImageViewImageResIdHandler(this);
+        {
+            mImageResIdHandler = new ImageViewImageResIdHandler();
+            mImageResIdHandler.setOnValueChangeCallback(this);
+        }
         return mImageResIdHandler;
     }
 }

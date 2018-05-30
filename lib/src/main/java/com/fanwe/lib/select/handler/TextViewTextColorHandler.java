@@ -23,11 +23,6 @@ import android.widget.TextView;
  */
 public class TextViewTextColorHandler extends BasePropertyHandler<Integer>
 {
-    public TextViewTextColorHandler(OnValueChangeCallback callback)
-    {
-        super(callback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Integer value, View view)
     {

@@ -23,11 +23,6 @@ import android.widget.ImageView;
  */
 public class ImageViewImageResIdHandler extends BasePropertyHandler<Integer>
 {
-    public ImageViewImageResIdHandler(OnValueChangeCallback callback)
-    {
-        super(callback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Integer value, View view)
     {

@@ -27,12 +27,9 @@ public abstract class BasePropertyHandler<T>
 
     private OnValueChangeCallback mOnValueChangeCallback;
 
-    public BasePropertyHandler(OnValueChangeCallback callback)
+    public void setOnValueChangeCallback(OnValueChangeCallback onValueChangeCallback)
     {
-        if (callback == null)
-            throw new NullPointerException("callback is null");
-
-        mOnValueChangeCallback = callback;
+        mOnValueChangeCallback = onValueChangeCallback;
     }
 
     /**
@@ -45,7 +42,9 @@ public abstract class BasePropertyHandler<T>
         if (mValueNormal != value)
         {
             mValueNormal = value;
-            mOnValueChangeCallback.onValueChanged(false, value, this);
+
+            if (mOnValueChangeCallback != null)
+                mOnValueChangeCallback.onValueChanged(false, value, this);
         }
     }
 
@@ -59,7 +58,9 @@ public abstract class BasePropertyHandler<T>
         if (mValueSelected != value)
         {
             mValueSelected = value;
-            mOnValueChangeCallback.onValueChanged(true, value, this);
+
+            if (mOnValueChangeCallback != null)
+                mOnValueChangeCallback.onValueChanged(true, value, this);
         }
     }
 

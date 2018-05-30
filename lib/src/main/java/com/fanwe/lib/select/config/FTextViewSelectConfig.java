@@ -88,14 +88,20 @@ public class FTextViewSelectConfig extends FViewSelectConfig
     private TextViewTextColorHandler getTextColorHandler()
     {
         if (mTextColorHandler == null)
-            mTextColorHandler = new TextViewTextColorHandler(this);
+        {
+            mTextColorHandler = new TextViewTextColorHandler();
+            mTextColorHandler.setOnValueChangeCallback(this);
+        }
         return mTextColorHandler;
     }
 
     private TextViewTextSizeHandler getTextSizeHandler()
     {
         if (mTextSizeHandler == null)
-            mTextSizeHandler = new TextViewTextSizeHandler(this);
+        {
+            mTextSizeHandler = new TextViewTextSizeHandler();
+            mTextSizeHandler.setOnValueChangeCallback(this);
+        }
         return mTextSizeHandler;
     }
 }

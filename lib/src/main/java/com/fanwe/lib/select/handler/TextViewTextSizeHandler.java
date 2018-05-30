@@ -24,11 +24,6 @@ import android.widget.TextView;
  */
 public class TextViewTextSizeHandler extends BasePropertyHandler<Integer>
 {
-    public TextViewTextSizeHandler(OnValueChangeCallback callback)
-    {
-        super(callback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Integer value, View view)
     {

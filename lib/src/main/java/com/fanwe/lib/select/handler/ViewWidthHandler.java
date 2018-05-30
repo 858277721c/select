@@ -23,11 +23,6 @@ import android.view.ViewGroup;
  */
 public class ViewWidthHandler extends BasePropertyHandler<Integer>
 {
-    public ViewWidthHandler(OnValueChangeCallback onValueChangedCallback)
-    {
-        super(onValueChangedCallback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Integer value, View view)
     {

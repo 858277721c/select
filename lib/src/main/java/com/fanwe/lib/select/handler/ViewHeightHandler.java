@@ -23,11 +23,6 @@ import android.view.ViewGroup;
  */
 public class ViewHeightHandler extends BasePropertyHandler<Integer>
 {
-    public ViewHeightHandler(OnValueChangeCallback callback)
-    {
-        super(callback);
-    }
-
     @Override
     protected void onSelectedChanged(boolean selected, Integer value, View view)
     {
