@@ -6,7 +6,7 @@ import android.view.View;
 /**
  * view属性配置接口
  */
-public interface ViewProperties extends Cloneable
+public interface ViewProperties
 {
     /**
      * 设置透明度
@@ -49,11 +49,11 @@ public interface ViewProperties extends Cloneable
     ViewProperties setHeight(Integer value);
 
     /**
-     * 重置，会清空所有设置的属性
+     * 清空所有设置的属性值
      *
      * @return
      */
-    ViewProperties reset();
+    ViewProperties clear();
 
     /**
      * 将当前属性配置应用到某个view
@@ -61,6 +61,4 @@ public interface ViewProperties extends Cloneable
      * @param view
      */
     void invoke(View view);
-
-    ViewProperties clone();
 }

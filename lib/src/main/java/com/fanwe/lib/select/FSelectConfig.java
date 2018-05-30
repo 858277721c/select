@@ -52,7 +52,7 @@ public class FSelectConfig implements SelectConfig
     }
 
     @Override
-    public SelectConfig reset()
+    public SelectConfig clear()
     {
         mPropertiesNormal = null;
         mPropertiesSelected = null;

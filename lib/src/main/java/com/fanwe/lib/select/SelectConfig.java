@@ -26,13 +26,36 @@ import com.fanwe.lib.select.properties.ViewProperties;
  */
 public interface SelectConfig
 {
+    /**
+     * 配置某个View
+     *
+     * @param initer
+     * @return
+     */
     SelectConfig configView(PropertiesIniter<ViewProperties> initer);
 
+    /**
+     * 配置某个TextView
+     *
+     * @param initer
+     * @return
+     */
     SelectConfig configTextView(PropertiesIniter<TextViewProperties> initer);
 
+    /**
+     * 配置某个ImageView
+     *
+     * @param initer
+     * @return
+     */
     SelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer);
 
-    SelectConfig reset();
+    /**
+     * 清空配置
+     *
+     * @return
+     */
+    SelectConfig clear();
 
     /**
      * 设置view是否选中

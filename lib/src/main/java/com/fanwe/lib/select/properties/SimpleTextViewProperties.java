@@ -37,17 +37,11 @@ class SimpleTextViewProperties extends SimpleViewProperties implements TextViewP
     }
 
     @Override
-    public TextViewProperties reset()
+    public TextViewProperties clear()
     {
-        super.reset();
+        super.clear();
         mTextColor = null;
         mTextSize = null;
         return this;
-    }
-
-    @Override
-    public TextViewProperties clone()
-    {
-        return (TextViewProperties) super.clone();
     }
 }

@@ -16,9 +16,9 @@ class SimpleImageViewProperties extends SimpleViewProperties implements ImageVie
     }
 
     @Override
-    public ImageViewProperties reset()
+    public ImageViewProperties clear()
     {
-        super.reset();
+        super.clear();
         mImageResId = null;
         return this;
     }
@@ -30,11 +30,5 @@ class SimpleImageViewProperties extends SimpleViewProperties implements ImageVie
 
         if (view != null)
             new ImageResIdInvoker().invoke(view, mImageResId);
-    }
-
-    @Override
-    public ImageViewProperties clone()
-    {
-        return (ImageViewProperties) super.clone();
     }
 }

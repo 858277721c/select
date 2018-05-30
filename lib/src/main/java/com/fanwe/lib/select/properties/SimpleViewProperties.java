@@ -53,7 +53,7 @@ class SimpleViewProperties implements ViewProperties
     }
 
     @Override
-    public ViewProperties reset()
+    public ViewProperties clear()
     {
         mAlpha = null;
         mBackgroundDrawable = null;
@@ -74,17 +74,5 @@ class SimpleViewProperties implements ViewProperties
             new WidthInvoker().invoke(view, mWidth);
             new HeightInvoker().invoke(view, mHeight);
         }
-    }
-
-    @Override
-    public ViewProperties clone()
-    {
-        try
-        {
-            return (ViewProperties) super.clone();
-        } catch (CloneNotSupportedException e)
-        {
-        }
-        return null;
     }
 }
