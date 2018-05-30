@@ -8,21 +8,23 @@ class SimpleTextViewProperty<V> extends SimpleViewProperty<V> implements TextVie
     {
     }
 
-    public SimpleTextViewProperty(BasePropertyHandler<V> handler, ViewProperties properties)
+    public SimpleTextViewProperty(ViewProperties.Type type, BasePropertyHandler<V> handler, ViewProperties properties)
     {
-        super(handler, properties);
+        super(type, handler, properties);
     }
 
     @Override
     public final TextViewProperty<Integer> textSize()
     {
-        return (TextViewProperty<Integer>) properties().get(ViewProperties.Type.TextSize, Integer.class);
+        final ViewProperty<Integer> property = properties().get(ViewProperties.Type.TextSize);
+        return (TextViewProperty<Integer>) property;
     }
 
     @Override
     public final TextViewProperty<Integer> textColor()
     {
-        return (TextViewProperty<Integer>) properties().get(ViewProperties.Type.TextColor, Integer.class);
+        final ViewProperty<Integer> property = properties().get(ViewProperties.Type.TextColor);
+        return (TextViewProperty<Integer>) property;
     }
 
     @Override

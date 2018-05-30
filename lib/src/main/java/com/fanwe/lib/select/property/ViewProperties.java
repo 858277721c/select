@@ -4,7 +4,9 @@ import android.view.View;
 
 public interface ViewProperties
 {
-    <V> ViewProperty<V> get(Type type, Class<V> clazz);
+    <V> ViewProperty<V> get(Type type);
+
+    void remove(Type type);
 
     /**
      * 设置View是否选中

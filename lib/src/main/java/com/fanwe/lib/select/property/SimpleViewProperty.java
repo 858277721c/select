@@ -23,52 +23,58 @@ import com.fanwe.lib.select.handler.BasePropertyHandler;
 /**
  * Created by zhengjun on 2017/9/15.
  */
-class SimpleViewProperty<T> implements ViewProperty<T>
+class SimpleViewProperty<T> implements ViewProperty<T>, BasePropertyHandler.OnValueChangeCallback<T>
 {
-    private BasePropertyHandler<T> mPropertyHandler;
+    private final ViewProperties.Type mType;
+    private final BasePropertyHandler<T> mPropertyHandler;
     private ViewProperties mProperties;
 
     public SimpleViewProperty()
     {
+        mType = null;
+        mPropertyHandler = null;
     }
 
-    public SimpleViewProperty(BasePropertyHandler<T> handler, ViewProperties properties)
+    public SimpleViewProperty(ViewProperties.Type type, BasePropertyHandler<T> handler, ViewProperties properties)
     {
-        if (handler == null || properties == null)
+        if (type == null || handler == null || properties == null)
             throw new NullPointerException("param must not be null");
 
+        mType = type;
         mPropertyHandler = handler;
         mProperties = properties;
+
+        handler.setOnValueChangeCallback(this);
     }
 
     @Override
     public final ViewProperty<Float> alpha()
     {
-        return properties().get(ViewProperties.Type.Alpha, Float.class);
+        return properties().get(ViewProperties.Type.Alpha);
     }
 
     @Override
     public final ViewProperty<Drawable> backgroundDrawable()
     {
-        return properties().get(ViewProperties.Type.BackgroundDrawable, Drawable.class);
+        return properties().get(ViewProperties.Type.BackgroundDrawable);
     }
 
     @Override
     public final ViewProperty<Integer> visibility()
     {
-        return properties().get(ViewProperties.Type.Visibility, Integer.class);
+        return properties().get(ViewProperties.Type.Visibility);
     }
 
     @Override
     public final ViewProperty<Integer> width()
     {
-        return properties().get(ViewProperties.Type.Width, Integer.class);
+        return properties().get(ViewProperties.Type.Width);
     }
 
     @Override
     public final ViewProperty<Integer> height()
     {
-        return properties().get(ViewProperties.Type.Height, Integer.class);
+        return properties().get(ViewProperties.Type.Height);
     }
 
     @Override
@@ -97,5 +103,11 @@ class SimpleViewProperty<T> implements ViewProperty<T>
     public void setSelected(boolean selected, View view)
     {
         mPropertyHandler.setSelected(selected, view);
+    }
+
+    @Override
+    public void onValueChanged(boolean selectedValue, T value, BasePropertyHandler<T> handler)
+    {
+        properties().remove(mType);
     }
 }

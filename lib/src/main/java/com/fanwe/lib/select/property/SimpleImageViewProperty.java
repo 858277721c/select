@@ -8,15 +8,16 @@ class SimpleImageViewProperty<T> extends SimpleViewProperty<T> implements ImageV
     {
     }
 
-    public SimpleImageViewProperty(BasePropertyHandler<T> handler, ViewProperties properties)
+    public SimpleImageViewProperty(ViewProperties.Type type, BasePropertyHandler<T> handler, ViewProperties properties)
     {
-        super(handler, properties);
+        super(type, handler, properties);
     }
 
     @Override
     public final ImageViewProperty<Integer> imageResId()
     {
-        return (ImageViewProperty<Integer>) properties().get(ViewProperties.Type.ImageResId, Integer.class);
+        final ViewProperty<Integer> property = properties().get(ViewProperties.Type.ImageResId);
+        return (ImageViewProperty<Integer>) property;
     }
 
     @Override
