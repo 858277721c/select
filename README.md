@@ -1,10 +1,10 @@
 # About
 可以动态指定View选中和非选中的时候展示状态
 
-## Gradle
+# Gradle
 `implementation 'com.fanwe.android:select:1.1.14'`
 
-## 简单Demo
+# 简单Demo
 ![](http://thumbsnap.com/i/mYc3jx69.gif?0915)<br>
 
 如果对自定义View的父类无要求可以直接继承FSelectView<br>
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity
     }
 }
 ```
-## 目前支持的配置
+# 目前支持的配置
 * textColor       
 TextView字体颜色
 
