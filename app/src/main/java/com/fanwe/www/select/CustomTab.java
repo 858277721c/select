@@ -24,7 +24,7 @@ public class CustomTab extends FSelectView
     private void init()
     {
         setContentView(R.layout.view_custom_tab);
-        tv_title = (TextView) findViewById(R.id.tv_title);
+        tv_title = findViewById(R.id.tv_title);
         view_underline = findViewById(R.id.view_underline);
     }
 }

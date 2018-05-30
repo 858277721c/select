@@ -21,12 +21,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.fanwe.lib.select.config.FImageViewSelectConfig;
-import com.fanwe.lib.select.config.FTextViewSelectConfig;
-import com.fanwe.lib.select.config.FViewSelectConfig;
+import com.fanwe.lib.select.ViewSelectConfig;
 import com.fanwe.lib.select.container.FSelectViewContainer;
 import com.fanwe.lib.select.container.SelectViewContainer;
 
@@ -54,6 +50,7 @@ public class FSelectView extends FrameLayout implements SelectViewContainer
 
     private void init()
     {
+        setAccessibilityDelegate(new AccessibilityDelegate());
 
     }
 
@@ -85,21 +82,9 @@ public class FSelectView extends FrameLayout implements SelectViewContainer
     }
 
     @Override
-    public FViewSelectConfig config(View view)
+    public ViewSelectConfig config(View view)
     {
         return mSelectViewContainer.config(view);
-    }
-
-    @Override
-    public FImageViewSelectConfig configImage(ImageView view)
-    {
-        return mSelectViewContainer.configImage(view);
-    }
-
-    @Override
-    public FTextViewSelectConfig configText(TextView view)
-    {
-        return mSelectViewContainer.configText(view);
     }
 
     @Override

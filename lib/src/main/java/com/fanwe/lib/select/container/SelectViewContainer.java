@@ -16,13 +16,8 @@
 package com.fanwe.lib.select.container;
 
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.fanwe.lib.select.config.FImageViewSelectConfig;
-import com.fanwe.lib.select.config.FTextViewSelectConfig;
-import com.fanwe.lib.select.config.FViewSelectConfig;
-
+import com.fanwe.lib.select.ViewSelectConfig;
 
 public interface SelectViewContainer
 {
@@ -39,23 +34,7 @@ public interface SelectViewContainer
      * @param view
      * @return
      */
-    FViewSelectConfig config(View view);
-
-    /**
-     * 把View添加到容器中，并返回该View对应的Config
-     *
-     * @param view
-     * @return
-     */
-    FImageViewSelectConfig configImage(ImageView view);
-
-    /**
-     * 把View添加到容器中，并返回该View对应的Config
-     *
-     * @param view
-     * @return
-     */
-    FTextViewSelectConfig configText(TextView view);
+    ViewSelectConfig config(View view);
 
     /**
      * 把View和对应的Config移除

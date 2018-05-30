@@ -16,19 +16,16 @@
 package com.fanwe.lib.select.container;
 
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.fanwe.lib.select.config.FImageViewSelectConfig;
-import com.fanwe.lib.select.config.FTextViewSelectConfig;
-import com.fanwe.lib.select.config.FViewSelectConfig;
+import com.fanwe.lib.select.FViewSelectConfig;
+import com.fanwe.lib.select.ViewSelectConfig;
 
 import java.util.Map;
 import java.util.WeakHashMap;
 
 public class FSelectViewContainer implements SelectViewContainer
 {
-    private final Map<View, FViewSelectConfig> mMapViewConfig = new WeakHashMap<>();
+    private final Map<View, ViewSelectConfig> mMapViewConfig = new WeakHashMap<>();
     private boolean mInvokeViewSelected = false;
 
     @Override
@@ -38,45 +35,15 @@ public class FSelectViewContainer implements SelectViewContainer
     }
 
     @Override
-    public FViewSelectConfig config(View view)
+    public ViewSelectConfig config(View view)
     {
         if (view == null)
             return null;
 
-        FViewSelectConfig config = mMapViewConfig.get(view);
+        ViewSelectConfig config = mMapViewConfig.get(view);
         if (config == null)
         {
-            config = FViewSelectConfig.config(view);
-            mMapViewConfig.put(view, config);
-        }
-        return config;
-    }
-
-    @Override
-    public FImageViewSelectConfig configImage(ImageView view)
-    {
-        if (view == null)
-            return null;
-
-        FImageViewSelectConfig config = (FImageViewSelectConfig) mMapViewConfig.get(view);
-        if (config == null)
-        {
-            config = FViewSelectConfig.configImage(view);
-            mMapViewConfig.put(view, config);
-        }
-        return config;
-    }
-
-    @Override
-    public FTextViewSelectConfig configText(TextView view)
-    {
-        if (view == null)
-            return null;
-
-        FTextViewSelectConfig config = (FTextViewSelectConfig) mMapViewConfig.get(view);
-        if (config == null)
-        {
-            config = FViewSelectConfig.configText(view);
+            config = new FViewSelectConfig();
             mMapViewConfig.put(view, config);
         }
         return config;
@@ -99,10 +66,13 @@ public class FSelectViewContainer implements SelectViewContainer
     {
         if (mMapViewConfig.isEmpty())
             return;
-        
-        for (Map.Entry<View, FViewSelectConfig> item : mMapViewConfig.entrySet())
+
+        for (Map.Entry<View, ViewSelectConfig> item : mMapViewConfig.entrySet())
         {
-            item.getValue().setSelected(selected, mInvokeViewSelected);
+            final View view = item.getKey();
+            final ViewSelectConfig config = item.getValue();
+
+            config.setSelected(selected, mInvokeViewSelected, view);
         }
     }
 }
