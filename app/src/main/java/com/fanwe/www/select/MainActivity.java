@@ -1,7 +1,6 @@
 package com.fanwe.www.select;
 
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -43,7 +42,7 @@ public class MainActivity extends AppCompatActivity
             {
                 normal.setVisibility(View.INVISIBLE);
 
-                selected.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f57c00")))
+                selected.setBackgroundColor(Color.parseColor("#f57c00"))
                         .setVisibility(View.VISIBLE);
             }
         });

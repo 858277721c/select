@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity
             {
                 normal.setVisibility(View.INVISIBLE);
 
-                selected.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f57c00")))
+                selected.setBackgroundColor(Color.parseColor("#f57c00"))
                         .setVisibility(View.VISIBLE);
             }
         });
@@ -100,7 +100,7 @@ TextView字体大小
 * imageResId      
 ImageView资源图片
 
-* backgroundDrawable
+* background
 View的背景
 
 * alpha           

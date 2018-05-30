@@ -1,5 +1,7 @@
 package com.fanwe.lib.select.properties;
 
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
@@ -28,6 +30,25 @@ class SimpleViewProperties implements ViewProperties
     public ViewProperties setBackgroundDrawable(Drawable value)
     {
         mBackgroundDrawable = value;
+        return this;
+    }
+
+    @Override
+    public ViewProperties setBackgroundResource(int resId, Context context)
+    {
+        Drawable drawable = null;
+
+        if (resId != 0)
+            drawable = context.getResources().getDrawable(resId);
+
+        setBackgroundDrawable(drawable);
+        return this;
+    }
+
+    @Override
+    public ViewProperties setBackgroundColor(int color)
+    {
+        setBackgroundDrawable(new ColorDrawable(color));
         return this;
     }
 

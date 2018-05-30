@@ -1,5 +1,6 @@
 package com.fanwe.lib.select.properties;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
@@ -23,6 +24,23 @@ public interface ViewProperties
      * @return
      */
     ViewProperties setBackgroundDrawable(Drawable value);
+
+    /**
+     * 设置背景
+     *
+     * @param resId   资源id
+     * @param context
+     * @return
+     */
+    ViewProperties setBackgroundResource(int resId, Context context);
+
+    /**
+     * 设置背景
+     *
+     * @param color 颜色值
+     * @return
+     */
+    ViewProperties setBackgroundColor(int color);
 
     /**
      * 设置可见状态
