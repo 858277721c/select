@@ -2,7 +2,7 @@
 可以动态指定View选中和非选中的时候展示状态
 
 # Gradle
-`implementation 'com.fanwe.android:select:1.1.14'`
+`implementation 'com.fanwe.android:select:1.2.0-rc1'`
 
 # 简单Demo
 ![](http://thumbsnap.com/i/mYc3jx69.gif?0915)<br>
@@ -26,7 +26,7 @@ public class CustomTab extends FSelectView
     private void init()
     {
         setContentView(R.layout.view_custom_tab);
-        tv_title = (TextView) findViewById(R.id.tv_title);
+        tv_title = findViewById(R.id.tv_title);
         view_underline = findViewById(R.id.view_underline);
     }
 }
@@ -42,28 +42,46 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mCustomTab = (CustomTab) findViewById(R.id.view_tab);
+        mCustomTab = findViewById(R.id.view_tab);
 
-        mCustomTab.configText(mCustomTab.tv_title) // 获得对应的config
-                .setTextColorNormal(Color.parseColor("#616161"))
-                .setTextColorSelected(Color.parseColor("#f57c00"))
-                .setTextSizeNormal(40)
-                .setTextSizeSelected(60)
-                .setAlphaNormal(0.2f)
-                .setAlphaSelected(1.0f)
-                .setSelected(false); //设置默认未选中
+        mCustomTab.config(mCustomTab.tv_title).configTextView(new SelectConfig.PropertiesIniter<TextViewProperties>()
+        {
+            @Override
+            public void init(TextViewProperties normal, TextViewProperties selected)
+            {
+                normal.setTextColor(Color.parseColor("#616161"))
+                        .setTextSize(40)
+                        .setAlpha(0.2f);
 
-        mCustomTab.config(mCustomTab.view_underline) // 获得对应的config
-                .setBackgroundColorSelected(Color.parseColor("#f57c00"))
-                .setVisibilityNormal(View.INVISIBLE)
-                .setVisibilitySelected(View.VISIBLE)
-                .setSelected(false); //设置默认未选中
+                selected.setTextColor(Color.parseColor("#f57c00"))
+                        .setTextSize(60)
+                        .setAlpha(1.0f);
+            }
+        });
 
-        mCustomTab.config(mCustomTab) // 获得对应的config
-                .setWidthNormal(150)
-                .setWidthSelected(300)
-                .setHeightNormal(300)
-                .setSelected(false); //设置默认未选中
+        mCustomTab.config(mCustomTab.view_underline).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
+        {
+            @Override
+            public void init(ViewProperties normal, ViewProperties selected)
+            {
+                normal.setVisibility(View.INVISIBLE);
+
+                selected.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#f57c00")))
+                        .setVisibility(View.VISIBLE);
+            }
+        });
+        mCustomTab.config(mCustomTab).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
+        {
+            @Override
+            public void init(ViewProperties normal, ViewProperties selected)
+            {
+                normal.setWidth(150).setHeight(300);
+
+                selected.setWidth(300);
+            }
+        });
+
+        mCustomTab.setSelected(false);
     }
 
     public void onClickBtnChangeState(View view)
@@ -82,8 +100,8 @@ TextView字体大小
 * imageResId      
 ImageView资源图片
 
-* background      
-View的背景，支持颜色，Drawable，或者图片资源id
+* backgroundDrawable
+View的背景
 
 * alpha           
 View的透明度
