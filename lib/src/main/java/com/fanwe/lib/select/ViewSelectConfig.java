@@ -32,6 +32,8 @@ public interface ViewSelectConfig
 
     ViewSelectConfig configImageView(PropertiesIniter<ImageViewProperties> initer);
 
+    ViewSelectConfig reset();
+
     /**
      * 设置view是否选中
      *

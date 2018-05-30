@@ -52,6 +52,14 @@ public class FViewSelectConfig implements ViewSelectConfig
     }
 
     @Override
+    public ViewSelectConfig reset()
+    {
+        mPropertiesNormal = null;
+        mPropertiesSelected = null;
+        return this;
+    }
+
+    @Override
     public void setSelected(boolean selected, boolean invokeViewSelected, View view)
     {
         if (view == null)
