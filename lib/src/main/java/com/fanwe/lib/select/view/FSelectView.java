@@ -50,8 +50,6 @@ public class FSelectView extends FrameLayout implements SelectViewContainer
 
     private void init()
     {
-        setAccessibilityDelegate(new AccessibilityDelegate());
-
     }
 
     public void setContentView(int layoutId)

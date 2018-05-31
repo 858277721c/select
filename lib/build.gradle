@@ -29,7 +29,7 @@ publish {
     groupId = 'com.fanwe.android'
 
     artifactId = 'select'
-    publishVersion = '1.2.0-rc1'
+    publishVersion = '1.2.0-rc2'
     desc = 'android select library'
     website = 'https://github.com/zj565061763/select'
 }
