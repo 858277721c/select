@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity
             {
                 normal.setVisibility(View.INVISIBLE);
 
-                selected.setBackgroundColor(Color.parseColor("#f57c00"))
-                        .setVisibility(View.VISIBLE);
+                selected.setVisibility(View.VISIBLE)
+                        .setBackgroundColor(Color.parseColor("#f57c00"));
             }
         });
         mCustomTab.config(mCustomTab).configView(new SelectConfig.PropertiesIniter<ViewProperties>()

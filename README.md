@@ -12,27 +12,6 @@
 
 1. 自定义View
 ```java
-public class CustomTab extends FSelectView
-{
-    public CustomTab(Context context, AttributeSet attrs)
-    {
-        super(context, attrs);
-        init();
-    }
-
-    public TextView tv_title;
-    public View view_underline;
-
-    private void init()
-    {
-        setContentView(R.layout.view_custom_tab);
-        tv_title = findViewById(R.id.tv_title);
-        view_underline = findViewById(R.id.view_underline);
-    }
-}
-```
-2. 代码中设置选中和非选中的展示状态
-```java
 public class MainActivity extends AppCompatActivity
 {
     private CustomTab mCustomTab;
@@ -66,8 +45,8 @@ public class MainActivity extends AppCompatActivity
             {
                 normal.setVisibility(View.INVISIBLE);
 
-                selected.setBackgroundColor(Color.parseColor("#f57c00"))
-                        .setVisibility(View.VISIBLE);
+                selected.setVisibility(View.VISIBLE)
+                        .setBackgroundColor(Color.parseColor("#f57c00"));
             }
         });
         mCustomTab.config(mCustomTab).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
