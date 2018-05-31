@@ -82,6 +82,7 @@ public class FSelectView extends FrameLayout implements SelectViewContainer
     @Override
     public SelectConfig config(View view)
     {
+        checkView(view);
         return mSelectViewContainer.config(view);
     }
 
@@ -102,5 +103,28 @@ public class FSelectView extends FrameLayout implements SelectViewContainer
     {
         mSelectViewContainer.setSelected(selected);
         super.setSelected(selected);
+    }
+
+    private void checkView(View view)
+    {
+        if (view == null)
+            return;
+
+        boolean isChild = false;
+        while (true)
+        {
+            if (view == null)
+                break;
+            if (view == this)
+            {
+                isChild = true;
+                break;
+            }
+
+            view = (View) view.getParent();
+        }
+
+        if (!isChild)
+            throw new IllegalArgumentException("view is not child of current ViewGroup");
     }
 }
