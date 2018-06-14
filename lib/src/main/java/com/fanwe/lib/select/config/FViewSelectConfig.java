@@ -17,7 +17,7 @@ public final class FViewSelectConfig
             return null;
 
         final SelectConfig config = MAP_CONFIG.get(view);
-        if (config != null && config instanceof ViewSelectConfig)
+        if (config instanceof ViewSelectConfig)
             return (ViewSelectConfig) config;
 
         final SimpleViewConfig newConfig = new SimpleViewConfig(view);
@@ -31,7 +31,7 @@ public final class FViewSelectConfig
             return null;
 
         final SelectConfig config = MAP_CONFIG.get(view);
-        if (config != null && config instanceof TextViewSelectConfig)
+        if (config instanceof TextViewSelectConfig)
             return (TextViewSelectConfig) config;
 
         final SimpleTextViewConfig newConfig = new SimpleTextViewConfig(view);
@@ -45,7 +45,7 @@ public final class FViewSelectConfig
             return null;
 
         final SelectConfig config = MAP_CONFIG.get(view);
-        if (config != null && config instanceof ImageViewSelectConfig)
+        if (config instanceof ImageViewSelectConfig)
             return (ImageViewSelectConfig) config;
 
         final SimpleImageViewConfig newConfig = new SimpleImageViewConfig(view);
