@@ -21,44 +21,47 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mCustomTab = findViewById(R.id.view_tab);
 
+        FViewSelectConfig.config(mCustomTab).init(mTabIniter);
+        FViewSelectConfig.config(mCustomTab.view_underline).init(mUnderlineIniter);
+        FViewSelectConfig.config(mCustomTab.tv_title).init(mTextIniter);
 
-        FViewSelectConfig.config(mCustomTab).init(new SelectConfig.PropertiesIniter<ViewProperties>()
-        {
-            @Override
-            public void init(ViewProperties normal, ViewProperties selected)
-            {
-                normal.setWidth(150).setHeight(300);
-                selected.setWidth(300);
-            }
-        }).setSelected(false);
-
-
-        FViewSelectConfig.config(mCustomTab.view_underline).init(new SelectConfig.PropertiesIniter<ViewProperties>()
-        {
-            @Override
-            public void init(ViewProperties normal, ViewProperties selected)
-            {
-                normal.setVisibility(View.INVISIBLE);
-                selected.setVisibility(View.VISIBLE)
-                        .setBackgroundColor(Color.parseColor("#f57c00"));
-            }
-        }).setSelected(false);
-
-
-        FViewSelectConfig.config(mCustomTab.tv_title).init(new SelectConfig.PropertiesIniter<TextViewProperties>()
-        {
-            @Override
-            public void init(TextViewProperties normal, TextViewProperties selected)
-            {
-                normal.setTextColor(Color.parseColor("#616161"))
-                        .setTextSize(40)
-                        .setAlpha(0.2f);
-                selected.setTextColor(Color.parseColor("#f57c00"))
-                        .setTextSize(60)
-                        .setAlpha(1.0f);
-            }
-        }).setSelected(false);
+        mCustomTab.setSelected(false);
     }
+
+    private final SelectConfig.PropertiesIniter<ViewProperties> mTabIniter = new SelectConfig.PropertiesIniter<ViewProperties>()
+    {
+        @Override
+        public void init(ViewProperties normal, ViewProperties selected)
+        {
+            normal.setWidth(150).setHeight(300);
+            selected.setWidth(300);
+        }
+    };
+
+    private final SelectConfig.PropertiesIniter<ViewProperties> mUnderlineIniter = new SelectConfig.PropertiesIniter<ViewProperties>()
+    {
+        @Override
+        public void init(ViewProperties normal, ViewProperties selected)
+        {
+            normal.setVisibility(View.INVISIBLE);
+            selected.setVisibility(View.VISIBLE)
+                    .setBackgroundColor(Color.parseColor("#f57c00"));
+        }
+    };
+
+    private final SelectConfig.PropertiesIniter<TextViewProperties> mTextIniter = new SelectConfig.PropertiesIniter<TextViewProperties>()
+    {
+        @Override
+        public void init(TextViewProperties normal, TextViewProperties selected)
+        {
+            normal.setTextColor(Color.parseColor("#616161"))
+                    .setTextSize(40)
+                    .setAlpha(0.2f);
+            selected.setTextColor(Color.parseColor("#f57c00"))
+                    .setTextSize(60)
+                    .setAlpha(1.0f);
+        }
+    };
 
     public void onClickBtnChangeState(View view)
     {
