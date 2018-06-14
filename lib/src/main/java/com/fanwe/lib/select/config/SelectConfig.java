@@ -15,8 +15,6 @@
  */
 package com.fanwe.lib.select.config;
 
-import android.view.View;
-
 import com.fanwe.lib.select.properties.ViewProperties;
 
 /**
@@ -24,6 +22,14 @@ import com.fanwe.lib.select.properties.ViewProperties;
  */
 public interface SelectConfig<T extends ViewProperties>
 {
+    /**
+     * 设置当view的选中状态变化的时候是否自动更新UI，默认true-自动更新
+     *
+     * @param autoMode
+     * @return
+     */
+    SelectConfig setAutoMode(boolean autoMode);
+
     /**
      * 初始化配置参数
      *
@@ -46,15 +52,6 @@ public interface SelectConfig<T extends ViewProperties>
      * @return
      */
     SelectConfig setSelected(boolean selected);
-
-    /**
-     * 设置选中状态
-     *
-     * @param selected
-     * @param view
-     * @return
-     */
-    SelectConfig setSelected(boolean selected, View view);
 
     interface PropertiesIniter<T extends ViewProperties>
     {
