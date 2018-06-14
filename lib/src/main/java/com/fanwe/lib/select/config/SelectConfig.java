@@ -13,45 +13,51 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.fanwe.lib.select.container;
+package com.fanwe.lib.select.config;
 
 import android.view.View;
 
-import com.fanwe.lib.select.SelectConfig;
+import com.fanwe.lib.select.properties.ViewProperties;
 
-public interface SelectViewContainer
+/**
+ * View的状态参数配置
+ */
+public interface SelectConfig<T extends ViewProperties>
 {
     /**
-     * 调用setSelected的时候是否也触发View的setSelected方法，默认false
+     * 初始化配置参数
      *
-     * @param invokeViewSelected
+     * @param initer
+     * @return
      */
-    void setInvokeViewSelected(boolean invokeViewSelected);
+    SelectConfig init(PropertiesIniter<T> initer);
 
     /**
-     * 把View添加到容器中，并返回该View对应的Config
+     * 清空配置
      *
+     * @return
+     */
+    SelectConfig clear();
+
+    /**
+     * 设置选中状态
+     *
+     * @param selected
+     * @return
+     */
+    SelectConfig setSelected(boolean selected);
+
+    /**
+     * 设置选中状态
+     *
+     * @param selected
      * @param view
      * @return
      */
-    SelectConfig config(View view);
+    SelectConfig setSelected(boolean selected, View view);
 
-    /**
-     * 把View和对应的Config移除
-     *
-     * @param view
-     */
-    void removeConfig(View view);
-
-    /**
-     * 清空容器中的所有View和对应的Config
-     */
-    void clearConfig();
-
-    /**
-     * 设置容器中的所有View是否选中
-     *
-     * @param selected
-     */
-    void setSelected(boolean selected);
+    interface PropertiesIniter<T extends ViewProperties>
+    {
+        void init(T normal, T selected);
+    }
 }

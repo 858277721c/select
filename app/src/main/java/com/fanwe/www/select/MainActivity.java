@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.fanwe.lib.select.SelectConfig;
+import com.fanwe.lib.select.config.FSelectConfig;
+import com.fanwe.lib.select.config.SelectConfig;
 import com.fanwe.lib.select.properties.TextViewProperties;
 import com.fanwe.lib.select.properties.ViewProperties;
 
@@ -20,7 +21,33 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         mCustomTab = findViewById(R.id.view_tab);
 
-        mCustomTab.config(mCustomTab.tv_title).configTextView(new SelectConfig.PropertiesIniter<TextViewProperties>()
+
+        FSelectConfig.configView(mCustomTab).init(new SelectConfig.PropertiesIniter<ViewProperties>()
+        {
+            @Override
+            public void init(ViewProperties normal, ViewProperties selected)
+            {
+                normal.setWidth(150).setHeight(300);
+
+                selected.setWidth(300);
+            }
+        }).setSelected(false);
+
+
+        FSelectConfig.configView(mCustomTab.view_underline).init(new SelectConfig.PropertiesIniter<ViewProperties>()
+        {
+            @Override
+            public void init(ViewProperties normal, ViewProperties selected)
+            {
+                normal.setVisibility(View.INVISIBLE);
+
+                selected.setVisibility(View.VISIBLE)
+                        .setBackgroundColor(Color.parseColor("#f57c00"));
+            }
+        }).setSelected(false);
+
+
+        FSelectConfig.configTextView(mCustomTab.tv_title).init(new SelectConfig.PropertiesIniter<TextViewProperties>()
         {
             @Override
             public void init(TextViewProperties normal, TextViewProperties selected)
@@ -33,31 +60,7 @@ public class MainActivity extends AppCompatActivity
                         .setTextSize(60)
                         .setAlpha(1.0f);
             }
-        });
-
-        mCustomTab.config(mCustomTab.view_underline).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
-        {
-            @Override
-            public void init(ViewProperties normal, ViewProperties selected)
-            {
-                normal.setVisibility(View.INVISIBLE);
-
-                selected.setVisibility(View.VISIBLE)
-                        .setBackgroundColor(Color.parseColor("#f57c00"));
-            }
-        });
-        mCustomTab.config(mCustomTab).configView(new SelectConfig.PropertiesIniter<ViewProperties>()
-        {
-            @Override
-            public void init(ViewProperties normal, ViewProperties selected)
-            {
-                normal.setWidth(150).setHeight(300);
-
-                selected.setWidth(300);
-            }
-        });
-
-        mCustomTab.setSelected(false);
+        }).setSelected(false);
     }
 
     public void onClickBtnChangeState(View view)
