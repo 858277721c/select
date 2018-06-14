@@ -7,11 +7,11 @@ import android.widget.TextView;
 import java.util.Map;
 import java.util.WeakHashMap;
 
-public final class FSelectConfig
+public final class FViewSelectConfig
 {
     private static final Map<View, SelectConfig> MAP_CONFIG = new WeakHashMap<>();
 
-    public static ViewSelectConfig configView(View view)
+    public static ViewSelectConfig config(View view)
     {
         if (view == null)
             return null;
@@ -25,7 +25,7 @@ public final class FSelectConfig
         return newConfig;
     }
 
-    public static TextViewSelectConfig configTextView(TextView view)
+    public static TextViewSelectConfig config(TextView view)
     {
         if (view == null)
             return null;
@@ -39,7 +39,7 @@ public final class FSelectConfig
         return newConfig;
     }
 
-    public static ImageViewSelectConfig configImageView(ImageView view)
+    public static ImageViewSelectConfig config(ImageView view)
     {
         if (view == null)
             return null;
