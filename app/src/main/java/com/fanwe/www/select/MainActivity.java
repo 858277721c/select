@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity
         mCustomTab = findViewById(R.id.view_tab);
 
         FViewSelectConfig.config(mCustomTab).init(mTabIniter);
-        FViewSelectConfig.config(mCustomTab.view_underline).init(mUnderlineIniter);
-        FViewSelectConfig.config(mCustomTab.tv_title).init(mTextIniter);
+        FViewSelectConfig.config(mCustomTab.view_underline).init(mTabUnderlineIniter);
+        FViewSelectConfig.config(mCustomTab.tv_title).init(mTabTextIniter);
 
         mCustomTab.setSelected(false);
     }
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         }
     };
 
-    private final SelectConfig.PropertiesIniter<ViewProperties> mUnderlineIniter = new SelectConfig.PropertiesIniter<ViewProperties>()
+    private final SelectConfig.PropertiesIniter<ViewProperties> mTabUnderlineIniter = new SelectConfig.PropertiesIniter<ViewProperties>()
     {
         @Override
         public void init(ViewProperties normal, ViewProperties selected)
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
         }
     };
 
-    private final SelectConfig.PropertiesIniter<TextViewProperties> mTextIniter = new SelectConfig.PropertiesIniter<TextViewProperties>()
+    private final SelectConfig.PropertiesIniter<TextViewProperties> mTabTextIniter = new SelectConfig.PropertiesIniter<TextViewProperties>()
     {
         @Override
         public void init(TextViewProperties normal, TextViewProperties selected)
