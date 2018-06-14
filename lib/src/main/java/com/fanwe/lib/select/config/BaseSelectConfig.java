@@ -15,7 +15,9 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     private T mPropertiesSelected;
     private boolean mSelected;
 
+    private boolean mAutoMode;
     private final InternalOnPreDrawListener mOnPreDrawListener = new InternalOnPreDrawListener();
+    private final InternalOnAttachStateChangeListener mOnAttachStateChangeListener = new InternalOnAttachStateChangeListener();
 
     public BaseSelectConfig(View view)
     {
@@ -34,15 +36,10 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
     @Override
     public SelectConfig setAutoMode(boolean autoMode)
     {
-        if (autoMode)
-        {
-            mOnPreDrawListener.register();
-            updateStateIfNeed();
-        } else
-        {
-            mOnPreDrawListener.unregister();
-        }
+        mAutoMode = autoMode;
 
+        mOnPreDrawListener.register(autoMode);
+        mOnAttachStateChangeListener.register(autoMode);
         return this;
     }
 
@@ -115,31 +112,23 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
 
     private final class InternalOnPreDrawListener implements ViewTreeObserver.OnPreDrawListener
     {
-        public void register()
+        public void register(boolean register)
         {
             final View view = getView();
             if (view == null)
                 return;
 
             final ViewTreeObserver observer = view.getViewTreeObserver();
-            if (!observer.isAlive())
-                return;
+            if (observer.isAlive())
+            {
+                observer.removeOnPreDrawListener(this);
 
-            observer.removeOnPreDrawListener(this);
-            observer.addOnPreDrawListener(this);
-        }
-
-        public void unregister()
-        {
-            final View view = getView();
-            if (view == null)
-                return;
-
-            final ViewTreeObserver observer = view.getViewTreeObserver();
-            if (!observer.isAlive())
-                return;
-
-            observer.removeOnPreDrawListener(this);
+                if (register)
+                {
+                    observer.addOnPreDrawListener(this);
+                    updateStateIfNeed();
+                }
+            }
         }
 
         @Override
@@ -147,6 +136,34 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
         {
             updateStateIfNeed();
             return true;
+        }
+    }
+
+    private final class InternalOnAttachStateChangeListener implements View.OnAttachStateChangeListener
+    {
+        public void register(boolean register)
+        {
+            final View view = getView();
+            if (view == null)
+                return;
+
+            view.removeOnAttachStateChangeListener(this);
+
+            if (register)
+                view.addOnAttachStateChangeListener(this);
+        }
+
+        @Override
+        public void onViewAttachedToWindow(View v)
+        {
+            if (mAutoMode)
+                mOnPreDrawListener.register(true);
+        }
+
+        @Override
+        public void onViewDetachedFromWindow(View v)
+        {
+            mOnPreDrawListener.register(false);
         }
     }
 }
