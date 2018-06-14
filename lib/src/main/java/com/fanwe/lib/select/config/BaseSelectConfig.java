@@ -138,7 +138,14 @@ abstract class BaseSelectConfig<T extends ViewProperties> implements SelectConfi
                 if (mSelected != selected)
                 {
                     mSelected = selected;
-                    updateViewState(selected, view);
+                    view.post(new Runnable()
+                    {
+                        @Override
+                        public void run()
+                        {
+                            updateViewState(selected, view);
+                        }
+                    });
                 }
             }
 

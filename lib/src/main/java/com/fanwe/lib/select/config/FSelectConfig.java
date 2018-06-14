@@ -1,6 +1,8 @@
 package com.fanwe.lib.select.config;
 
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -23,7 +25,7 @@ public final class FSelectConfig
         return newConfig;
     }
 
-    public static TextViewSelectConfig configTextView(View view)
+    public static TextViewSelectConfig configTextView(TextView view)
     {
         if (view == null)
             return null;
@@ -37,7 +39,7 @@ public final class FSelectConfig
         return newConfig;
     }
 
-    public static ImageViewSelectConfig configImageView(View view)
+    public static ImageViewSelectConfig configImageView(ImageView view)
     {
         if (view == null)
             return null;
@@ -49,5 +51,10 @@ public final class FSelectConfig
         final SimpleImageViewConfig newConfig = new SimpleImageViewConfig(view);
         MAP_CONFIG.put(view, newConfig);
         return newConfig;
+    }
+
+    public static void removeConfig(View view)
+    {
+        MAP_CONFIG.remove(view);
     }
 }
