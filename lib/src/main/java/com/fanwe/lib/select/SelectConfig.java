@@ -27,7 +27,7 @@ import com.fanwe.lib.select.properties.ViewProperties;
 public interface SelectConfig
 {
     /**
-     * 配置某个View
+     * 配置View的属性
      *
      * @param initer
      * @return
@@ -35,7 +35,7 @@ public interface SelectConfig
     SelectConfig configView(PropertiesIniter<ViewProperties> initer);
 
     /**
-     * 配置某个TextView
+     * 配置TextView的属性
      *
      * @param initer
      * @return
@@ -43,7 +43,7 @@ public interface SelectConfig
     SelectConfig configTextView(PropertiesIniter<TextViewProperties> initer);
 
     /**
-     * 配置某个ImageView
+     * 配置ImageView的属性
      *
      * @param initer
      * @return
