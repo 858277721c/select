@@ -1,17 +1,14 @@
-# About
-可以动态指定View选中和非选中的时候展示状态
+package com.sd.www.select;
 
-# Gradle
-[![](https://jitpack.io/v/zj565061763/select.svg)](https://jitpack.io/#zj565061763/select)
+import android.graphics.Color;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-# 简单Demo
-![](http://thumbsnap.com/i/mYc3jx69.gif?0915)<br>
+import com.sd.lib.select.SelectConfig;
+import com.sd.lib.select.properties.TextViewProperties;
+import com.sd.lib.select.properties.ViewProperties;
 
-如果对自定义View的父类无要求可以直接继承FSelectView<br>
-如果自定义View已经继承了别的View，则可以通过FSelectViewContainer来管理View的选中状态，具体见FSelectView内部实现<br>
-
-1. 自定义View
-```java
 public class MainActivity extends AppCompatActivity
 {
     private CustomTab mCustomTab;
@@ -68,28 +65,3 @@ public class MainActivity extends AppCompatActivity
         mCustomTab.setSelected(!mCustomTab.isSelected());//切换View的选中状态
     }
 }
-```
-# 目前支持的配置
-* textColor       
-TextView字体颜色
-
-* textSize        
-TextView字体大小
-
-* imageResId      
-ImageView资源图片
-
-* background
-View的背景
-
-* alpha           
-View的透明度
-
-* width           
-View的宽度
-
-* height          
-View的高度
-
-* visibility      
-View的可见状态
