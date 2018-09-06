@@ -1,3 +1,6 @@
+# Deprecated
+此项目已经被废弃，建议用新的库替代：[selection](https://github.com/zj565061763/selection)
+
 # About
 可以动态指定View选中和非选中的时候展示状态
 
